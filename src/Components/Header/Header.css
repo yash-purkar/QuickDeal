@@ -1,0 +1,146 @@
+.header {
+  padding: 2.5rem;
+  background-color: #deecec;
+  display: flex;
+  position: relative;
+}
+
+.header-left {
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.header-left .sale-on {
+  text-transform: uppercase;
+  color: #3b686c;
+  margin-bottom: 0.5rem;
+}
+
+.header-title-box {
+  display: flex;
+  justify-content: space-between;
+}
+.shop-now {
+  display: none;
+}
+.header-left .header-title {
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: #3d445c;
+  margin-bottom: 0.8rem;
+}
+
+.header-left .header-desc {
+  width: 80%;
+  color: grey;
+  line-height: 1.3;
+  margin-bottom: 0.8rem;
+}
+
+.header-left .exploreMore-link {
+  display: inline-block;
+  background-color: #3b686c;
+  border: 1px solid #deecec;
+  border-radius: 0.8rem;
+  padding: 0.5rem 0.8rem;
+  color: #deecec;
+  letter-spacing: 1.5px;
+}
+.header-left .exploreMore-link:hover {
+  color: #3b686c;
+  background-color: #deecec;
+  border: 1px solid #3b686c;
+  color: #3b686c;
+}
+
+.toggle-div {
+  display: none;
+}
+.header .circle {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+}
+
+/*  */
+@media (min-width: 720px) {
+  .header {
+    justify-content: space-around;
+  }
+  .header-left .sale-on {
+    font-size: 1.1rem;
+  }
+  .header-left .header-title {
+    font-size: 2.2rem;
+  }
+  .header-left .header-desc {
+    font-size: 1.125rem;
+  }
+  .header-left .exploreMore-link {
+    font-size: 1rem;
+  }
+  .toggle-div {
+    display: block;
+  }
+  .header .circle {
+    width: 200px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    right: 60px;
+    bottom: 2rem;
+  }
+
+  .header .img {
+    width: 450px;
+    position: absolute;
+    right: 0px;
+    bottom: -0.2rem;
+  }
+}
+
+/*  */
+@media (min-width: 1024px) {
+  .header {
+    justify-content: flex-start;
+    padding-left: 10rem;
+  }
+  .header-left .sale-on {
+    font-size: 1.25rem;
+  }
+
+  .shop-now {
+    display: block;
+    font-size: 3rem;
+    margin-right: -4rem;
+    margin-top: 3rem;
+    color: #3d445c30;
+  }
+  .header-left .header-title {
+    font-size: 3rem;
+    width: 35rem;
+  }
+  .header-left .header-desc {
+    font-size: 1.25rem;
+  }
+  .header-left .exploreMore-link {
+    font-size: 1.125rem;
+  }
+  .header .circle {
+    width: 250px;
+    height: 250px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    right: 130px;
+    bottom: 5rem;
+  }
+
+  .header .img {
+    width: 600px;
+    position: absolute;
+    right: 20px;
+    bottom: -1.5rem;
+  }
+}
