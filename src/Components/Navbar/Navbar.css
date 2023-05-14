@@ -1,10 +1,10 @@
 .navigation {
-  background-color: #deecec;
+  background-color: var(--light-primary);
   display: flex;
   justify-content: space-between;
   padding: 1rem;
   position: relative;
-  border-bottom: 1px solid #3b686c;
+  border-bottom: 1px solid var(--primary);
   position: sticky;
   top: 0px;
   z-index: 1;
@@ -12,12 +12,12 @@
 
 .navigation .navigation-header {
   font-size: 1.5rem;
-  color: #3b686c;
+  color: var(--primary);
 }
 
 .navigation-menu {
   font-size: 1.5rem;
-  color: #3b686c;
+  color: var(--primary);
   cursor: pointer;
 }
 
@@ -30,15 +30,19 @@
   background-color: #f3fafa;
   flex-direction: column;
 }
+
+.hide-menu {
+  display: none;
+}
 .menu-item {
   list-style: none;
   padding: 0.5rem 1.2rem;
   font-size: 1.5rem;
-  color: #3b686c;
+  color: var(--primary);
   cursor: pointer;
 }
 .menu-item:hover {
-  background-color: #deecec;
+  background-color: var(--light-primary);
 }
 
 .menus-md {
@@ -46,11 +50,18 @@
 }
 
 @media (min-width: 720px) {
+  .menus {
+    display: none;
+  }
+  .menu-item:hover {
+    background-color: #fff;
+  }
+
   .navigation-menu {
     display: none;
   }
   .navigation .menus {
-    background-color: #deecec;
+    background-color: var(--light-primary);
     display: none;
   }
   .menus-md {

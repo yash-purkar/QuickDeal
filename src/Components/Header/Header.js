@@ -7,10 +7,7 @@ export const Header = () => {
       <div className='header'>
         <div className='header-left'>
           <p className='sale-on'>summer sale is on</p>
-          <div className='header-title-box'>
-            <h3 className='header-title'>make your fashion more perfect</h3>
-            <h3 className='shop-now'>Shop Now</h3>
-          </div>
+          <h3 className='header-title'>make your fashion more perfect</h3>
           <p className='header-desc'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro quas sunt nam quaerat.</p>
           <a href='/' className='exploreMore-link'>Explore More</a>
           <div className='toggle-div'>

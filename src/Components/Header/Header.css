@@ -1,8 +1,10 @@
 .header {
+  width: 100%;
   padding: 2.5rem;
-  background-color: #deecec;
+  background-color: var(--light-primary);
   display: flex;
   position: relative;
+  margin-bottom: 1.5rem;
 }
 
 .header-left {
@@ -12,7 +14,7 @@
 
 .header-left .sale-on {
   text-transform: uppercase;
-  color: #3b686c;
+  color: var(--primary);
   margin-bottom: 0.5rem;
 }
 
@@ -20,13 +22,11 @@
   display: flex;
   justify-content: space-between;
 }
-.shop-now {
-  display: none;
-}
+
 .header-left .header-title {
   font-size: 2rem;
   text-transform: capitalize;
-  color: #3d445c;
+  color: var(--header-color);
   margin-bottom: 0.8rem;
 }
 
@@ -39,18 +39,18 @@
 
 .header-left .exploreMore-link {
   display: inline-block;
-  background-color: #3b686c;
-  border: 1px solid #deecec;
+  background-color: var(--primary);
+  border: 1px solid var(--light-primary);
   border-radius: 0.8rem;
   padding: 0.5rem 0.8rem;
-  color: #deecec;
+  color: var(--light-primary);
   letter-spacing: 1.5px;
 }
 .header-left .exploreMore-link:hover {
-  color: #3b686c;
-  background-color: #deecec;
-  border: 1px solid #3b686c;
-  color: #3b686c;
+  color: var(--primary);
+  background-color: var(--light-primary);
+  border: 1px solid var(--primary);
+  color: var(--primary);
 }
 
 .toggle-div {
@@ -104,19 +104,12 @@
 @media (min-width: 1024px) {
   .header {
     justify-content: flex-start;
-    padding-left: 10rem;
+    padding: 5rem;
   }
   .header-left .sale-on {
     font-size: 1.25rem;
   }
 
-  .shop-now {
-    display: block;
-    font-size: 3rem;
-    margin-right: -4rem;
-    margin-top: 3rem;
-    color: #3d445c30;
-  }
   .header-left .header-title {
     font-size: 3rem;
     width: 35rem;

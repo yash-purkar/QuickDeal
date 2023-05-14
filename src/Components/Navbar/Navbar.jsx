@@ -5,23 +5,23 @@ import { RxCross1 } from 'react-icons/rx'
 import './Navbar.css'
 
 export const Navbar = () => {
-  const [display, setDisplay] = useState("none")
+  const [menuClass, setMenuClass] = useState("hide-menu")
 
   const handleMenuClick = (data) => {
-    const updatedDisplay = data === "hide" ? "none" : "flex";
-    setDisplay(updatedDisplay)
+    const updatedDisplay = data === "hide" ? "hide-menu" : "menus";
+    setMenuClass(updatedDisplay)
   }
-  // TODO: Install mockBee 
+
   return (
     <>
       <nav className='navigation'>
         <h1 className='navigation-header'>QuickDeal</h1>
 
         {
-          display === "none" ? <div className='navigation-menu' onClick={() => handleMenuClick()}><AiOutlineMenu /></div> : <div className='navigation-menu' onClick={() => handleMenuClick("hide")}><RxCross1 /></div>
+          menuClass === "hide-menu" ? <div className='navigation-menu' onClick={() => handleMenuClick()}><AiOutlineMenu /></div> : <div className='navigation-menu' onClick={() => handleMenuClick("hide")}><RxCross1 /></div>
         }
 
-        <ul className='menus' style={{ display }}>
+        <ul className={menuClass}>
           <li className='menu-item'><AiOutlineSearch /></li>
           <li className='menu-item'><MdOutlineLocalMall /></li>
           <li className='menu-item'><AiOutlineShoppingCart /></li>
