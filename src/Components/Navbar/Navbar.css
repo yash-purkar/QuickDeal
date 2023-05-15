@@ -7,7 +7,7 @@
   border-bottom: 1px solid var(--primary);
   position: sticky;
   top: 0px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .navigation .navigation-header {
@@ -54,6 +54,9 @@
 }
 
 @media (min-width: 720px) {
+  .navigation .navigation-header {
+    font-size: 1.7rem;
+  }
   .menus {
     display: none;
   }
@@ -70,5 +73,14 @@
   }
   .menus-md {
     display: flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navigation .navigation-header {
+    font-size: 2rem;
+  }
+  .menu-item {
+    font-size: 1.8rem;
   }
 }

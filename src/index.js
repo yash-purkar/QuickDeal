@@ -6,7 +6,7 @@ import App from "./App";
 import './index.css'
 
 import { makeServer } from "./server";
-import { CartContextProvider } from "./Contexts/CartContext";
+import { DataContextProvider } from "./Contexts/Data/DataContext";
 
 
 // Call make Server
@@ -15,9 +15,9 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <CartContextProvider>
+      <DataContextProvider>
         <App />
-      </CartContextProvider>
+      </DataContextProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
