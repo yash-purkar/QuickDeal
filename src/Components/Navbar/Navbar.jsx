@@ -3,6 +3,7 @@ import { AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart, AiOutlineHeart, 
 import { MdOutlineLocalMall } from 'react-icons/md'
 import { RxCross1 } from 'react-icons/rx'
 import './Navbar.css'
+import { NavLink } from 'react-router-dom'
 
 export const Navbar = () => {
   const [menuClass, setMenuClass] = useState("hide-menu")
@@ -15,7 +16,7 @@ export const Navbar = () => {
   return (
     <>
       <nav className='navigation'>
-        <h1 className='navigation-header'>QuickDeal</h1>
+        <h1 className='navigation-header'><NavLink to="/" className="navbar-link">QuickDeal</NavLink></h1>
 
         {
           menuClass === "hide-menu" ? <div className='navigation-menu' onClick={() => handleMenuClick()}><AiOutlineMenu /></div> : <div className='navigation-menu' onClick={() => handleMenuClick("hide")}><RxCross1 /></div>
@@ -23,7 +24,7 @@ export const Navbar = () => {
 
         <ul className={menuClass}>
           <li className='menu-item'><AiOutlineSearch /></li>
-          <li className='menu-item'><MdOutlineLocalMall /></li>
+          <li className='menu-item'><NavLink to="/productlisting" className="navbar-link"><MdOutlineLocalMall /></NavLink></li>
           <li className='menu-item'><AiOutlineShoppingCart /></li>
           <li className='menu-item'><AiOutlineHeart /></li>
           <li className='menu-item'><AiOutlineUser /></li>
@@ -31,7 +32,7 @@ export const Navbar = () => {
 
         <ul className='menus-md' >
           <li className='menu-item'><AiOutlineSearch /></li>
-          <li className='menu-item'><MdOutlineLocalMall /></li>
+          <li className='menu-item'><NavLink to="/productlisting" className="navbar-link"><MdOutlineLocalMall /></NavLink></li>
           <li className='menu-item'><AiOutlineShoppingCart /></li>
           <li className='menu-item'><AiOutlineHeart /></li>
           <li className='menu-item'><AiOutlineUser /></li>

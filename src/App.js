@@ -1,18 +1,16 @@
 import "./App.css";
-import { Navbar } from './Components/Navbar/Navbar'
-import { Header } from './Components/Header/Header'
-import { Features } from "./Components/Features/Features";
-import { Categories } from "./Components/Categories/Categories";
-import { Footer } from "./Components/Footer/Footer";
+import { Home } from "./Pages/Home/Home";
+import { Routes, Route } from 'react-router-dom';
+import { ProductListing } from "./Pages/ProductListing/ProductListing";
+
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Header />
-      <Features />
-      <Categories />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/productlisting" element={<ProductListing />} />
+      </Routes>
     </div>
   );
 }

@@ -49,6 +49,10 @@
   display: none;
 }
 
+.navbar-link {
+  color: var(--primary);
+}
+
 @media (min-width: 720px) {
   .menus {
     display: none;

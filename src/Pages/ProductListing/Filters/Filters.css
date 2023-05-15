@@ -1,0 +1,111 @@
+input {
+  cursor: pointer;
+}
+.btn-box {
+  margin: 1rem;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.filter-btn {
+  padding: 0.5rem 0.8rem;
+  width: fit-content;
+  background-color: var(--primary);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+}
+.filters-head {
+  margin-right: 0.3rem;
+  font-size: 1rem;
+}
+
+.filter-icon {
+  font-size: 1.3rem;
+}
+
+.hide-filters {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
+  padding-top: 0.7rem;
+}
+/*  */
+
+.fitlers-name {
+  color: #5c5757;
+}
+
+.filters-box {
+  padding: 2rem;
+  background-color: var(--light-primary);
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: fit-content;
+  margin: auto;
+
+  position: absolute;
+  height: 82vh;
+}
+
+.filters-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.filters-top h2 {
+  color: var(--header-color);
+}
+
+.filters-top button {
+  border: none;
+  background-color: #fff;
+  font-size: 1rem;
+  color: var(--header-color);
+  cursor: pointer;
+}
+.filter-type {
+  margin-bottom: 0.6rem;
+  color: var(--header-color);
+}
+
+#lowToHigh,
+#highToLow {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+#highToLow {
+  margin-bottom: 1rem;
+}
+/*  */
+
+.category {
+  margin-bottom: 0.5rem;
+}
+
+.sizes-heading {
+  margin: 0.5rem 0;
+}
+
+/* sizes */
+.size {
+  margin-bottom: 0.5rem;
+}
+
+/* ratings */
+.ratings-heading {
+  margin: 0.8rem 0 0.5rem 0;
+}
+
+.range {
+  margin-bottom: 1rem;
+}
