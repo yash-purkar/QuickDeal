@@ -1,5 +1,7 @@
 import { v4 as uuid } from "uuid";
-
+import MensCategory from './Images/category-1.png'
+import WomensCategory from './Images/category-2.png'
+import KidsCategory from './Images/category-3.png'
 /**
  * Category Database can be added here.
  * You can add category of your wish with different attributes
@@ -8,20 +10,23 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Men",
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+      "Checkout our best mens collection, Biggest deals on top brands.",
+    img: MensCategory
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
+    categoryName: "Women",
     description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+      "Checkout our best womens collection, Top brands at best price.",
+    img: WomensCategory
   },
   {
     _id: uuid(),
-    categoryName: "horror",
+    categoryName: "Kids",
     description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+      "Checkout our best kids collection, Get 30%-40% discount on kids wear.",
+    img: KidsCategory
   },
 ];
