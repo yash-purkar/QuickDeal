@@ -17,7 +17,7 @@ export const Filters = () => {
         {/* By price */}
         <div className='filters-top'>
           <h2>Filters</h2>
-          <button>Clear</button>
+          <button className='clear-filters'>Clear</button>
         </div>
         <h3 className='price-heading filter-type'>Sort By Price</h3>
         <label htmlFor="lowToHigh">

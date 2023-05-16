@@ -5,6 +5,8 @@ import { RxCross1 } from 'react-icons/rx'
 import './Navbar.css'
 import { NavLink } from 'react-router-dom'
 
+const getActiveStyle = ({ isActive }) => ({ borderBottom: "1px solid var(--primary)" })
+
 export const Navbar = () => {
   const [menuClass, setMenuClass] = useState("hide-menu")
 
@@ -16,7 +18,7 @@ export const Navbar = () => {
   return (
     <>
       <nav className='navigation'>
-        <h1 className='navigation-header'><NavLink to="/" className="navbar-link">QuickDeal</NavLink></h1>
+        <h1 className='navigation-header'><NavLink className="nav-link" to="/" >QuickDeal</NavLink></h1>
 
         {
           menuClass === "hide-menu" ? <div className='navigation-menu' onClick={() => handleMenuClick()}><AiOutlineMenu /></div> : <div className='navigation-menu' onClick={() => handleMenuClick("hide")}><RxCross1 /></div>
@@ -24,18 +26,21 @@ export const Navbar = () => {
 
         <ul className={menuClass}>
           <li className='menu-item'><AiOutlineSearch /></li>
-          <li className='menu-item'><NavLink to="/productlisting" className="navbar-link"><MdOutlineLocalMall /></NavLink></li>
-          <li className='menu-item'><AiOutlineShoppingCart /></li>
-          <li className='menu-item'><AiOutlineHeart /></li>
-          <li className='menu-item'><AiOutlineUser /></li>
+
+          <li className='menu-item'>
+            <NavLink className="nav-link" to="/productlisting" ><MdOutlineLocalMall /></NavLink>
+          </li>
+          <li className='menu-item'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart /></NavLink></li>
+          <li className='menu-item'><NavLink className="nav-link"><AiOutlineHeart /></NavLink></li>
+          <li className='menu-item'><NavLink className="nav-link"><AiOutlineUser /></NavLink></li>
         </ul>
 
         <ul className='menus-md' >
           <li className='menu-item'><AiOutlineSearch /></li>
-          <li className='menu-item'><NavLink to="/productlisting" className="navbar-link"><MdOutlineLocalMall /></NavLink></li>
-          <li className='menu-item'><AiOutlineShoppingCart /></li>
-          <li className='menu-item'><AiOutlineHeart /></li>
-          <li className='menu-item'><AiOutlineUser /></li>
+          <li className='menu-item'><NavLink className="nav-link" to="/productlisting" ><MdOutlineLocalMall /></NavLink></li>
+          <li className='menu-item'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart /></NavLink></li>
+          <li className='menu-item'><NavLink className="nav-link"><AiOutlineHeart /></NavLink></li>
+          <li className='menu-item'><NavLink className="nav-link"><AiOutlineUser /></NavLink></li>
         </ul>
 
       </nav>

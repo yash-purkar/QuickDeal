@@ -4,14 +4,21 @@ import { dataReducer, initialState } from "../../Reducers/DataReducer";
 const DataContext = createContext();
 
 export const DataContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(dataReducer, initialState)
-  // const getProductsData = async () => {
-  //   const { products } = await fetch("/api/products")
-  //   console.log(products, ":")
-  // }
-  // console.log(products)
+  const [state, dispatch] = useReducer(dataReducer, initialState);
+
+  const getCategories = async () => {
+    try {
+      const response = await fetch("/api/categories");
+      const { categories } = await response.json();
+      dispatch({ type: "INITIALIZE_CATEGORIES", payload: categories })
+    }
+    catch (e) {
+      console.error(e)
+    }
+  }
+  console.log(state.categories)
   useEffect(() => {
-    // getProductsData()
+    getCategories();
   }, [])
 
   return <DataContext.Provider value={{ state }}>

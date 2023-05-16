@@ -120,6 +120,7 @@ input {
   .btn-box {
     display: none;
   }
+
   .filters-box {
     display: flex !important ;
     position: sticky;
@@ -130,6 +131,13 @@ input {
   }
   .filters-top h2 {
     font-size: 1.75rem;
+  }
+
+  .clear-filters {
+    position: absolute;
+    bottom: 1rem;
+    /* right: 50%; */
+    right: 1rem;
   }
 
   .filter-type {

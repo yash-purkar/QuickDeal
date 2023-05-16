@@ -1,10 +1,9 @@
 import React from 'react'
-import { Navbar } from '../../Components/Navbar/Navbar'
 import { Filters } from './Filters/Filters'
 import { DataState } from '../../Contexts/Data/DataContext'
 import { SingleProduct } from '../../Components/SingleProdcut/SingleProduct'
 import './ProductListing.css';
-// import 
+
 
 export const ProductListing = () => {
   const { state: { products } } = DataState();

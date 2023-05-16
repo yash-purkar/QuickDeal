@@ -11,7 +11,7 @@ export const SingleProduct = ({ product }) => {
         <img src={image} alt={itemName} className='product-image' />
         <div>
           <div className='trending-like-box'>
-            <span className='trending'>Trending</span>
+            {/* <span className='trending'>Trending</span> */}
             <span className='like'><AiFillHeart /></span>
           </div>
           <div className='rating-and-size'>

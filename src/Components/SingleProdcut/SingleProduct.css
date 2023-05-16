@@ -9,7 +9,7 @@
 
 .product-card:hover {
   cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .card-header {
@@ -25,7 +25,7 @@
 
 .trending {
   font-size: 1rem;
-  background-color: orangered;
+  background-color: #00a098;
   color: #fff;
   position: absolute;
   top: -0.3rem;
@@ -147,32 +147,31 @@
 
 @media (min-width: 1024px) {
   .product-card {
-    width: 19rem;
+    width: 18rem;
   }
   .product-image {
-    width: 17rem;
-    height: 17rem;
+    width: 16rem;
+    height: 16rem;
   }
   .trending {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
   .like {
     font-size: 1.6rem;
   }
   .rating-star,
   .prod-size {
-    font-size: 1.1rem;
+    font-size: 1.02rem;
   }
-
   .product-name {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .new-price,
   .old-price,
   .discount {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   .add-to-cart {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }

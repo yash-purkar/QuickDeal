@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.5,
     reviews: 235,
     size: "M",
@@ -21,7 +21,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.2,
     reviews: 98,
     size: "L",
@@ -34,7 +34,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 3.9,
     reviews: 72,
     size: "XL",
@@ -47,7 +47,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.8,
     reviews: 532,
     size: "S",
@@ -60,7 +60,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.3,
     reviews: 126,
     size: "M",
@@ -73,7 +73,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.6,
     reviews: 305,
     size: "L",
@@ -86,7 +86,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.1,
     reviews: 67,
     size: "M",
@@ -99,7 +99,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.4,
     reviews: 154,
     size: "S",
@@ -112,7 +112,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.7,
     reviews: 418,
     size: "L",
@@ -125,7 +125,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.2,
     reviews: 132,
     size: "M",
@@ -138,7 +138,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.6,
     reviews: 76,
     size: "S",
@@ -151,7 +151,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.3,
     reviews: 210,
     size: "L",
@@ -164,7 +164,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.8,
     reviews: 54,
     size: "M",
@@ -177,7 +177,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/kids-t-shirt/y/1/m/-original-imagp8nwyshadrpy.jpeg?q=70",
+    image: "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/z/i/s/-original-imaghhfypynjhd6z.jpeg?q=70",
     rating: 4.5,
     reviews: 123,
     size: "XL",
