@@ -18,14 +18,14 @@ export const Navbar = () => {
   return (
     <>
       <nav className='navigation'>
-        <h1 className='navigation-header'><NavLink className="nav-link" to="/" >QuickDeal</NavLink></h1>
+        <h1 className='navigation-header'><NavLink className="header-link" to="/" >QuickDeal</NavLink></h1>
 
         {
           menuClass === "hide-menu" ? <div className='navigation-menu' onClick={() => handleMenuClick()}><AiOutlineMenu /></div> : <div className='navigation-menu' onClick={() => handleMenuClick("hide")}><RxCross1 /></div>
         }
 
         <ul className={menuClass}>
-          <li className='menu-item'><AiOutlineSearch /></li>
+          <li className='menu-item'><NavLink className="nav-link"><AiOutlineSearch /></NavLink></li>
 
           <li className='menu-item'>
             <NavLink className="nav-link" to="/productlisting" ><MdOutlineLocalMall /></NavLink>
@@ -36,7 +36,7 @@ export const Navbar = () => {
         </ul>
 
         <ul className='menus-md' >
-          <li className='menu-item'><AiOutlineSearch /></li>
+          <li className='menu-item'><NavLink className="nav-link"><AiOutlineSearch /></NavLink></li>
           <li className='menu-item'><NavLink className="nav-link" to="/productlisting" ><MdOutlineLocalMall /></NavLink></li>
           <li className='menu-item'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart /></NavLink></li>
           <li className='menu-item'><NavLink className="nav-link"><AiOutlineHeart /></NavLink></li>

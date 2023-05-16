@@ -14,14 +14,19 @@ export const SingleProduct = ({ product }) => {
             {/* <span className='trending'>Trending</span> */}
             <span className='like'><AiFillHeart /></span>
           </div>
-          <div className='rating-and-size'>
-            <p className='ratings-info'><span className='rating-star'><AiOutlineStar /><span className='rating'>{rating}</span></span></p>
-            <p className='prod-size'>{size}</p>
-          </div>
+
+          <p className='prod-size'>{size}</p>
         </div>
       </div>
-      <p className='product-name'>{itemName}</p>
+      <div className='name-and-rating'>
+        <p className='product-name'>{itemName}</p>
+        <div className='rating-and-size'>
+          <p className='ratings-info'><span className='rating-star'><AiOutlineStar /><span className='rating'>{rating}</span></span></p>
+        </div>
+
+      </div>
       <div className='price-and-discount'>
+
         <div className="prices">
           <span className='new-price'>₹{newPrice}</span>
           <span className='old-price'>₹{oldPrice}</span>

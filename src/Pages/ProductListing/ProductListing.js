@@ -13,9 +13,9 @@ export const ProductListing = () => {
       <div className='main-product-listing'>
         <Filters />
         <div className='products-container'>
-          <div className="productlisting-header"><h2 className='all-products-heading'>Showing All Products</h2><p className='products-count'>({products.length} products)</p></div>
+          <div className="productlisting-header"><p className='all-products-heading'>Showing All Products</p><p className='products-count'>({products.length} products)</p></div>
           {
-            products.map(product => <SingleProduct product={product} key={product._id} />)
+            products?.map(product => <SingleProduct product={product} key={product._id} />)
           }
         </div>
       </div>

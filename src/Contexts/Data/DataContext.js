@@ -16,9 +16,21 @@ export const DataContextProvider = ({ children }) => {
       console.error(e)
     }
   }
-  console.log(state.categories)
+
+  const getProducts = async () => {
+    try {
+      const resp = await fetch("/api/products");
+      const { products } = await resp.json();
+      dispatch({ type: "INITIALIZE_PRODUCTS", payload: products });
+    } catch (e) {
+      console.error(e);
+    }
+
+  }
+
   useEffect(() => {
     getCategories();
+    getProducts()
   }, [])
 
   return <DataContext.Provider value={{ state }}>

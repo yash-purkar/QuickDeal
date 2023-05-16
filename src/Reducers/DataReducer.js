@@ -2,7 +2,7 @@ import { products } from "../backend/db/products";
 
 export const initialState = {
   categories: [],
-  products: products
+  products: [],
 }
 
 
@@ -13,6 +13,9 @@ export const dataReducer = (state, action) => {
       categories: action.payload
     }
 
+    case "INITIALIZE_PRODUCTS": return {
+      ...state, products: action.payload
+    }
     default: return state;
   }
 }

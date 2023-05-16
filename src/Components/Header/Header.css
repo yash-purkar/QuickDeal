@@ -1,7 +1,7 @@
 .header {
   width: 100%;
   padding: 2.5rem;
-  background-color: var(--light-primary);
+  background-color: var(--alice-blue);
   display: flex;
   position: relative;
   margin-bottom: 1.5rem;
@@ -40,14 +40,14 @@
 .header-left .exploreMore-link {
   display: inline-block;
   background-color: var(--primary);
-  border: 1px solid var(--light-primary);
+  border: 1px solid var(--white);
   padding: 0.4rem 0.7rem;
-  color: var(--light-primary);
+  color: var(--white);
   letter-spacing: 1.5px;
 }
 .header-left .exploreMore-link:hover {
   color: var(--primary);
-  background-color: var(--light-primary);
+  background-color: var(--alice-blue);
   border: 1px solid var(--primary);
   color: var(--primary);
 }
@@ -115,7 +115,7 @@
     width: 35rem;
   }
   .header-left .header-desc {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
   .header-left .exploreMore-link {
     font-size: 1.125rem;
