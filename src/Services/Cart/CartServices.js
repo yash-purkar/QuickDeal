@@ -1,5 +1,9 @@
 import React from 'react'
 
-export const AddToCart = () => {
+export const addToCart = (product) => {
+
+}
+
+export const RemoveFromCart = (id) => {
 
 }

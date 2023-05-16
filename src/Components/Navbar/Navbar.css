@@ -43,10 +43,6 @@
   color: var(--primary);
   cursor: pointer;
 }
-.menu-item:hover {
-  background-color: var(--white);
-}
-
 .menus-md {
   display: none;
 }
@@ -63,17 +59,11 @@
   .nav-link {
     color: var(--white);
   }
-  .nav-link:hover {
-    color: var(--primary);
-  }
   .navigation .navigation-header {
     font-size: 1.7rem;
   }
   .menus {
     display: none;
-  }
-  .menu-item:hover {
-    background-color: var(--white);
   }
 
   .navigation-menu {

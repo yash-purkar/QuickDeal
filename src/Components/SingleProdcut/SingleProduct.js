@@ -2,9 +2,12 @@ import React from 'react'
 import { AiOutlineStar, AiFillHeart } from 'react-icons/ai'
 
 import './SingleProduct.css'
+import { DataState } from '../../Contexts/Data/DataContext'
+import { addToCart } from '../../Services/Cart/CartServices'
 
 export const SingleProduct = ({ product }) => {
   const { _id, image, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending } = product
+  const { state: { cart } } = DataState()
   return (
     <div className='product-card'>
       <div className='card-header'>
@@ -33,7 +36,7 @@ export const SingleProduct = ({ product }) => {
         </div>
         <p className='discount'>{discount}% OFF</p>
       </div>
-      <button className='add-to-cart'>Add To Cart</button>
+      <button className='add-to-cart' onClick={() => addToCart}>Add To Cart</button>
 
     </div>
   )

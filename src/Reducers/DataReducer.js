@@ -3,6 +3,7 @@ import { products } from "../backend/db/products";
 export const initialState = {
   categories: [],
   products: [],
+  cart: []
 }
 
 
