@@ -7,7 +7,8 @@ import './ProductListing.css';
 
 export const ProductListing = () => {
   const { state: { products, filters } } = DataState();
-  const { searchValue, sort } = filters;
+  const { searchValue, sort, selectedCategories } = filters;
+  console.log(selectedCategories, "pro")
 
   const transformData = () => {
     let filteredData = [...products];
@@ -16,6 +17,9 @@ export const ProductListing = () => {
     }
     if (sort) {
       filteredData = filteredData.sort((a, b) => sort === "LOW_TO_HIGH" ? a.newPrice - b.newPrice : b.newPrice - a.newPrice)
+    }
+    if (selectedCategories.length > 0) {
+      filteredData = filteredData.filter(prod => selectedCategories.some(category => category === prod.category))
     }
 
     return filteredData;

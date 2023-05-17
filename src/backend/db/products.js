@@ -253,7 +253,7 @@ export const products = [
     rating: 4.1,
     reviews: 9,
     size: "S",
-    category: "kids",
+    category: "Kids",
     oldPrice: 99.99,
     newPrice: 79.99,
     discount: 20,

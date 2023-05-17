@@ -21,7 +21,7 @@
   border: none;
   outline: 1px solid var(--gray);
   letter-spacing: 1px;
-  color: gray;
+  color: var(--header-color);
 }
 
 .navigation-menu {

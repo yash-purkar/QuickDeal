@@ -36,15 +36,15 @@
 }
 .like {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: -20px;
+  right: -30px;
   font-size: 1.6rem;
   width: fit-content;
   color: var(--primary);
   color: gray;
 }
 .like:hover {
-  color: red;
+  color: var(--red);
   cursor: pointer;
 }
 /*  */
