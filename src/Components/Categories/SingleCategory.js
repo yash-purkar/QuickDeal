@@ -9,7 +9,7 @@ export const SingleCategory = ({ category }) => {
 
   const handleCategoryClick = () => {
     navigate("/productlisting")
-    dispatch({ type: "SORT_BY_CATEGORIES", payload: category.categoryName })
+    dispatch({ type: "FILTER_BY_CATEGORIES", payload: category.categoryName })
   }
   return (
     <div className='category-card' onClick={handleCategoryClick}>

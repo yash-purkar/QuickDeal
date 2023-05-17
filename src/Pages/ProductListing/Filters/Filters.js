@@ -6,7 +6,7 @@ import { DataState } from '../../../Contexts/Data/DataContext'
 
 export const Filters = () => {
   const [isFilters, setIsFilters] = useState(false);
-  const { dispatch, state: { filters: { sort, selectedCategories } } } = DataState();
+  const { dispatch, state: { filters: { sort, selectedCategories, selectedSizes } } } = DataState();
 
   return (
     <div>
@@ -37,22 +37,22 @@ export const Filters = () => {
         {/* Categories */}
         <h3 className='category-heading filter-type'>Categories</h3>
         <label htmlFor="category-men">
-          <input type="checkbox" className='category' onChange={() => dispatch({ type: "SORT_BY_CATEGORIES", payload: "Men" })} checked={selectedCategories.includes("Men")} /> <span className='filters-names'>Men</span>
+          <input type="checkbox" className='category' onChange={() => dispatch({ type: "FILTER_BY_CATEGORIES", payload: "Men" })} checked={selectedCategories.includes("Men")} /> <span className='filters-names'>Men</span>
         </label>
 
         <label htmlFor="category-men">
-          <input type="checkbox" className='category' onChange={() => dispatch({ type: "SORT_BY_CATEGORIES", payload: "Women" })} checked={selectedCategories.includes("Women")} /> <span className='filters-names'>Women</span>
+          <input type="checkbox" className='category' onChange={() => dispatch({ type: "FILTER_BY_CATEGORIES", payload: "Women" })} checked={selectedCategories.includes("Women")} /> <span className='filters-names'>Women</span>
         </label>
 
         <label htmlFor="category-men kids">
-          <input type="checkbox" className='category' onChange={() => dispatch({ type: "SORT_BY_CATEGORIES", payload: "Kids" })} checked={selectedCategories.includes("Kids")} /><span className='filters-names'> Kids</span>
+          <input type="checkbox" className='category' onChange={() => dispatch({ type: "FILTER_BY_CATEGORIES", payload: "Kids" })} checked={selectedCategories.includes("Kids")} /><span className='filters-names'> Kids</span>
         </label>
 
         {/* Sizes */}
         <h3 className='sizes-heading filter-type'>Sizes</h3>
         {
           ["S", "M", "L", "XL", "XXL"].map(size => <label htmlFor="" key={size}>
-            <input type="checkbox" className='size' /> <span className='filters-names'>{size}</span>
+            <input type="checkbox" className='size' onChange={() => dispatch({ type: "FILTER_BY_SIZE", payload: size })} checked={selectedSizes.includes(size)} /> <span className='filters-names'>{size}</span>
           </label>)
         }
 

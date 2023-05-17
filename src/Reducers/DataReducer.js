@@ -2,13 +2,13 @@ export const initialState = {
   filters: {
     searchValue: null,
     sort: null,
-    selectedCategories: []
+    selectedCategories: [],
+    selectedSizes: []
   },
   categories: [],
   products: [],
 }
 
-// const { filters } = initialState;
 
 export const dataReducer = (state, action) => {
   switch (action.type) {
@@ -29,10 +29,13 @@ export const dataReducer = (state, action) => {
       ...state, filters: { ...state.filters, sort: action.payload }
     }
 
-    case "SORT_BY_CATEGORIES": return {
+    case "FILTER_BY_CATEGORIES": return {
       ...state, filters: { ...state.filters, selectedCategories: state.filters.selectedCategories.includes(action.payload) ? state.filters.selectedCategories.filter(category => category !== action.payload) : [...state.filters.selectedCategories, action.payload] }
     }
 
+    case "FILTER_BY_SIZE": return {
+      ...state, filters: { ...state.filters, selectedSizes: state.filters.selectedSizes.includes(action.payload) ? state.filters.selectedSizes.filter(size => size !== action.payload) : [...state.filters.selectedSizes, action.payload] }
+    }
     default: return state;
   }
 }
