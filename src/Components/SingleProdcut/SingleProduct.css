@@ -4,7 +4,7 @@
   flex-direction: column;
   padding: 1rem;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 1rem;
+
   margin-bottom: 1.5rem;
 }
 
@@ -92,12 +92,6 @@
   margin-bottom: 0.3rem;
 }
 
-.new-price,
-.old-price,
-.discount {
-  font-size: 0.9rem;
-  font-weight: bold;
-}
 .new-price {
   color: var((--header-color));
   margin-right: 0.5rem;
@@ -108,7 +102,7 @@
   text-decoration: line-through;
 }
 .discount {
-  color: var(--primary);
+  color: var(--green);
   letter-spacing: 0px;
 }
 
@@ -129,12 +123,6 @@
 
 @media (min-width: 720px) {
   .product-card {
-    width: 15rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .product-card {
-    width: 17rem;
+    margin: 1rem;
   }
 }

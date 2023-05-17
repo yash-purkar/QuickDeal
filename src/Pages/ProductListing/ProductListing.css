@@ -25,7 +25,7 @@
 @media (min-width: 720px) {
   .main-product-listing {
     display: grid;
-    grid-template-columns: 0.7fr 2fr;
+    grid-template-columns: 200px auto;
   }
   .productlisting-header {
     top: 6rem;
@@ -42,7 +42,7 @@
 
 @media (min-width: 1260px) {
   .main-product-listing {
-    grid-template-columns: 0.7fr 4fr;
+    grid-template-columns: 220px auto;
   }
 
   .productlisting-header {
