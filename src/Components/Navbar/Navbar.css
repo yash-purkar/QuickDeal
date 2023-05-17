@@ -1,7 +1,5 @@
 .navigation {
   background-color: var(--primary);
-  display: flex;
-  justify-content: space-between;
   padding: 0.5rem;
   position: relative;
   border-bottom: 1px solid var(--primary);
@@ -14,6 +12,16 @@
 .navigation .navigation-header {
   font-size: 1.5rem;
   color: var(--white);
+}
+
+.search-bar {
+  width: 15rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  border: none;
+  outline: 1px solid var(--gray);
+  letter-spacing: 1px;
+  color: gray;
 }
 
 .navigation-menu {
@@ -55,7 +63,14 @@
   color: var(--white);
 }
 
+.search-bar:hover {
+  cursor: unset;
+}
+
 @media (min-width: 720px) {
+  .search-bar {
+    width: 18rem;
+  }
   .nav-link {
     color: var(--white);
   }
@@ -79,6 +94,11 @@
 }
 
 @media (min-width: 1024px) {
+  .search-bar {
+    width: 25rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
   .navigation {
     flex-grow: 1;
   }
