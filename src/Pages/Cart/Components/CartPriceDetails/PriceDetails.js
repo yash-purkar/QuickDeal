@@ -10,7 +10,7 @@ export const PriceDetails = () => {
       <div>
 
         <div className='displayFlex'>
-          <p className='sm-fontsize sm-margin-bottom'>Price (2items)</p>
+          <p className='sm-fontsize sm-margin-bottom '>Price (2items)</p>
           <p className='sm-fontsize'>₹ 2580</p>
         </div>
 

@@ -31,7 +31,7 @@ export const Navbar = () => {
             <NavLink className="nav-link" to="/productlisting" ><MdOutlineLocalMall /></NavLink>
           </li>
           <li className='menu-item'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart /></NavLink></li>
-          <li className='menu-item'><NavLink className="nav-link"><AiOutlineHeart /></NavLink></li>
+          <li className='menu-item'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart /></NavLink></li>
           <li className='menu-item'><NavLink className="nav-link"><AiOutlineUser /></NavLink></li>
         </ul>
 
@@ -39,7 +39,7 @@ export const Navbar = () => {
           <li className='menu-item'><NavLink className="nav-link"><AiOutlineSearch /></NavLink></li>
           <li className='menu-item'><NavLink className="nav-link" to="/productlisting" ><MdOutlineLocalMall /></NavLink></li>
           <li className='menu-item'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart /></NavLink></li>
-          <li className='menu-item'><NavLink className="nav-link"><AiOutlineHeart /></NavLink></li>
+          <li className='menu-item'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart /></NavLink></li>
           <li className='menu-item'><NavLink className="nav-link"><AiOutlineUser /></NavLink></li>
         </ul>
 

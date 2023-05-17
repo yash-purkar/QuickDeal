@@ -1,9 +1,7 @@
 .cart-product-card {
   width: 19rem;
-  box-shadow: 0px 5px 15px rgba(90, 90, 90, 0.35);
-
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
-  border-radius: 0.5rem;
   padding: 1.2rem 0rem;
 }
 
@@ -15,10 +13,11 @@
 .cart-product-img {
   width: 35%;
   margin-right: 0.6rem;
+  border-radius: 0.2rem;
 }
 
 .cart-item-name {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .cart-product-prices .new-price {
@@ -97,4 +96,43 @@
 }
 .move-to-wishlist {
   color: var(--primary);
+}
+
+@media (min-width: 720px) {
+  .cart-product-card {
+    width: 22rem;
+  }
+  .cart-item-name {
+    font-size: 1.3rem;
+    margin-top: 1.3rem 0 0.7rem 0;
+  }
+  .cart-product-prices .new-price,
+  .cart-product-prices .old-price,
+  .cart-product-prices .discount,
+  .qty-label {
+    font-size: 1rem;
+  }
+
+  .decrease-qty,
+  .increase-qty {
+    font-size: 1.4rem;
+    padding: 0rem 0.5rem;
+    margin: 0.2rem;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--lightgray);
+  }
+  .decrease-qty {
+    padding: 0 0.7rem;
+  }
+
+  .qty {
+    font-size: 1rem;
+    padding: 0rem 0.6rem;
+  }
+
+  .remove-product,
+  .move-to-wishlist {
+    font-size: 1.17rem;
+  }
 }

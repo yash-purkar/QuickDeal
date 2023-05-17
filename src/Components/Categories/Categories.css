@@ -8,9 +8,12 @@
 }
 
 .categories {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr;
-  place-items: center;
+  place-items: center; */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
 }
 
@@ -67,12 +70,11 @@
   .category-header {
     font-size: 2rem;
   }
-  .categories {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
   .category-card {
     width: 290px;
     height: 360px;
+    margin: 1rem;
   }
   .category-img {
     width: 11rem;
@@ -87,12 +89,10 @@
   .category-header {
     font-size: 2.3rem;
   }
-  .categories {
-    grid-template-columns: repeat(3, 1fr);
-  }
   .category-card {
     width: 310px;
     height: 380px;
+    margin: 2rem 4rem;
   }
   .category-img {
     width: 12rem;

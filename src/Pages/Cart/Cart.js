@@ -46,12 +46,15 @@ const dummyCart = [
 export const Cart = () => {
   return (
     <>
-      <div className="cart-container">
-        {
-          dummyCart?.map(product => <SingleCartProduct product={product} />)
-        }
+      <h2 className='text-center top-margin'>My Cart(3)</h2>
+      <div className="cart-main">
+        <div className="cart-container">
+          {
+            dummyCart?.map(product => <SingleCartProduct key={product._id} product={product} />)
+          }
+        </div>
+        <PriceDetails />
       </div>
-      <PriceDetails />
     </>
   )
 }
