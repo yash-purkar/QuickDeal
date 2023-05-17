@@ -42,6 +42,16 @@ export const dataReducer = (state, action) => {
       ...state, filters: { ...state.filters, rating: action.payload }
     }
 
+    case "CLEAR_ALL_FILTERS": return {
+      ...state, filters: {
+        searchValue: null,
+        sort: null,
+        selectedCategories: [],
+        selectedSizes: [],
+        rating: null,
+      }
+    }
+
     default: return state;
   }
 }

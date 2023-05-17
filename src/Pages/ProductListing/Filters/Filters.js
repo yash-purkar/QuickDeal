@@ -26,17 +26,17 @@ export const Filters = () => {
         {/* By price */}
         <div className='filters-top'>
           <h2>Filters</h2>
-          <button className='clear-filters font-1-3'>Clear</button>
+          <button onClick={() => dispatch({ type: "CLEAR_ALL_FILTERS" })} className='clear-filters font-1-3'>Clear</button>
         </div>
         <h4 className='font-1-2  top-margin margin-bottom-1'>Sort By Price</h4>
 
-        <label htmlFor="lowToHigh" className='cursor-pointer bottom-margin-md'>
-          <input type="radio" name="sort" onChange={() => dispatch({ type: "SORT_BY_PRICE", payload: "LOW_TO_HIGH" })} checked={sort === "LOW_TO_HIGH"} />
+        <label htmlFor="lowToHigh" className='cursor-pointer bottom-margin-md' onClick={() => dispatch({ type: "SORT_BY_PRICE", payload: "LOW_TO_HIGH" })}>
+          <input type="radio" name="sort" checked={sort === "LOW_TO_HIGH"} />
           <span className='display-inline-block bottom-margin-md'>Low To High</span>
         </label>
 
-        <label htmlFor="highToLow" className='cursor-pointer bottom-margin-md '>
-          <input type="radio" name="sort" onChange={() => dispatch({ type: "SORT_BY_PRICE", payload: "HIGH_TO_LOW" })} checked={sort === "HIGH_TO_LOW"} />
+        <label htmlFor="highToLow" onClick={() => dispatch({ type: "SORT_BY_PRICE", payload: "HIGH_TO_LOW" })} className='cursor-pointer bottom-margin-md '>
+          <input type="radio" name="sort" checked={sort === "HIGH_TO_LOW"} />
           <span className='display-inline-block bottom-margin-md '>  High To Low</span>
         </label>
 
