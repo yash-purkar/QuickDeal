@@ -33,7 +33,7 @@ export const DataContextProvider = ({ children }) => {
     getProducts()
   }, [])
 
-  return <DataContext.Provider value={{ state }}>
+  return <DataContext.Provider value={{ state, dispatch }}>
     {children}
   </DataContext.Provider>
 }

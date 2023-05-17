@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: 1,
-    itemName: "Men's T-Shirt",
+    itemName: "Puma",
     image: "https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/i/b/g/s-half-triangel-black-one-nb-nicky-boy-original-imagmhzyv6b64vfb.jpeg?q=70",
     description: "A premium quality and stylish T-shirt for men.",
     rating: 4.5,
@@ -26,7 +26,7 @@ export const products = [
   },
   {
     _id: 2,
-    itemName: "Women's Dress",
+    itemName: "Biba",
     image: "https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/3/d/i/l-jc22-hd-fs-black-jmc-pckt-jump-cuts-original-imagg3yxfk48y7nt.jpeg?q=70",
     description: "An elegant and fashionable dress for women.",
     rating: 3.2,
@@ -43,7 +43,7 @@ export const products = [
   },
   {
     _id: 3,
-    itemName: "Kids' Hoodie",
+    itemName: "Roadster",
     image: "https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/r/l/3/xl-all-amawng-one-nb-nicky-boy-original-imaghyybbjzwqvjn.jpeg?q=70",
     description: "A cozy and warm hoodie for kids.",
     rating: 4.7,
@@ -60,7 +60,7 @@ export const products = [
   },
   {
     _id: 4,
-    itemName: "Men's Jacket",
+    itemName: "H&M",
     image: "https://rukminim1.flixcart.com/image/612/612/l4zxn680/t-shirt/a/7/c/m-st-colorleaf-navy-smartees-original-imagfs4paqzgkteh.jpeg?q=70",
     description: "A stylish and durable jacket for men.",
     rating: 4.2,
@@ -77,7 +77,7 @@ export const products = [
   },
   {
     _id: 5,
-    itemName: "Women's Jeans",
+    itemName: "Bibari",
     image: "https://rukminim1.flixcart.com/image/612/612/l4u7vrk0/t-shirt/9/8/b/xxl-fdsd-try-this-original-imagfn8z3zyhqxzq.jpeg?q=70",
     description: "A comfortable and trendy pair of jeans for women.",
     rating: 4.8,
@@ -94,7 +94,7 @@ export const products = [
   },
   {
     _id: 6,
-    itemName: "Men's Shirt",
+    itemName: "U.S. Polo Assn",
     image: "https://rukminim1.flixcart.com/image/612/612/l5h2xe80/shirt/7/s/h/xs-juhg-try-this-original-imagg4wyccyjm3jf.jpeg?q=70",
     description: "A classic and formal shirt for men.",
     rating: 3.9,
@@ -111,7 +111,7 @@ export const products = [
   },
   {
     _id: 7,
-    itemName: "Women's Sweater",
+    itemName: "Ahika",
     image: "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/x/t/p/xl-546545485-try-this-original-imaghpyxt9kufgza.jpeg?q=70",
     description: "A cozy and stylish sweater for women.",
     rating: 4.1,
@@ -128,7 +128,7 @@ export const products = [
   },
   {
     _id: 8,
-    itemName: "Men's Shorts",
+    itemName: "Wrogn",
     image: "https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/o/j/j/l-jc22-rn-fs-black-olv-never-jump-cuts-original-imaghcczhpzwkruh.jpeg?q=70",
     description: "Comfortable and breathable shorts for men.",
     rating: 4.6,
@@ -145,7 +145,7 @@ export const products = [
   },
   {
     _id: 9,
-    itemName: "Women's Blouse",
+    itemName: "Anubhutee",
     image: "https://rukminim1.flixcart.com/image/612/612/l1grgcw0/t-shirt/x/o/5/m-t428hs-tm5p-eyebogler-original-imagdf2egzjxeqgk.jpeg?q=70",
     description: "A stylish and elegant blouse for women.",
     rating: 3.8,
@@ -162,7 +162,7 @@ export const products = [
   },
   {
     _id: 10,
-    itemName: "Men's Pants",
+    itemName: "Nautica",
     image: "https://rukminim1.flixcart.com/image/612/612/l4zxn680/t-shirt/t/z/e/l-t350hs-tb-sm-eyebogler-original-imagfrx6fpgdzt63.jpeg?q=70",
     description: "Stylish and comfortable pants for men.",
     rating: 4.4,
@@ -179,7 +179,7 @@ export const products = [
   },
   {
     _id: 11,
-    itemName: "Women's Skirt",
+    itemName: "Indo Era",
     image: "https://rukminim1.flixcart.com/image/612/612/kzd147k0/t-shirt/q/z/m/m-tsrt-303-reya-original-imagbefyffzh68wj.jpeg?q=70",
     description: "A fashionable and versatile skirt for women.",
     rating: 4.2,
@@ -196,7 +196,7 @@ export const products = [
   },
   {
     _id: 12,
-    itemName: "Kids' T-Shirt",
+    itemName: "Cutiekins",
     image: "https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/a/h/a/l-tsrt-301-reya-original-imagfzhqdudhhjzz.jpeg?q=70",
     description: "A comfortable and stylish T-shirt for kids.",
     rating: 3.9,
@@ -213,13 +213,13 @@ export const products = [
   },
   {
     _id: 13,
-    itemName: "Men's Hoodie",
+    itemName: "BonOrganik",
     image: "https://rukminim1.flixcart.com/image/612/612/kyyqpow0/t-shirt/v/q/0/s-t428hs-dnmg-eyebogler-original-imagb2rxud2ae59t.jpeg?q=70",
     description: "A warm and trendy hoodie for men.",
     rating: 4.3,
     reviews: 11,
     size: "L",
-    category: "Men",
+    category: "Kids",
     oldPrice: 89.99,
     newPrice: 69.99,
     discount: 22,
@@ -230,7 +230,7 @@ export const products = [
   },
   {
     _id: 14,
-    itemName: "Women's Jacket",
+    itemName: "Dennis Lingo",
     image: "https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/b/u/t/s-st-triangle-black-smartees-original-imaggenhkgzhedgh.jpeg?q=70",
     description: "A stylish and versatile jacket for women.",
     rating: 4.7,
@@ -247,13 +247,13 @@ export const products = [
   },
   {
     _id: 15,
-    itemName: "Men's Shirt",
+    itemName: "H&M",
     image: "https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/u/l/t/xxl-bwtblnvmrpolo-pl5-blive-original-imagm7f6pgva4z3r.jpeg?q=70",
     description: "A classic and formal shirt for men.",
     rating: 4.1,
     reviews: 9,
     size: "S",
-    category: "Men",
+    category: "kids",
     oldPrice: 99.99,
     newPrice: 79.99,
     discount: 20,

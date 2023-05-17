@@ -3,19 +3,26 @@ import { AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart, AiOutlineHeart, 
 import { MdOutlineLocalMall } from 'react-icons/md'
 import { RxCross1 } from 'react-icons/rx'
 import './Navbar.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { DataState } from '../../Contexts/Data/DataContext'
 
 
 export const Navbar = () => {
   const [menuClass, setMenuClass] = useState("hide-menu");
   const [searchBar, setSearchBar] = useState(false);
 
+  const navigate = useNavigate();
+  const { dispatch } = DataState()
+
   const handleMenuClick = (data) => {
     const updatedDisplay = data === "hide" ? "hide-menu" : "menus";
     setMenuClass(updatedDisplay)
   }
 
-  const handleToggleSearhBar = () => { }
+  const handleSearchProduct = (e) => {
+    navigate("/productlisting");
+    dispatch({ type: "SEARCH_PRODUCT", payload: e.target.value })
+  }
 
   return (
     <>
@@ -25,7 +32,7 @@ export const Navbar = () => {
 
         {
           searchBar && <div>
-            <input type="text" className='search-bar' placeholder='Search Product' />
+            <input type="text" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
             <span></span>
           </div>
         }

@@ -1,9 +1,9 @@
-import { products } from "../backend/db/products";
-
 export const initialState = {
+  filters: {
+    searchValue: ""
+  },
   categories: [],
   products: [],
-  cart: []
 }
 
 
@@ -17,6 +17,11 @@ export const dataReducer = (state, action) => {
     case "INITIALIZE_PRODUCTS": return {
       ...state, products: action.payload
     }
+
+    case "SEARCH_PRODUCT": return {
+      ...state, filters: { ...state.filters, searchValue: action.payload }
+    }
+
     default: return state;
   }
 }
