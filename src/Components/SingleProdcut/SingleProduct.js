@@ -18,9 +18,9 @@ export const SingleProduct = ({ product }) => {
   }
 
   return (
-    <div className='product-card' onClick={() => handleProductClick(_id)}>
+    <div className='product-card'>
       <div className='card-header'>
-        <img src={image} alt={itemName} className='product-image' />
+        <img src={image} alt={itemName} className='product-image' onClick={() => handleProductClick(_id)} />
         <div>
           <div className='trending-like-box'>
             {isTrending && <span className='trending'>Trending</span>}

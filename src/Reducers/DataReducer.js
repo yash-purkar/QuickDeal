@@ -1,6 +1,7 @@
 export const initialState = {
   filters: {
-    searchValue: ""
+    searchValue: null,
+    sort: null,
   },
   categories: [],
   products: [],
@@ -20,6 +21,10 @@ export const dataReducer = (state, action) => {
 
     case "SEARCH_PRODUCT": return {
       ...state, filters: { ...state.filters, searchValue: action.payload }
+    }
+
+    case "SORT_BY_PRICE": return {
+      ...state, filters: { ...state.filters, sort: action.payload }
     }
 
     default: return state;
