@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Cart.css'
 import { SingleCartProduct } from './Components/SingleCartProduct/SingleCartProduct'
 import { PriceDetails } from './Components/CartPriceDetails/PriceDetails'
@@ -44,6 +44,10 @@ const dummyCart = [
   }
 ]
 export const Cart = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  })
   return (
     <>
       <h2 className='text-center top-margin'>My Cart(3)</h2>

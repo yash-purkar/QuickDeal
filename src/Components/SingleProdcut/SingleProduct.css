@@ -9,7 +9,6 @@
 }
 
 .product-card:hover {
-  cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -22,6 +21,9 @@
 .product-image {
   width: 12rem;
   height: 15rem;
+}
+.product-image:hover {
+  cursor: pointer;
 }
 
 .trending {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Wishlist.css';
 import { SingleProduct } from '../../Components/SingleProdcut/SingleProduct';
 
@@ -84,6 +84,9 @@ const dummyWishlist = [
 ]
 
 export const Wishlist = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  })
   return (
     <>
       <h2 className='text-center top-margin'>My Wishlist(6)</h2>
