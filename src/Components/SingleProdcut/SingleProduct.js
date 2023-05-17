@@ -4,17 +4,26 @@ import { AiOutlineStar, AiFillHeart } from 'react-icons/ai'
 import './SingleProduct.css'
 import { DataState } from '../../Contexts/Data/DataContext'
 import { addToCart } from '../../Services/Cart/CartServices'
+import { useNavigate } from 'react-router-dom'
 
 export const SingleProduct = ({ product }) => {
+  const navigate = useNavigate();
+
   const { _id, image, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending } = product
   const { state: { cart } } = DataState()
+
+
+  const handleProductClick = (id) => {
+    navigate(`/product/${id}`)
+  }
+
   return (
-    <div className='product-card'>
+    <div className='product-card' onClick={() => handleProductClick(_id)}>
       <div className='card-header'>
         <img src={image} alt={itemName} className='product-image' />
         <div>
           <div className='trending-like-box'>
-            {/* <span className='trending'>Trending</span> */}
+            {isTrending && <span className='trending'>Trending</span>}
             <span className='like'><AiFillHeart /></span>
           </div>
 
