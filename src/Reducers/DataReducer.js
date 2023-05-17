@@ -3,7 +3,8 @@ export const initialState = {
     searchValue: null,
     sort: null,
     selectedCategories: [],
-    selectedSizes: []
+    selectedSizes: [],
+    rating: null,
   },
   categories: [],
   products: [],
@@ -36,6 +37,11 @@ export const dataReducer = (state, action) => {
     case "FILTER_BY_SIZE": return {
       ...state, filters: { ...state.filters, selectedSizes: state.filters.selectedSizes.includes(action.payload) ? state.filters.selectedSizes.filter(size => size !== action.payload) : [...state.filters.selectedSizes, action.payload] }
     }
+
+    case "FILTER_BY_RATING": return {
+      ...state, filters: { ...state.filters, rating: action.payload }
+    }
+
     default: return state;
   }
 }

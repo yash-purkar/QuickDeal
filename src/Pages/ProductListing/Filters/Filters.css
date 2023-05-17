@@ -119,6 +119,11 @@ input {
   margin-bottom: 0.7rem;
 }
 
+.ratings-box {
+  width: 126px;
+  margin-top: -10px;
+}
+
 @media (min-width: 720px) {
   .btn-box {
     display: none;
@@ -138,8 +143,7 @@ input {
 
   .clear-filters {
     position: absolute;
-    bottom: 1rem;
-    /* right: 50%; */
+    top: 2.4rem;
     right: 1rem;
   }
 
@@ -151,6 +155,6 @@ input {
   .filters-names,
   .filters-top button {
     font-size: 1.1rem;
-    color: #000;
+    color: var(--header-color);
   }
 }

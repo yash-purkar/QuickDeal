@@ -38,8 +38,8 @@
 }
 .like {
   position: absolute;
-  top: -20px;
-  right: -30px;
+  top: -13px;
+  right: -9px;
   font-size: 1.6rem;
   width: fit-content;
   color: var(--primary);

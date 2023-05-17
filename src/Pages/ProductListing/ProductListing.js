@@ -7,8 +7,9 @@ import './ProductListing.css';
 
 export const ProductListing = () => {
   const { state: { products, filters } } = DataState();
-  const { searchValue, sort, selectedCategories, selectedSizes } = filters;
-  console.log(selectedCategories, "pro")
+  const { searchValue, sort, selectedCategories, selectedSizes, rating } = filters;
+
+  console.log(rating)
 
   const transformData = () => {
     let filteredData = [...products];
@@ -24,6 +25,9 @@ export const ProductListing = () => {
 
     if (selectedSizes.length > 0) {
       filteredData = filteredData.filter(prod => selectedSizes.some(size => size === prod.size))
+    }
+    if (rating) {
+      filteredData = filteredData.filter(prod => prod.rating >= rating)
     }
     return filteredData;
   }

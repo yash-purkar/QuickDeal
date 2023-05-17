@@ -216,7 +216,7 @@ export const products = [
     itemName: "BonOrganik",
     image: "https://rukminim1.flixcart.com/image/612/612/kyyqpow0/t-shirt/v/q/0/s-t428hs-dnmg-eyebogler-original-imagb2rxud2ae59t.jpeg?q=70",
     description: "A warm and trendy hoodie for men.",
-    rating: 4.3,
+    rating: 5,
     reviews: 11,
     size: "L",
     category: "Kids",

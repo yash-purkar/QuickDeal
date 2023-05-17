@@ -12,6 +12,10 @@
   margin-top: 0.9rem;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .flex {
   display: flex;
 }
