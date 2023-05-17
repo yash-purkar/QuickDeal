@@ -12,7 +12,7 @@ export const Navbar = () => {
   const [searchBar, setSearchBar] = useState(false);
 
   const navigate = useNavigate();
-  const { dispatch } = DataState()
+  const { state: { products }, dispatch } = DataState()
 
   const handleMenuClick = (data) => {
     const updatedDisplay = data === "hide" ? "hide-menu" : "menus";
@@ -24,6 +24,8 @@ export const Navbar = () => {
     dispatch({ type: "SEARCH_PRODUCT", payload: e.target.value })
   }
 
+  const allProductNames = products.reduce((acc, curr) => acc.includes(curr.itemName) ? acc : [...acc, curr.itemName], [])
+
   return (
     <>
       <nav className='navigation flex justify-between align-center'>
@@ -32,11 +34,15 @@ export const Navbar = () => {
 
         {
           searchBar && <div>
-            <input type="text" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
+            <input type="text" list="search-products" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
             <span></span>
           </div>
         }
-
+        <datalist id='search-products' >
+          {
+            allProductNames.map(name => <option key={name}>{name}</option>)
+          }
+        </datalist>
 
         {
           menuClass === "hide-menu" ? <div className='navigation-menu' onClick={() => handleMenuClick()}><AiOutlineMenu /></div> : <div className='navigation-menu' onClick={() => handleMenuClick("hide")}><RxCross1 /></div>

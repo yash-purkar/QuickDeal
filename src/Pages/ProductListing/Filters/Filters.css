@@ -36,10 +36,6 @@ input {
 }
 /*  */
 
-.filters-names {
-  color: #575c57;
-}
-
 .filters-box {
   padding: 2rem;
   background-color: var(--white);
@@ -51,8 +47,8 @@ input {
   height: fit-content;
   margin: auto;
   position: unset;
-  height: 82vh;
   z-index: 1;
+  font-family: "Roboto", sans-serif;
 }
 
 .filters-top {
@@ -66,12 +62,12 @@ input {
 
 .filters-top button {
   border: none;
-  background-color: #fff;
+  background-color: var(--white);
   font-size: 1rem;
   color: var(--header-color);
   cursor: pointer;
   font-weight: bold;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--white);
 }
 
 .filters-top button:hover {
@@ -82,46 +78,22 @@ input {
   color: var(--header-color);
 }
 
-#lowToHigh,
-#highToLow {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-#highToLow {
-  margin-bottom: 1rem;
-}
-/*  */
-
-.category {
-  margin-bottom: 0.5rem;
-}
-
-.sizes-heading {
-  margin: 0.5rem 0;
-}
-
-/* sizes */
-.size {
-  margin-bottom: 0.5rem;
-}
-
-/* ratings */
-.ratings-heading {
-  margin: 0.8rem 0 0.5rem 0;
-}
-
-.range {
-  margin-bottom: 1rem;
-}
-
 .filters-names {
   display: inline-block;
   margin-bottom: 0.7rem;
+  font-family: "Roboto", sans-serif;
+
+  font-size: 0.99rem;
+  color: #000;
 }
 
 .ratings-box {
   width: 126px;
   margin-top: -10px;
+}
+
+.clear-filters {
+  color: var(--header-color);
 }
 
 @media (min-width: 720px) {
@@ -147,12 +119,6 @@ input {
     right: 1rem;
   }
 
-  .filter-type {
-    font-size: 1.3rem;
-    margin-bottom: 0.9rem;
-  }
-
-  .filters-names,
   .filters-top button {
     font-size: 1.1rem;
     color: var(--header-color);

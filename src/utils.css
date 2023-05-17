@@ -1,8 +1,15 @@
 .font-1rem {
   font-size: 1rem;
 }
+.font-1-2 {
+  font-size: 1.2rem;
+}
+
 .font-bold {
   font-weight: bold;
+}
+.font-roboto {
+  font-family: "Roboto", sans-serif;
 }
 .text-center {
   text-align: center;
@@ -11,7 +18,15 @@
 .top-margin {
   margin-top: 0.9rem;
 }
-
+.display-inline-block {
+  display: inline-block;
+}
+.bottom-margin-md {
+  margin-bottom: 0.5rem;
+}
+.margin-bottom-1 {
+  margin-bottom: 1rem;
+}
 .cursor-pointer {
   cursor: pointer;
 }
@@ -41,6 +56,7 @@
 .right-margin {
   margin-right: 0.5rem;
 }
+
 .font-sm {
   font-size: 0.9rem;
 }
