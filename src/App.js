@@ -7,7 +7,7 @@ import { Navbar } from "./Components/Navbar/Navbar";
 import { Cart } from "./Pages/Cart/Cart";
 import { Wishlist } from "./Pages/Wishlist/Wishlist";
 import { ProductDetail } from "./Pages/ProductDetail/ProductDetail";
-
+import Mockman from "mockman-js";
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
-
+      {/* <h1>MOCKMAN</h1> */}
+      {/* <Mockman /> */}
     </div>
   );
 }

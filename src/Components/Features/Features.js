@@ -8,7 +8,7 @@ import './Features.css'
 export const Features = () => {
   return (
     <div className='features'>
-      <ul className='features-list'>
+      <ul className='features-list flex justify-around wrap'>
         <li className='features-list-item'>
           <div className='feature-icon'><FaShippingFast /></div>
           <p className='feature-title'>Free Shipping</p>

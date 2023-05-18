@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import { MdFilterAlt } from 'react-icons/md'
 import { RxCross1 } from 'react-icons/rx'
+import { AiFillStar } from 'react-icons/ai'
 import './Filters.css'
 import { DataState } from '../../../Contexts/Data/DataContext'
 
 export const Filters = () => {
   const [isFilters, setIsFilters] = useState(false);
-  const [rangeValue, setRangeValue] = useState(3);
-  const { dispatch, state: { filters: { sort, selectedCategories, selectedSizes } } } = DataState();
+  const [priceRange, setPriceRange] = useState(2000)
+  const { dispatch, state: { filters: { sort, selectedCategories, selectedSizes, rating } } } = DataState();
 
-  const handleRangeChange = (e) => {
-    setRangeValue(e.target.value)
-    dispatch({ type: "FILTER_BY_RATING", payload: e.target.value })
+  const handlePriceChange = (e) => {
+    setPriceRange(Number(e.target.value));
+    dispatch({ type: "FILTER_BY_PRICE", payload: Number(e.target.value) })
   }
 
   return (
@@ -23,33 +24,31 @@ export const Filters = () => {
       </div>
 
       <div className='filters-box' style={{ display: isFilters ? "flex" : "none" }}>
-        {/* By price */}
+
+
+
         <div className='filters-top'>
           <h2>Filters</h2>
           <button onClick={() => dispatch({ type: "CLEAR_ALL_FILTERS" })} className='clear-filters font-1-3'>Clear</button>
         </div>
-        <h4 className='font-1-2  top-margin margin-bottom-1'>Sort By Price</h4>
 
-        <label htmlFor="lowToHigh" className='cursor-pointer bottom-margin-md' onClick={() => dispatch({ type: "SORT_BY_PRICE", payload: "LOW_TO_HIGH" })}>
-          <input type="radio" name="sort" checked={sort === "LOW_TO_HIGH"} />
-          <span className='display-inline-block bottom-margin-md'>Low To High</span>
-        </label>
+        {/* Price range */}
+        <h4 className='font-1-2  top-margin margin-bottom-1'>Price</h4>
+        <input type="range" list='price-range' min="500" max="2000" step="500" onChange={handlePriceChange} value={priceRange} />
+        <div className='flex justify-between margin-bottom-1 bottom-border-1 padding-bottom-1'>
+          {[500, 1000, 1500, 2000].map(price => <p key={price} className={`${priceRange === price && "font-bold"}`}>{price}</p>)}
+        </div>
 
-        <label htmlFor="highToLow " onClick={() => dispatch({ type: "SORT_BY_PRICE", payload: "HIGH_TO_LOW" })} className='cursor-pointer padding-bottom-1 bottom-margin-md bottom-border-1'>
-          <input type="radio" name="sort" checked={sort === "HIGH_TO_LOW"} />
-          <span className='display-inline-block bottom-margin-md '>  High To Low</span>
-        </label>
 
         {/* Categories */}
         <h4 className=' font-1-2  top-margin margin-bottom-1'>Categories</h4>
         <div className='flex direction-column padding-bottom-1 bottom-margin-md bottom-border-1'>
           {
-            ["Men", "Women", "Kids"].map(category => <label htmlFor={category} className='cursor-pointer' onClick={() => dispatch({ type: "FILTER_BY_CATEGORIES", payload: category })}>
+            ["Men", "Women", "Kids"].map(category => <label htmlFor={category} className='cursor-pointer' onClick={() => dispatch({ type: "FILTER_BY_CATEGORIES", payload: category })} key={category}>
               <input type="checkbox" className='bottom-margin-md font-roboto' checked={selectedCategories.includes(category)} /> <span className='display-inline-block bottom-margin-md'>{category}</span>
             </label>)
           }
         </div>
-
 
         {/* Sizes */}
         <h4 className=' font-1-2  top-margin margin-bottom-1  bottom-margin-md font-roboto'>Sizes</h4>
@@ -62,20 +61,44 @@ export const Filters = () => {
           }
         </div>
 
-
         {/* Ratings */}
-        <h4 className='bottom-margin-md font-1-2  top-margin margin-bottom-1 '>Ratings</h4>
+        <h4 className='font-1-2  top-margin margin-bottom-1  bottom-margin-md'>Ratings</h4>
 
-        <label htmlFor="" className='range-input cursor-pointer'>
-          <input type="range" id="range" className='bottom-margin-md' onChange={handleRangeChange} min="1" max="5" value={rangeValue} />
-        </label>
-        <div className='ratings-box flex justify-between' >
-          <span className='rating-num'>1</span>
-          <span className='rating-num'>2</span>
-          <span className='rating-num'>3</span>
-          <span className='rating-num'>4</span>
-          <span className='rating-num'>5</span>
+        <div className='flex direction-column bottom-border-1 padding-bottom-1'>
+
+          {[4, 3, 2, 1].map(item => <label onClick={() => dispatch({ type: "FILTER_BY_RATING", payload: item })} htmlFor="rating" name="rating" className='padding-bottom-0-4 cursor-pointer'>
+            <input type="radio" name="rating" value={item} checked={rating === item} />
+            <span>{item}<AiFillStar className='filter-rating-star' /> & Above</span>
+          </label>)}
         </div>
+
+
+
+        {/*sort By price */}
+        <h4 className='font-1-2  top-margin margin-bottom-1'>Sort By Price</h4>
+
+        <label htmlFor="lowToHigh" className='cursor-pointer' onClick={() => dispatch({ type: "SORT_BY_PRICE", payload: "LOW_TO_HIGH" })}>
+          <input type="radio" name="sort" checked={sort === "LOW_TO_HIGH"} />
+          <span className='display-inline-block bottom-margin-md'>Low To High</span>
+        </label>
+
+        <label htmlFor="highToLow " onClick={() => dispatch({ type: "SORT_BY_PRICE", payload: "HIGH_TO_LOW" })} className='cursor-pointer '>
+          <input type="radio" name="sort" checked={sort === "HIGH_TO_LOW"} />
+          <span className='display-inline-block bottom-margin-md '>  High To Low</span>
+        </label>
+
+        <label htmlFor="RESET " onClick={() => dispatch({ type: "SORT_BY_PRICE", payload: "RESET" })} className='cursor-pointer padding-bottom-1  bottom-border-1'>
+          <input type="radio" name="sort" checked={sort === "RESET"} />
+          <span className='display-inline-block bottom-margin-md '>  Reset</span>
+        </label>
+
+
+
+
+
+
+
+
 
       </div>
     </div >

@@ -1,10 +1,12 @@
 export const initialState = {
   filters: {
     searchValue: null,
+    priceRange: null,
     sort: null,
     selectedCategories: [],
     selectedSizes: [],
     rating: null,
+
   },
   categories: [],
   products: [],
@@ -26,6 +28,10 @@ export const dataReducer = (state, action) => {
       ...state, filters: { ...state.filters, searchValue: action.payload }
     }
 
+    case "FILTER_BY_PRICE": return {
+      ...state, filters: { ...state.filters, priceRange: action.payload }
+    }
+
     case "SORT_BY_PRICE": return {
       ...state, filters: { ...state.filters, sort: action.payload }
     }
@@ -45,6 +51,7 @@ export const dataReducer = (state, action) => {
     case "CLEAR_ALL_FILTERS": return {
       ...state, filters: {
         searchValue: null,
+        priceRange: 2000,
         sort: null,
         selectedCategories: [],
         selectedSizes: [],

@@ -4,7 +4,13 @@
 .font-1-2 {
   font-size: 1.2rem;
 }
+.sm-fontsize {
+  font-size: 0.97rem;
+}
 
+.sm-margin-bottom {
+  margin-bottom: 0.5rem;
+}
 .font-bold {
   font-weight: bold;
 }
@@ -30,6 +36,9 @@
 .padding-bottom-1 {
   padding-bottom: 1rem;
 }
+.padding-bottom-0-4 {
+  padding-bottom: 0.4rem;
+}
 .margin-bottom-1 {
   margin-bottom: 1rem;
 }
@@ -48,6 +57,9 @@
 }
 .justify-center {
   justify-content: center;
+}
+.justify-around {
+  justify-content: space-around;
 }
 .align-center {
   align-items: center;
@@ -86,7 +98,7 @@
 .bottom-border-1 {
   border-bottom: 1px solid var(--gray);
 }
-.border-tom-1 {
+.border-top-1 {
   border-top: 1px solid var(--gray);
 }
 

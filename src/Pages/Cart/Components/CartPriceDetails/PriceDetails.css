@@ -23,14 +23,6 @@
   border-bottom: 1px solid var(--gray);
 }
 
-.sm-fontsize {
-  font-size: 1rem;
-}
-
-.sm-margin-bottom {
-  margin-bottom: 0.5rem;
-}
-
 .total-amt {
   margin-bottom: 0.8rem;
 }
@@ -49,6 +41,10 @@
   border: 1px solid var(--primary);
   cursor: pointer;
   font-size: 0.95rem;
+}
+.apply-coupon-btn:hover {
+  background-color: var(--primary);
+  color: var(--white);
 }
 
 .saved-price-info {

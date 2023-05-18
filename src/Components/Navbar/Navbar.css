@@ -7,7 +7,7 @@
   top: 0px;
   z-index: 3;
   width: 100%;
-  height: 4.5rem;
+  height: 3.5rem;
 }
 
 .navigation .navigation-header {
@@ -23,6 +23,7 @@
   outline: 1px solid var(--gray);
   letter-spacing: 1px;
   color: var(--header-color);
+  display: none;
 }
 
 .navigation-menu {
@@ -71,6 +72,8 @@
 @media (min-width: 720px) {
   .search-bar {
     width: 18rem;
+    padding: 0.5rem;
+    display: block;
   }
   .nav-link {
     color: var(--white);
@@ -96,7 +99,7 @@
 
 @media (min-width: 1024px) {
   .search-bar {
-    width: 25rem;
+    width: 40rem;
     padding: 0.5rem;
     font-size: 1rem;
   }
@@ -104,7 +107,7 @@
     flex-grow: 1;
   }
   .navigation .navigation-header {
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
   .menu-item {
     font-size: 1.8rem;

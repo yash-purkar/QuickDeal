@@ -88,12 +88,16 @@ input {
 }
 
 .ratings-box {
-  width: 126px;
+  width: 135px;
   margin-top: -10px;
 }
 
 .clear-filters {
   color: var(--header-color);
+}
+
+.filter-rating-star {
+  font-size: 0.7rem;
 }
 
 @media (min-width: 720px) {
@@ -108,7 +112,7 @@ input {
     height: fit-content;
 
     position: fixed;
-    width: 220px;
+    width: 250px;
     height: 90vh;
     top: 4rem;
     overflow-y: scroll;

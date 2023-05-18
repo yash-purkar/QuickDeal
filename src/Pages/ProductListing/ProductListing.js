@@ -7,17 +7,20 @@ import './ProductListing.css';
 
 export const ProductListing = () => {
   const { state: { products, filters } } = DataState();
-  const { searchValue, sort, selectedCategories, selectedSizes, rating } = filters;
+  const { searchValue, priceRange, sort, selectedCategories, selectedSizes, rating } = filters;
 
-  console.log(rating)
+  console.log(priceRange)
 
   const transformData = () => {
     let filteredData = [...products];
     if (searchValue) {
       filteredData = filteredData.filter(product => product.itemName.toLowerCase().includes(searchValue.toLowerCase()))
     }
+    if (priceRange) {
+      filteredData = filteredData.filter(product => product.newPrice <= priceRange)
+    }
     if (sort) {
-      filteredData = filteredData.sort((a, b) => sort === "LOW_TO_HIGH" ? a.newPrice - b.newPrice : b.newPrice - a.newPrice)
+      filteredData = sort === "RESET" ? filteredData : filteredData.sort((a, b) => sort === "LOW_TO_HIGH" ? a.newPrice - b.newPrice : b.newPrice - a.newPrice)
     }
     if (selectedCategories.length > 0) {
       filteredData = filteredData.filter(prod => selectedCategories.some(category => category === prod.category))
