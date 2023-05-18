@@ -76,5 +76,8 @@
     width: 22rem;
     height: 28rem;
     align-self: start;
+
+    position: fixed;
+    right: 20rem;
   }
 }

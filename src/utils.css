@@ -18,11 +18,17 @@
 .top-margin {
   margin-top: 0.9rem;
 }
+.bottom-margin-sm {
+  margin-bottom: 0.25rem;
+}
 .display-inline-block {
   display: inline-block;
 }
 .bottom-margin-md {
   margin-bottom: 0.5rem;
+}
+.padding-bottom-1 {
+  padding-bottom: 1rem;
 }
 .margin-bottom-1 {
   margin-bottom: 1rem;
@@ -75,6 +81,13 @@
 
 .line-height {
   line-height: 1.2;
+}
+
+.bottom-border-1 {
+  border-bottom: 1px solid var(--gray);
+}
+.border-tom-1 {
+  border-top: 1px solid var(--gray);
 }
 
 @media (min-width: 600px) {

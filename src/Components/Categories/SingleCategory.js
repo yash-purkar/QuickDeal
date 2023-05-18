@@ -8,7 +8,8 @@ export const SingleCategory = ({ category }) => {
   const { dispatch } = DataState()
 
   const handleCategoryClick = () => {
-    navigate("/productlisting")
+    navigate("/productlisting");
+    dispatch({ type: "CLEAR_ALL_FILTERS" })
     dispatch({ type: "FILTER_BY_CATEGORIES", payload: category.categoryName })
   }
   return (

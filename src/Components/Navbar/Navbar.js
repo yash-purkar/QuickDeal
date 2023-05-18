@@ -9,7 +9,6 @@ import { DataState } from '../../Contexts/Data/DataContext'
 
 export const Navbar = () => {
   const [menuClass, setMenuClass] = useState("hide-menu");
-  const [searchBar, setSearchBar] = useState(false);
 
   const navigate = useNavigate();
   const { state: { products }, dispatch } = DataState()
@@ -31,13 +30,11 @@ export const Navbar = () => {
       <nav className='navigation flex justify-between align-center'>
         <h1 className='navigation-header'><NavLink className="header-link" to="/" >QuickDeal</NavLink></h1>
 
+        <div>
+          <input type="search" list="search-products" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
+          <span></span>
+        </div>
 
-        {
-          searchBar && <div>
-            <input type="text" list="search-products" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
-            <span></span>
-          </div>
-        }
         <datalist id='search-products' >
           {
             allProductNames.map(name => <option key={name}>{name}</option>)
@@ -49,7 +46,7 @@ export const Navbar = () => {
         }
 
         <ul className={menuClass}>
-          <li className='menu-item'><NavLink onClick={() => setSearchBar(prev => !prev)} className="nav-link">{searchBar ? <RxCross1 /> : <AiOutlineSearch />}</NavLink></li>
+
 
           <li className='menu-item'>
             <NavLink className="nav-link" to="/productlisting"><MdOutlineLocalMall /></NavLink>
@@ -60,7 +57,7 @@ export const Navbar = () => {
         </ul>
 
         <ul className='menus-md' >
-          <li className='menu-item'><NavLink onClick={() => setSearchBar(prev => !prev)} className="nav-link">{searchBar ? <RxCross1 /> : <AiOutlineSearch />}</NavLink></li>
+
           <li className='menu-item'><NavLink className="nav-link" to="/productlisting" ><MdOutlineLocalMall /></NavLink></li>
           <li className='menu-item'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart /></NavLink></li>
           <li className='menu-item'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart /></NavLink></li>

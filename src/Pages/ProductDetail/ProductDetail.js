@@ -13,22 +13,26 @@ export const ProductDetail = () => {
 
   const product = products?.find(product => product._id === Number(id));
   console.log(product, "detaio")
-  const { _id, image, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending, inStock, delivery_time, fewLeft } = product
+  const { _id, image, rating, reviews, size, category, description, itemName, oldPrice, newPrice, discount, isTrending, inStock, delivery_time, fewLeft } = product
   return (
     <div className='product-detail-container flex justify-center align-center wrap'>
       <div className='detail-img-box'>
         <img src={image} alt={itemName} className='detail-img' />
-        <div className='detail-star-rating rating-star '>
-          <span><AiOutlineStar /></span>
-          <span>{rating}</span>
-        </div>
+        {isTrending && <span className='trending'>Trending</span>}
         <span className='like'><AiFillHeart /></span>
       </div>
 
 
       <div className='product-details flex direction-column justify-between'>
 
-        <h2 className='font-1-3 header-md'>{itemName}</h2>
+        <div className='flex justify-between align-center'>
+
+          <h2 className='font-1-3 header-md'>{itemName}</h2>
+          <div className='detail-star-rating rating-star ' style={{ position: "unset" }}>
+            <span><AiOutlineStar /></span>
+            <span>{rating}</span>
+          </div>
+        </div>
         <div>
           <span className='new-price sm-fontsize'>₹{newPrice}</span>
           <span className='old-price right-margin sm-fontsize'>₹{oldPrice}</span>
@@ -40,7 +44,7 @@ export const ProductDetail = () => {
         </div>
         <div>
           <span className='right-margin font-sm font-bold font-md'>Description : </span>
-          <span className='sm-fontsize line-height'>Girls Black Embellished Net & Velvet Finish Fit & Flare Dress</span>
+          <span className='sm-fontsize line-height'>{description}</span>
         </div>
         <div>
           <span className='right-margin font-bold font-sm font-md'>Size :</span>

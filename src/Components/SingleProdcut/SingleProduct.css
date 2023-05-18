@@ -1,11 +1,11 @@
 .product-card {
   width: 17rem;
-  display: flex;
-  flex-direction: column;
+
   padding: 1rem;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
   margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .product-card:hover {
@@ -56,8 +56,6 @@
   padding: 0.1rem 0.2rem;
   font-size: 0.8rem;
   border-radius: 0.3rem;
-  display: flex;
-  justify-content: center;
 }
 
 .rating {
@@ -80,17 +78,6 @@
   color: var(--header-color);
   margin-bottom: 0.3rem;
   font-weight: bold;
-}
-
-.name-and-rating {
-  display: flex;
-  justify-content: space-between;
-}
-
-.price-and-discount {
-  display: flex;
-  justify-content: space-between;
-  margin: 0.3rem 0;
 }
 
 .prices {
@@ -119,11 +106,18 @@
   border: 1px solid var(--white);
   align-self: flex-start;
   width: 100%;
+  font-weight: bold;
 }
 
 .add-to-cart:hover {
   cursor: pointer;
   background-color: #0ca0e5;
+}
+
+.out-of-stock-btn {
+  padding: 0.3rem;
+  font-weight: bold;
+  cursor: not-allowed;
 }
 
 @media (min-width: 720px) {

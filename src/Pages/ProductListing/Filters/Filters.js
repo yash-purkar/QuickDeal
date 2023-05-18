@@ -35,14 +35,14 @@ export const Filters = () => {
           <span className='display-inline-block bottom-margin-md'>Low To High</span>
         </label>
 
-        <label htmlFor="highToLow" onClick={() => dispatch({ type: "SORT_BY_PRICE", payload: "HIGH_TO_LOW" })} className='cursor-pointer bottom-margin-md '>
+        <label htmlFor="highToLow " onClick={() => dispatch({ type: "SORT_BY_PRICE", payload: "HIGH_TO_LOW" })} className='cursor-pointer padding-bottom-1 bottom-margin-md bottom-border-1'>
           <input type="radio" name="sort" checked={sort === "HIGH_TO_LOW"} />
           <span className='display-inline-block bottom-margin-md '>  High To Low</span>
         </label>
 
         {/* Categories */}
         <h4 className=' font-1-2  top-margin margin-bottom-1'>Categories</h4>
-        <div className='flex direction-column'>
+        <div className='flex direction-column padding-bottom-1 bottom-margin-md bottom-border-1'>
           {
             ["Men", "Women", "Kids"].map(category => <label htmlFor={category} className='cursor-pointer' onClick={() => dispatch({ type: "FILTER_BY_CATEGORIES", payload: category })}>
               <input type="checkbox" className='bottom-margin-md font-roboto' checked={selectedCategories.includes(category)} /> <span className='display-inline-block bottom-margin-md'>{category}</span>
@@ -53,7 +53,7 @@ export const Filters = () => {
 
         {/* Sizes */}
         <h4 className=' font-1-2  top-margin margin-bottom-1  bottom-margin-md font-roboto'>Sizes</h4>
-        <div className='flex direction-column'>
+        <div className='flex direction-column padding-bottom-1 bottom-margin-md bottom-border-1'>
 
           {
             ["S", "M", "L", "XL", "XXL"].map(size => <label htmlFor="" className='cursor-pointer' key={size} onClick={() => dispatch({ type: "FILTER_BY_SIZE", payload: size })}>
@@ -76,6 +76,7 @@ export const Filters = () => {
           <span className='rating-num'>4</span>
           <span className='rating-num'>5</span>
         </div>
+
       </div>
     </div >
   )

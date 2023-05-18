@@ -1,7 +1,7 @@
 .header {
   width: 100%;
   padding: 2.5rem;
-  background-color: var(--alice-blue);
+  background-color: var(--lightgray);
   display: flex;
   position: relative;
   margin-bottom: 1.5rem;
@@ -47,9 +47,8 @@
 }
 .header-left .exploreMore-link:hover {
   color: var(--primary);
-  background-color: var(--alice-blue);
+  background-color: var(--white);
   border: 1px solid var(--primary);
-  color: var(--primary);
 }
 
 .toggle-div {
@@ -85,7 +84,6 @@
   .header .circle {
     width: 200px;
     height: 150px;
-    background-color: #fff;
     border-radius: 50%;
     position: absolute;
     right: 60px;
@@ -123,7 +121,6 @@
   .header .circle {
     width: 250px;
     height: 250px;
-    background-color: #fff;
     border-radius: 50%;
     position: absolute;
     right: 130px;
