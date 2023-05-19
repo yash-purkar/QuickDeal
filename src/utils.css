@@ -7,7 +7,9 @@
 .sm-fontsize {
   font-size: 0.97rem;
 }
-
+.color-primary {
+  color: var(--primary);
+}
 .sm-margin-bottom {
   margin-bottom: 0.5rem;
 }
@@ -30,9 +32,13 @@
 .display-inline-block {
   display: inline-block;
 }
+.width-100 {
+  width: 100%;
+}
 .bottom-margin-md {
   margin-bottom: 0.5rem;
 }
+
 .padding-bottom-1 {
   padding-bottom: 1rem;
 }

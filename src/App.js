@@ -25,8 +25,6 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-      {/* <h1>MOCKMAN</h1> */}
-      {/* <Mockman /> */}
     </div>
   );
 }
