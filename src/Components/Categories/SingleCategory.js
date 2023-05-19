@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { DataState } from '../../Contexts/Data/DataContext';
+import { DataState } from '../../Contexts/DataContext/DataContext';
 
 export const SingleCategory = ({ category }) => {
   const { _id, categoryName, description, img } = category;

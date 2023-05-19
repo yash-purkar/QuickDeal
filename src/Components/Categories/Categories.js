@@ -1,7 +1,7 @@
 import React from 'react'
 import './Categories.css'
 import { SingleCategory } from './SingleCategory'
-import { DataState } from '../../Contexts/Data/DataContext'
+import { DataState } from '../../Contexts/DataContext/DataContext'
 
 
 export const Categories = () => {

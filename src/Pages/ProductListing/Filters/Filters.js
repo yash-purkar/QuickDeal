@@ -3,7 +3,7 @@ import { MdFilterAlt } from 'react-icons/md'
 import { RxCross1 } from 'react-icons/rx'
 import { AiFillStar } from 'react-icons/ai'
 import './Filters.css'
-import { DataState } from '../../../Contexts/Data/DataContext'
+import { DataState } from '../../../Contexts/DataContext/DataContext'
 
 export const Filters = () => {
   const [isFilters, setIsFilters] = useState(false);
@@ -36,7 +36,7 @@ export const Filters = () => {
         <h4 className='font-1-2  top-margin margin-bottom-1'>Price</h4>
         <input type="range" list='price-range' min="500" max="2000" step="500" onChange={handlePriceChange} value={priceRange} />
         <div className='flex justify-between margin-bottom-1 bottom-border-1 padding-bottom-1'>
-          {[500, 1000, 1500, 2000].map(price => <p key={price} className={`${priceRange === price && "font-bold"}`}>{price}</p>)}
+          {[500, 1000, 1500, 2000].map(price => <p key={price} className={`${priceRange === price && "font-bold"} bottom-margin-md`}>{price}</p>)}
         </div>
 
 

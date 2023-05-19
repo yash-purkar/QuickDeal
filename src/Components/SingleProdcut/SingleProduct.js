@@ -2,7 +2,7 @@ import React from 'react'
 import { AiOutlineStar, AiFillHeart } from 'react-icons/ai'
 
 import './SingleProduct.css'
-import { DataState } from '../../Contexts/Data/DataContext'
+import { DataState } from '../../Contexts/DataContext/DataContext'
 import { addToCart } from '../../Services/Cart/CartServices'
 import { useNavigate } from 'react-router-dom'
 

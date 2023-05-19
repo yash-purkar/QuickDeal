@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Filters } from './Filters/Filters'
-import { DataState } from '../../Contexts/Data/DataContext'
+import { DataState } from '../../Contexts/DataContext/DataContext'
 import { SingleProduct } from '../../Components/SingleProdcut/SingleProduct'
 import './ProductListing.css';
 
