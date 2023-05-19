@@ -8,11 +8,12 @@ import { Cart } from "./Pages/Cart/Cart";
 import { Wishlist } from "./Pages/Wishlist/Wishlist";
 import { ProductDetail } from "./Pages/ProductDetail/ProductDetail";
 import Mockman from "mockman-js";
-import { AuthState } from "./Contexts/AuthContext/AuthContext";
 import { Login } from "./Pages/Login/Login";
 import { RequiresAuth } from "./Auth/RequiresAuth";
+import { AuthState } from "./Contexts/Auth/AuthContext";
 
 function App() {
+
   return (
     <div className="App">
       <Navbar />

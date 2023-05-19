@@ -23,6 +23,7 @@
 .login-email:hover,
 .login-password:hover {
   cursor: text;
+  outline: 1px solid var(--primary);
 }
 
 .login-btn,

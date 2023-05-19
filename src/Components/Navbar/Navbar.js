@@ -4,8 +4,8 @@ import { MdOutlineLocalMall } from 'react-icons/md'
 import { RxCross1 } from 'react-icons/rx'
 import './Navbar.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { DataState } from '../../Contexts/DataContext/DataContext'
-import { AuthState } from '../../Contexts/AuthContext/AuthContext'
+import { DataState } from '../../Contexts/Data/DataContext'
+import { AuthState } from '../../Contexts/Auth/AuthContext'
 
 
 export const Navbar = () => {

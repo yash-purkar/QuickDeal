@@ -3,7 +3,7 @@ import { MdFilterAlt } from 'react-icons/md'
 import { RxCross1 } from 'react-icons/rx'
 import { AiFillStar } from 'react-icons/ai'
 import './Filters.css'
-import { DataState } from '../../../Contexts/DataContext/DataContext'
+import { DataState } from '../../../Contexts/Data/DataContext'
 
 export const Filters = () => {
   const [isFilters, setIsFilters] = useState(false);
