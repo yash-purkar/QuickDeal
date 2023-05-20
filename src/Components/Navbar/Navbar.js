@@ -4,8 +4,8 @@ import { MdOutlineLocalMall } from 'react-icons/md'
 import { RxCross1 } from 'react-icons/rx'
 import './Navbar.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { DataState } from '../../Contexts/DataContext/DataContext'
-import { AuthState } from '../../Contexts/AuthContext/AuthContext'
+import { DataState } from '../../Contexts/Data/DataContext'
+import { AuthState } from '../../Contexts/Auth/AuthContext'
 
 
 export const Navbar = () => {
@@ -28,12 +28,7 @@ export const Navbar = () => {
     dispatch({ type: "SEARCH_PRODUCT", payload: e.target.value })
   }
 
-  const handleLoggedIn = () => {
-    setIsLoggedIn(prev => !prev);
-    const prevPage = location?.state?.from?.pathname;
-    console.log(prevPage)
-    navigate(prevPage)
-  }
+
 
   const allProductNames = products.reduce((acc, curr) => acc.includes(curr.itemName) ? acc : [...acc, curr.itemName], [])
 
@@ -65,7 +60,7 @@ export const Navbar = () => {
           </li>
           <li className='menu-item'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart /></NavLink></li>
           <li className='menu-item'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart /></NavLink></li>
-          <li className='menu-item'><NavLink className="nav-link"><AiOutlineUser /></NavLink></li>
+          <li className='menu-item'><NavLink to="/profile" className="nav-link"><AiOutlineUser /></NavLink></li>
         </ul>
 
         <ul className='menus-md' >
@@ -73,8 +68,8 @@ export const Navbar = () => {
           <li className='menu-item'><NavLink className="nav-link" to="/productlisting" ><MdOutlineLocalMall /></NavLink></li>
           <li className='menu-item'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart /></NavLink></li>
           <li className='menu-item'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart /></NavLink></li>
-          <li className='menu-item'><NavLink className="nav-link"><AiOutlineUser /></NavLink></li>
-          <li><button onClick={handleLoggedIn}>{isLoggedIn ? "Log Out" : "Log In"}</button></li>
+          <li className='menu-item'><NavLink to="/profile" className="nav-link"><AiOutlineUser /></NavLink></li>
+
         </ul>
 
       </nav>

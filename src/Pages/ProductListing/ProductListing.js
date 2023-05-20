@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Filters } from './Filters/Filters'
-import { DataState } from '../../Contexts/DataContext/DataContext'
+import { DataState } from '../../Contexts/Data/DataContext'
 import { SingleProduct } from '../../Components/SingleProdcut/SingleProduct'
 import './ProductListing.css';
 
@@ -9,7 +9,6 @@ export const ProductListing = () => {
   const { state: { products, filters } } = DataState();
   const { searchValue, priceRange, sort, selectedCategories, selectedSizes, rating } = filters;
 
-  console.log(priceRange)
 
   const transformData = () => {
     let filteredData = [...products];

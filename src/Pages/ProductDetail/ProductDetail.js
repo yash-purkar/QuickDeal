@@ -3,7 +3,7 @@ import { AiOutlineStar, AiFillHeart } from 'react-icons/ai'
 
 import './ProductDetail.css'
 import { useParams } from 'react-router-dom'
-import { DataState } from '../../Contexts/DataContext/DataContext'
+import { DataState } from '../../Contexts/Data/DataContext'
 
 export const ProductDetail = () => {
   const { id } = useParams();

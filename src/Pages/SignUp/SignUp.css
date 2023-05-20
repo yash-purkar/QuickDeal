@@ -1,0 +1,40 @@
+.signup-form-container {
+  width: 270px;
+  height: 400px;
+}
+.fname-lname-box {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.fname,
+.lname {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--gray);
+  outline-color: var(--primary);
+  width: 7rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.fname:hover,
+.lname:hover {
+  cursor: text;
+  outline: 1px solid var(--primary);
+}
+
+.new-acc-btn {
+  width: 100%;
+}
+.login-link {
+  margin-left: 0.3rem;
+}
+@media (min-width: 600px) {
+  .signup-form-container {
+    width: 470px;
+  }
+  .fname,
+  .lname {
+    width: 9rem;
+  }
+}

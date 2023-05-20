@@ -6,8 +6,8 @@ import App from "./App";
 import './index.css'
 
 import { makeServer } from "./server";
-import { DataContextProvider } from "./Contexts/DataContext/DataContext";
-import { AuthContextProvider } from "./Contexts/AuthContext/AuthContext";
+import { DataContextProvider } from "./Contexts/Data/DataContext";
+import { AuthContextProvider } from "./Contexts/Auth/AuthContext";
 
 
 // Call make Server
