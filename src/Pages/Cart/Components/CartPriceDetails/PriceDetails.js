@@ -2,7 +2,8 @@ import React from 'react'
 import { RiCoupon2Fill } from 'react-icons/ri'
 import './PriceDetails.css'
 
-export const PriceDetails = () => {
+export const PriceDetails = ({ cartData }) => {
+  const totalItemsPrice = cartData.reduce((acc, curr) => curr.newPrice + acc, 0);
   return (
     <div className='price-detail-card'>
       <h4 className='price-detail-heading'>Price Details</h4>
@@ -10,8 +11,8 @@ export const PriceDetails = () => {
       <div>
 
         <div className='displayFlex'>
-          <p className='sm-fontsize sm-margin-bottom '>Price (2items)</p>
-          <p className='sm-fontsize'>₹ 2580</p>
+          <p className='sm-fontsize sm-margin-bottom '>Price ({cartData.length})</p>
+          <p className='sm-fontsize'>₹ {totalItemsPrice}</p>
         </div>
 
         <div className='displayFlex'>
