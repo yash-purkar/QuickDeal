@@ -4,12 +4,11 @@ import './Profile.css';
 
 export const Profile = () => {
 
-  const { user, setIsLoggedIn } = AuthState();
-
+  const { setIsLoggedIn } = AuthState();
+  const user = JSON.parse(localStorage.getItem("user"))
   const handleLogOut = () => {
     setIsLoggedIn(false)
-    localStorage.removeItem("encodedToken")
-    localStorage.removeItem("user")
+    localStorage.clear()
   }
   console.log(user, "user")
   const { firstName, lastName, email } = user;

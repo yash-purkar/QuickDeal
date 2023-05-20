@@ -16,12 +16,56 @@ export const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // *****
+  const handleLogin = async () => {
+    const prevLocation = location?.state?.from?.pathname;
+    if (email && password) {
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: "POST",
+          body: JSON.stringify({ email, password })
+        })
+
+        console.log(response)
+        const { status, data } = await response.json();
+        if (status === 200) {
+
+          const { encodedToken, foundUser } = data;
+          // localStorage.clear()
+          // console.log(localStorage)
+          localStorage.setItem("encodedToken", encodedToken);
+          localStorage.setItem("user", JSON.stringify(foundUser))
+
+          // const token = localStorage.getItem("user")
+          setIsLoggedIn(true)
+          navigate(prevLocation)
+          console.log("erererer")
+        }
+      }
+      catch (e) {
+        console.log("errrr")
+        alert("User Not Found")
+      }
+    }
+    else {
+
+      alert("Plz fill the details first")
+    }
+  }
+
+
+
+  // *****
+
+
+
+
   const handleGuestLogin = async () => {
 
     const prevLocation = location?.state?.from?.pathname;
     const creds = {
-      email: "guest@gmail.com",
-      password: "guest1234"
+      email: "adarshbalak@gmail.com",
+      password: "adarsh_1234",
     }
     setEmail(creds.email)
     setPassword(creds.password)
@@ -66,12 +110,13 @@ export const Login = () => {
             <input type="password" name="password" id="password" className='login-password bottom-margin-md' placeholder='***********' autoComplete='off' onChange={(e) => setPassword(e.target.value)} value={password} />
           </div>
           <div className='login-btn-box'>
-            <button className='login-btn width-100 bottom-margin-md'>Login</button>
+            <button className='login-btn width-100 bottom-margin-md' onClick={handleLogin}>Login</button>
+
             <button type='submit' onClick={handleGuestLogin} className='login-as-guest width-100 bottom-margin-md'>Login As a Guest</button>
           </div>
 
           <p className='dont-have-acc font-sm text-center'>
-            Don't have an account? <NavLink className="sign-up-link">Sign Up</NavLink>
+            Don't have an account? <NavLink className="sign-up-link font-bold" to="/signup">sign up</NavLink>
           </p>
         </div>
       </form>

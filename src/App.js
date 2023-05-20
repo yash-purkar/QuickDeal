@@ -12,6 +12,7 @@ import { Login } from "./Pages/Login/Login";
 import { RequiresAuth } from "./Auth/RequiresAuth";
 import { AuthState } from "./Contexts/Auth/AuthContext";
 import { Profile } from "./Pages/Profile/Profile";
+import { SignUp } from "./Pages/SignUp/SignUp";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Profile />
         </RequiresAuth>} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </div>
   );
