@@ -48,6 +48,12 @@
   text-decoration: underline;
 }
 
+.hide-icon {
+  position: absolute;
+  top: 33px;
+  right: 9px;
+  font-size: 0.9rem;
+}
 @media (min-width: 600px) {
   .login-form-container {
     width: 470px;
@@ -68,5 +74,8 @@
   .login-as-guest {
     width: 67%;
     font-size: 1rem;
+  }
+  .hide-icon {
+    font-size: 1.1rem;
   }
 }

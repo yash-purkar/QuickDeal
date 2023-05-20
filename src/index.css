@@ -10,4 +10,10 @@
   --red: red;
   --gray: gray;
   --lightgray: #efefef;
+  --placeholder-color: rgb(176, 176, 176);
+}
+
+::placeholder {
+  color: var(--placeholder-color);
+  opacity: 1;
 }

@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import './Login.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
+import { BiShow, BiHide } from 'react-icons/bi'
 
 
 export const Login = () => {
+  const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
   const handleSumbit = (e) => {
@@ -36,7 +38,7 @@ export const Login = () => {
 
 
           setIsLoggedIn(true)
-          navigate(-2)
+          navigate(prevLocation)
         }
 
         else {
@@ -75,6 +77,7 @@ export const Login = () => {
         method: "POST",
         body: JSON.stringify(creds)
       })
+
       const data = await response.json();
 
       const { foundUser, encodedToken } = data;
@@ -82,10 +85,10 @@ export const Login = () => {
       localStorage.setItem("encodedToken", encodedToken)
       localStorage.setItem("user", JSON.stringify(foundUser))
 
-      const token = localStorage.getItem("encodedToken")
-      if (token) {
-        setIsLoggedIn(true)
-      }
+      // const token = localStorage.getItem("encodedToken")
+      // if (token) {
+      setIsLoggedIn(true)
+      // }
 
       navigate(prevLocation)
 
@@ -107,9 +110,12 @@ export const Login = () => {
             <label htmlFor="email" className='display-inline-block bottom-margin-md top-margin'>Email</label>
             <input type="email" name="email" id="email" className='login-email' placeholder='test@gmail.com' autoComplete='off' onChange={(e) => setEmail(e.target.value)} value={email} />
           </div>
-          <div className='flex direction-column margin-bottom-1'>
+          <div className='flex direction-column margin-bottom-1 relative'>
             <label htmlFor="password" className='display-inline-block bottom-margin-md'>Password</label>
-            <input type="password" name="password" id="password" className='login-password bottom-margin-md' placeholder='***********' autoComplete='off' onChange={(e) => setPassword(e.target.value)} value={password} />
+            <input type={showPassword ? "text" : "password"} name="password" id="password" className='login-password bottom-margin-md' placeholder='***********' autoComplete='off' onChange={(e) => setPassword(e.target.value)} value={password} />
+            {
+              password.length > 0 && <p className='hide-icon cursor-pointer' onClick={() => setShowPassword(prev => !prev)}>{showPassword ? <BiShow /> : <BiHide />}</p>
+            }
           </div>
           <div className='login-btn-box'>
             <button className='login-btn width-100 bottom-margin-md' onClick={handleLogin}>Login</button>
