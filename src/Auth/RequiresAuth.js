@@ -3,7 +3,7 @@ import { AuthState } from '../Contexts/Auth/AuthContext'
 import { Navigate, useLocation } from 'react-router-dom';
 
 export const RequiresAuth = ({ children }) => {
-  const { state: { isLoggedIn } } = AuthState();
+  const { isLoggedIn } = AuthState()
   const location = useLocation();
   return (
     <>

@@ -11,6 +11,7 @@ import Mockman from "mockman-js";
 import { Login } from "./Pages/Login/Login";
 import { RequiresAuth } from "./Auth/RequiresAuth";
 import { AuthState } from "./Contexts/Auth/AuthContext";
+import { Profile } from "./Pages/Profile/Profile";
 
 function App() {
 
@@ -24,6 +25,9 @@ function App() {
 
         <Route path="/wishlist" element={<RequiresAuth><Wishlist /></RequiresAuth>} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/profile" element={<RequiresAuth>
+          <Profile />
+        </RequiresAuth>} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </div>
