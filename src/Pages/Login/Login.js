@@ -25,26 +25,27 @@ export const Login = () => {
           method: "POST",
           body: JSON.stringify({ email, password })
         })
-
         console.log(response)
-        const { status, data } = await response.json();
-        if (status === 200) {
+        const data = await response.json();
+        const { encodedToken, foundUser } = data;
 
-          const { encodedToken, foundUser } = data;
-          // localStorage.clear()
-          // console.log(localStorage)
+        if (response.status === 200) {
+
           localStorage.setItem("encodedToken", encodedToken);
           localStorage.setItem("user", JSON.stringify(foundUser))
 
-          // const token = localStorage.getItem("user")
+
           setIsLoggedIn(true)
           navigate(prevLocation)
-          console.log("erererer")
+        }
+
+        else {
+          alert(`${response.status}, ${response.statusText}`)
         }
       }
+
       catch (e) {
-        console.log("errrr")
-        alert("User Not Found")
+        console.log(e)
       }
     }
     else {
