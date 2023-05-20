@@ -3,8 +3,14 @@ import { AuthState } from '../../Contexts/Auth/AuthContext'
 import './Profile.css';
 
 export const Profile = () => {
-  // const user = JSON.parse(localStorage.getItem("user"));
-  const { user } = AuthState();
+
+  const { user, setIsLoggedIn } = AuthState();
+
+  const handleLogOut = () => {
+    setIsLoggedIn(false)
+    localStorage.removeItem("encodedToken")
+    localStorage.removeItem("user")
+  }
   console.log(user, "user")
   const { firstName, lastName, email } = user;
   return (
@@ -18,7 +24,7 @@ export const Profile = () => {
         <p className='email-label'>Email</p>
         <p className='user-email'>{email}</p>
       </div>
-      <button className='logout-btn cursor-pointer'>Logout</button>
+      <button className='logout-btn cursor-pointer' onClick={handleLogOut}>Logout</button>
     </div>
   )
 }
