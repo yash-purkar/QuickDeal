@@ -1,38 +1,81 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { v4 as uuid } from "uuid";
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import './SignUp.css'
+import { AuthState } from '../../Contexts/Auth/AuthContext'
 export const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { setIsLoggedIn } = AuthState();
+
+  const [user, setUser] = useState({
+    _id: uuid(),
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+  })
+
+  const navigate = useNavigate()
+
+  const { firstName, lastName, email, password } = user;
+
+  const signUpHandler = async () => {
+    if (firstName && lastName && email && password) {
+      try {
+        const response = await fetch('/api/auth/signup', {
+          method: "POST",
+          body: JSON.stringify(user)
+        });
+        const data = await response.json();
+        const { createdUser, encodedToken } = data;
+
+        if (response.status === 201) {
+          localStorage.clear();
+          localStorage.setItem("encodedToken", encodedToken);
+          localStorage.setItem("user", JSON.stringify(createdUser))
+          setIsLoggedIn(true)
+          navigate("/productlisting")
+        }
+        // console.log(createdUser)
+
+
+
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  }
+
+
   return (
     <div className='login-form-container  signup-form-container'>
       <h2 className='text-center top-margin margin-bottom-1 color-primary'>Sign Up</h2>
-      <form action="" >
+      <form action="" onSubmit={(e) => e.preventDefault()}>
         <div>
           <div className='fname-lname-box flex justify-between '>
 
             <label htmlFor="" className='flex direction-column'>
               <span className='bottom-margin-md'>First Name</span>
-              <input type="text" placeholder='first Name' className='fname' />
+              <input type="text" placeholder='John' className='fname' onChange={(e) => setUser(prev => ({ ...prev, firstName: e.target.value }))} value={firstName} required />
             </label>
 
             <label htmlFor="" className='flex direction-column'>
               <span className='bottom-margin-md'>Last Name</span>
-              <input type="text" placeholder='last Name' className='lname' />
+              <input type="text" placeholder='Doe' className='lname' onChange={(e) => setUser(prev => ({ ...prev, lastName: e.target.value }))} value={lastName} required />
             </label>
           </div>
 
           <div className='flex direction-column margin-bottom-1'>
             <label htmlFor="email" className='display-inline-block bottom-margin-md top-margin'>Email</label>
-            <input type="email" name="email" id="email" className='login-email' placeholder='test@gmail.com' autoComplete='off' onChange={(e) => setEmail(e.target.value)} value={email} />
+            <input type="email" name="email" id="email" className='login-email' placeholder='test@gmail.com' autoComplete='off' onChange={(e) => setUser(prev => ({ ...prev, email: e.target.value }))} value={email} required />
           </div>
+
           <div className='flex direction-column margin-bottom-1'>
             <label htmlFor="password" className='display-inline-block bottom-margin-md'>Password</label>
-            <input type="password" name="password" id="password" className='login-password bottom-margin-md' placeholder='***********' autoComplete='off' onChange={(e) => setPassword(e.target.value)} value={password} />
+            <input type="password" name="password" id="password" className='login-password bottom-margin-md' placeholder='***********' autoComplete='off' onChange={(e) => setUser(prev => ({ ...prev, password: e.target.value }))} value={password} required />
           </div>
           {/* <div className='login-btn-box'> */}
 
-          <button className='login-btn new-acc-btn width-100 bottom-margin-md' >Create New Account</button>
+          <button className='login-btn new-acc-btn width-100 bottom-margin-md' onClick={signUpHandler}>Create New Account</button>
 
           {/* </div> */}
 

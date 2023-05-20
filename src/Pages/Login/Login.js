@@ -30,13 +30,13 @@ export const Login = () => {
         const { encodedToken, foundUser } = data;
 
         if (response.status === 200) {
-
+          localStorage.clear()
           localStorage.setItem("encodedToken", encodedToken);
           localStorage.setItem("user", JSON.stringify(foundUser))
 
 
           setIsLoggedIn(true)
-          navigate(prevLocation)
+          navigate(-2)
         }
 
         else {
@@ -78,6 +78,7 @@ export const Login = () => {
       const data = await response.json();
 
       const { foundUser, encodedToken } = data;
+      localStorage.clear()
       localStorage.setItem("encodedToken", encodedToken)
       localStorage.setItem("user", JSON.stringify(foundUser))
 

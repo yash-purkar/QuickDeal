@@ -10,7 +10,7 @@ export const Profile = () => {
     setIsLoggedIn(false)
     localStorage.clear()
   }
-  console.log(user, "user")
+  // console.log(user, "user")
   const { firstName, lastName, email } = user;
   return (
     <div className='profile-card flex direction-column '>
