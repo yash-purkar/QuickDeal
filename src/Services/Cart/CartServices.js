@@ -1,9 +1,29 @@
 import React from 'react'
 
-export const addToCart = (product) => {
+const encodedToken = localStorage.getItem("encodedToken");
+
+export const addToCart = async (product) => {
+
+  try {
+    const response = await fetch("/api/user/cart", {
+      method: "POST",
+      headers: {
+        authorization: encodedToken
+      },
+      body: JSON.stringify({ product })
+    })
+
+    const data = await response.json();
+    // console.log(data)
+
+
+
+  } catch (e) {
+    console.log(e)
+  }
 
 }
 
-export const RemoveFromCart = (id) => {
+export const removeFromCart = (id) => {
 
 }
