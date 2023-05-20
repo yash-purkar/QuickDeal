@@ -3,9 +3,9 @@ import { v4 as uuid } from "uuid";
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import './SignUp.css'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
+import { BiShow, BiHide } from 'react-icons/bi'
 export const SignUp = () => {
   const { setIsLoggedIn } = AuthState();
-
   const [user, setUser] = useState({
     _id: uuid(),
     firstName: "",
@@ -13,6 +13,7 @@ export const SignUp = () => {
     email: "",
     password: ""
   })
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate()
 
@@ -35,9 +36,9 @@ export const SignUp = () => {
           setIsLoggedIn(true)
           navigate("/productlisting")
         }
-        // console.log(createdUser)
-
-
+        else {
+          alert(`${response.status}, ${response.statusText}`)
+        }
 
       } catch (e) {
         console.log(e)
@@ -69,9 +70,12 @@ export const SignUp = () => {
             <input type="email" name="email" id="email" className='login-email' placeholder='test@gmail.com' autoComplete='off' onChange={(e) => setUser(prev => ({ ...prev, email: e.target.value }))} value={email} required />
           </div>
 
-          <div className='flex direction-column margin-bottom-1'>
+          <div className='flex direction-column margin-bottom-1 relative'>
             <label htmlFor="password" className='display-inline-block bottom-margin-md'>Password</label>
-            <input type="password" name="password" id="password" className='login-password bottom-margin-md' placeholder='***********' autoComplete='off' onChange={(e) => setUser(prev => ({ ...prev, password: e.target.value }))} value={password} required />
+            <input type={showPassword ? "text" : "password"} name="password" id="password" className='login-password bottom-margin-md' placeholder='***********' autoComplete='off' onChange={(e) => setUser(prev => ({ ...prev, password: e.target.value }))} value={password} required />
+            {
+              password.length > 0 && <p className='hide-icon cursor-pointer' onClick={() => setShowPassword(prev => !prev)}>{showPassword ? <BiShow /> : <BiHide />}</p>
+            }
           </div>
           {/* <div className='login-btn-box'> */}
 

@@ -96,7 +96,9 @@
   font-size: 0.9rem;
   font-weight: bold;
 }
-
+.relative {
+  position: relative;
+}
 .line-height {
   line-height: 1.2;
 }
