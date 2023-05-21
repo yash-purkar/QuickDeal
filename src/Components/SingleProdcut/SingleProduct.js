@@ -3,14 +3,39 @@ import { AiOutlineStar, AiFillHeart } from 'react-icons/ai'
 
 import './SingleProduct.css'
 import { DataState } from '../../Contexts/Data/DataContext'
-import { addToCart } from '../../Services/Cart/CartServices'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 export const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
 
   const { _id, image, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending, inStock } = product
-  const { state: { cart } } = DataState()
+
+  const { state: { cart }, dispatch } = DataState();
+
+  const encodedToken = localStorage.getItem("encodedToken");
+
+  const addToCart = async (product) => {
+    try {
+      const response = await fetch("/api/user/cart", {
+        method: "POST",
+        headers: {
+          authorization: encodedToken
+        },
+        body: JSON.stringify({ product })
+      })
+      const data = await response.json();
+      // console.log(data.cart)
+      dispatch({ type: "CART_OPERATIONS", payload: data.cart })
+
+
+    } catch (e) {
+      console.log(e)
+    }
+
+  }
+
+
+
 
 
   const handleProductClick = (id) => {
@@ -46,7 +71,12 @@ export const SingleProduct = ({ product }) => {
         </div>
         <p className='discount'>{discount}% OFF</p>
       </div>
-      <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
+
+      {
+        cart?.some(item => item._id === _id) ? <NavLink to="/cart" className='go-to-cart-link '><button className="go-to-cart">Go To Cart</button></NavLink> : <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
+      }
+
+      {/* <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button> */}
 
     </div>
   )

@@ -95,7 +95,8 @@
   letter-spacing: 0px;
 }
 
-.add-to-cart {
+.add-to-cart,
+.go-to-cart {
   padding: 0.4rem;
   background-color: var(--primary);
   color: var(--white);
@@ -105,8 +106,12 @@
   width: 100%;
   font-weight: bold;
 }
+.go-to-cart-link {
+  color: var(--white);
+}
 
-.add-to-cart:hover {
+.add-to-cart:hover,
+.go-to-cart:hover {
   cursor: pointer;
   background-color: #0ca0e5;
 }

@@ -81,21 +81,26 @@
   font-size: 0.95rem;
   padding: 0.1rem;
   border: none;
-  background-color: var(--white);
+  background-color: #f8f8f8;
   color: var(--red);
   font-weight: bold;
-  border-bottom: 1px solid var(--white);
+  border-bottom: 1px solid #f8f8f8;
 }
 .remove-product:hover {
   cursor: pointer;
   border-color: var(--red);
 }
+.move-to-wishlist {
+  background-color: unset;
+  border: none;
+  color: var(--primary);
+  border-bottom: 1px solid #f8f8f8;
+}
+
 .move-to-wishlist:hover {
   cursor: pointer;
   border-color: var(--primary);
-}
-.move-to-wishlist {
-  color: var(--primary);
+  border-bottom: 1px solid var(--primary);
 }
 
 @media (min-width: 720px) {
