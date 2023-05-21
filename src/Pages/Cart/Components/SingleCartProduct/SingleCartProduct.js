@@ -1,7 +1,30 @@
+import { DataState } from '../../../../Contexts/Data/DataContext';
 import './SingleCartProduct.css';
 
 export const SingleCartProduct = ({ product }) => {
   const { _id, image, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending } = product
+  const { dispatch } = DataState()
+  const token = localStorage.getItem("encodedToken")
+
+  const removeFromCart = async () => {
+    try {
+      const response = await fetch(`/api/user/cart/${_id}`, {
+        method: "DELETE",
+        headers: {
+          authorization: token
+        }
+      })
+      const data = await response.json()
+      dispatch({ type: "CART_OPERATIONS", payload: data.cart })
+
+
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+
+
   return (
     <div className="cart-product-card ">
       <div className="cart-product-details">
@@ -23,7 +46,7 @@ export const SingleCartProduct = ({ product }) => {
         </div>
       </div>
       <div className='remove-operations'>
-        <button className='remove-product '>Remove</button>
+        <button className='remove-product ' onClick={removeFromCart}>Remove</button>
         <button className='move-to-wishlist'>Move To Wishlist</button>
       </div>
     </div>

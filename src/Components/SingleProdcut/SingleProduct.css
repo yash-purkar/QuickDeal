@@ -121,7 +121,12 @@
   font-weight: bold;
   cursor: not-allowed;
 }
-
+.go-to-cart {
+  padding: 0px;
+}
+.goto-cart-icon {
+  font-size: 25.6px;
+}
 @media (min-width: 720px) {
   .product-card {
     margin: 1rem;

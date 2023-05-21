@@ -9,9 +9,6 @@ export const Cart = () => {
 
 
 
-
-
-
   useEffect(() => {
     // getCartData()
     window.scrollTo(0, 0)

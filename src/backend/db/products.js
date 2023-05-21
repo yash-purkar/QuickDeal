@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: 1,
+    _id: "1",
 
     itemName: "Roadster",
     image: "https://img.freepik.com/free-photo/portrait-handsome-smiling-stylish-young-man-model-wearing-jeans-clothes-sunglasses-fashion-man_158538-5023.jpg?size=626&ext=jpg&ga=GA1.1.1963083236.1682951392&semt=sph",
@@ -25,7 +25,7 @@ export const products = [
     fewLeft: true,
   },
   {
-    _id: 2,
+    _id: "2",
     itemName: "Mast & Harbour",
     image: "https://img.freepik.com/free-psd/simple-black-men-s-tee-mockup_53876-57893.jpg?size=626&ext=jpg",
     description: "A premium quality and stylish T-shirt for men.",
@@ -43,7 +43,7 @@ export const products = [
 
   },
   {
-    _id: 3,
+    _id: "3",
     itemName: "Nautica",
     image: "https://img.freepik.com/free-photo/fashion-portrait-young-man-white-shirt-poses-wall-with-contrast-shadows_186202-4512.jpg?size=626&ext=jpg",
     description: "A classic and formal shirt for men.",
@@ -61,7 +61,7 @@ export const products = [
 
   },
   {
-    _id: 4,
+    _id: "4",
     itemName: "CottonKing",
     image: "https://img.freepik.com/free-photo/attractive-man-wearing-dark-blue-suit_1139-1.jpg?size=626&ext=jpg&ga=GA1.2.1963083236.1682951392&semt=ais",
     rating: 4.2,
@@ -78,7 +78,7 @@ export const products = [
     fewLeft: true
   },
   {
-    _id: 5,
+    _id: "5",
     itemName: "Ahika",
     image: "https://img.freepik.com/premium-photo/pretty-girl-posing-confidently-with-attitude-fashion-shoot-wearing-desi-dress-street_658768-439.jpg?size=626&ext=jpg",
     description: "A comfortable and trendy Dress for women.",
@@ -95,7 +95,7 @@ export const products = [
     fewLeft: false
   },
   {
-    _id: 6,
+    _id: "6",
 
     itemName: "H&M",
     image: "https://img.freepik.com/premium-psd/kid-wearing-tshirt-mockup-design_23-2149404828.jpg?size=626&ext=jpg",
@@ -114,7 +114,7 @@ export const products = [
 
   },
   {
-    _id: 7,
+    _id: "7",
     itemName: "Indo Era",
     image: "https://img.freepik.com/premium-psd/sweater-mockup-with-zig-zag-pattern-women-s-casual-apparel_53876-98829.jpg?size=626&ext=jpg",
     description: "A cozy and stylish sweater for women.",
@@ -131,7 +131,7 @@ export const products = [
     fewLeft: false
   },
   {
-    _id: 8,
+    _id: "8",
     itemName: "Puma",
     image: "https://img.freepik.com/premium-psd/man-wearing-black-t-shirt-mockup-changeable-background_698054-911.jpg?size=626&ext=jpg",
     description: "Comfortable and breathable shorts for men.",
@@ -148,7 +148,7 @@ export const products = [
     fewLeft: true,
   },
   {
-    _id: 9,
+    _id: "9",
     itemName: "Indo Era",
     image: "https://img.freepik.com/premium-photo/beautiful-smiling-woman-wearing-modern-trendy-dress_208024-705.jpg?size=626&ext=jpg",
     description: "A stylish and elegant dress for women.",
@@ -165,7 +165,7 @@ export const products = [
     fewLeft: true,
   },
   {
-    _id: 10,
+    _id: "10",
     itemName: "Wrogan",
     image: "https://img.freepik.com/premium-photo/full-length-handsome-young-man-looking-camera-smiling-while-standing-against-grey-background_425904-39817.jpg?size=626&ext=jpg",
     description: "Stylish and comfortable pants for men.",
@@ -182,7 +182,7 @@ export const products = [
     fewLeft: false
   },
   {
-    _id: 11,
+    _id: "11",
     itemName: "Biba",
     image: "https://img.freepik.com/free-photo/beautiful-woman-purple-sweater-skirt_1303-17492.jpg?size=626&ext=jpg",
     description: "A fashionable and versatile skirt for women.",
@@ -199,7 +199,7 @@ export const products = [
     fewLeft: false
   },
   {
-    _id: 12,
+    _id: "12",
 
     itemName: "H&M",
     image: "https://img.freepik.com/premium-photo/clothes-schoolchildren-studio-portrait-little-boy-trendy-blue-sports-suit-white-background-cool-schoolboy-dressed-comfortable-children-s-sportswear-banner_417694-386.jpg?size=626&ext=jpg",
@@ -217,7 +217,7 @@ export const products = [
     fewLeft: false
   },
   {
-    _id: 13,
+    _id: "13",
     itemName: "Dennis Lingo",
     image: "https://img.freepik.com/free-photo/male-athlete-doing-fitness-training-workout-outside-gym_1328-4778.jpg?size=626&ext=jpg",
     description: "A warm and trendy hoodie for men.",
@@ -234,7 +234,7 @@ export const products = [
     fewLeft: false
   },
   {
-    _id: 14,
+    _id: "14",
     itemName: "Indo Era",
     image: "https://img.freepik.com/free-photo/woman-red-jacket_1303-3718.jpg?size=626&ext=jpg",
     description: "A stylish and versatile jacket for women.",
@@ -251,7 +251,7 @@ export const products = [
     fewLeft: false
   },
   {
-    _id: 15,
+    _id: "15",
     itemName: "BonOrganik",
     image: "https://img.freepik.com/free-photo/full-length-portrait-cute-little-kid-boy-stylish-jeans-clothes-smiling-standing-white-kids-fashion-concept_155003-20308.jpg?size=626&ext=jpg",
     description: "A classic and jeans for kids.",
@@ -268,7 +268,7 @@ export const products = [
     fewLeft: true,
   },
   {
-    _id: 16,
+    _id: "16",
     itemName: "Roadster",
     image: "https://img.freepik.com/free-photo/medium-shot-smiley-kid-posing_23-2149853397.jpg?size=626&ext=jpg&ga=GA1.1.1963083236.1682951392&semt=ais",
     rating: 4.4,
@@ -285,7 +285,7 @@ export const products = [
     fewLeft: false
   },
   {
-    _id: 17,
+    _id: "17",
     itemName: "Kaya",
     image: "https://img.freepik.com/free-photo/cheerful-woman-jeans-hat-sunglasses-smiling-camera_171337-12136.jpg?size=626&ext=jpg&ga=GA1.2.1963083236.1682951392&semt=ais",
     rating: 3.7,
@@ -302,7 +302,7 @@ export const products = [
     fewLeft: true
   },
   {
-    _id: 18,
+    _id: "18",
     itemName: "Lyra",
     image: "https://img.freepik.com/free-photo/young-woman-beautiful-red-dress_1303-17506.jpg?size=626&ext=jpg",
     description: "An elegant and fashionable dress for women.",
@@ -319,7 +319,7 @@ export const products = [
     fewLeft: true,
   },
   {
-    _id: 19,
+    _id: "19",
     itemName: "Jordan",
     image: "https://img.freepik.com/premium-photo/studio-shot-handsome-bearded-man-ready-winter-isolated-against-white-background_251136-83947.jpg?size=626&ext=jpg&ga=GA1.1.1963083236.1682951392&semt=ais",
     rating: 4.6,
@@ -336,7 +336,7 @@ export const products = [
     fewLeft: false
   },
   {
-    _id: 20,
+    _id: "20",
     itemName: "Kaya",
     image: "https://img.freepik.com/premium-psd/full-shot-woman-wearing-winter-clothes_23-2148933167.jpg?size=626&ext=jpg&ga=GA1.1.1963083236.1682951392&semt=ais",
     rating: 4.0,

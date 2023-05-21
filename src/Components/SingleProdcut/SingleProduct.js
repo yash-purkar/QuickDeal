@@ -1,6 +1,5 @@
 import React from 'react'
-import { AiOutlineStar, AiFillHeart } from 'react-icons/ai'
-
+import { AiOutlineStar, AiFillHeart, AiOutlineShoppingCart } from 'react-icons/ai'
 import './SingleProduct.css'
 import { DataState } from '../../Contexts/Data/DataContext'
 import { NavLink, useNavigate } from 'react-router-dom'
@@ -73,7 +72,7 @@ export const SingleProduct = ({ product }) => {
       </div>
 
       {
-        cart?.some(item => item._id === _id) ? <NavLink to="/cart" className='go-to-cart-link '><button className="go-to-cart">Go To Cart</button></NavLink> : <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
+        cart?.some(item => item._id === _id) ? <NavLink to="/cart" className='go-to-cart-link '><button className="go-to-cart"><AiOutlineShoppingCart className='goto-cart-icon' /></button></NavLink> : <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
       }
 
       {/* <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button> */}
