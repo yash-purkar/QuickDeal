@@ -1,9 +1,10 @@
+import { NavLink } from 'react-router-dom';
 import { DataState } from '../../../../Contexts/Data/DataContext';
 import './SingleCartProduct.css';
 
 export const SingleCartProduct = ({ product }) => {
   const { _id, image, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending } = product
-  const { dispatch } = DataState()
+  const { dispatch, state: { wishlist } } = DataState()
   const token = localStorage.getItem("encodedToken")
 
   const removeFromCart = async () => {
@@ -24,6 +25,23 @@ export const SingleCartProduct = ({ product }) => {
   }
 
 
+  const moveToWishlist = async () => {
+    try {
+      const response = await fetch('/api/user/wishlist', {
+        method: "POST",
+        headers: {
+          authorization: token
+        },
+        body: JSON.stringify({ product })
+      })
+
+      const data = await response.json();
+      dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist });
+
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   return (
     <div className="cart-product-card ">
@@ -47,7 +65,7 @@ export const SingleCartProduct = ({ product }) => {
       </div>
       <div className='remove-operations'>
         <button className='remove-product ' onClick={removeFromCart}>Remove</button>
-        <button className='move-to-wishlist'>Move To Wishlist</button>
+        {wishlist?.some(product => product._id === _id) ? <NavLink to="/wishlist"><button className='already-in-wishlist' >Already in wishlist</button></NavLink> : <button className='move-to-wishlist' onClick={() => moveToWishlist(product)}>Move To Wishlist</button>}
       </div>
     </div>
   )

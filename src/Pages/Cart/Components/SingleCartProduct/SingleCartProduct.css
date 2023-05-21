@@ -77,7 +77,8 @@
 }
 
 .remove-product,
-.move-to-wishlist {
+.move-to-wishlist,
+.already-in-wishlist {
   font-size: 0.95rem;
   padding: 0.1rem;
   border: none;
@@ -90,14 +91,16 @@
   cursor: pointer;
   border-color: var(--red);
 }
-.move-to-wishlist {
+.move-to-wishlist,
+.already-in-wishlist {
   background-color: unset;
   border: none;
   color: var(--primary);
   border-bottom: 1px solid #f8f8f8;
 }
 
-.move-to-wishlist:hover {
+.move-to-wishlist:hover,
+.already-in-wishlist:hover {
   cursor: pointer;
   border-color: var(--primary);
   border-bottom: 1px solid var(--primary);
@@ -137,7 +140,8 @@
   }
 
   .remove-product,
-  .move-to-wishlist {
+  .move-to-wishlist,
+  .already-in-wishlist {
     font-size: 1.17rem;
   }
 }
