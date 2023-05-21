@@ -73,7 +73,8 @@
     height: 28rem;
     align-self: start;
 
-    position: fixed;
+    position: sticky;
     right: 20rem;
+    top: 0px;
   }
 }
