@@ -57,7 +57,7 @@ export const products = [
     isTrending: true,
     inStock: false,
     delivery_time: "2-4 business days",
-    fewLeft: false
+    fewLeft: false,
 
   },
   {
@@ -75,7 +75,7 @@ export const products = [
     description: "A sophisticated and stylish blazer for Men.",
     delivery_time: "2-4 business days",
     inStock: true,
-    fewLeft: true
+    fewLeft: true,
   },
   {
     _id: "5",
@@ -92,7 +92,7 @@ export const products = [
     isTrending: false,
     inStock: true,
     delivery_time: "3-5 business days",
-    fewLeft: false
+    fewLeft: false,
   },
   {
     _id: "6",
@@ -128,7 +128,7 @@ export const products = [
     isTrending: false,
     inStock: true,
     delivery_time: "2-4 business days",
-    fewLeft: false
+    fewLeft: false,
   },
   {
     _id: "8",
@@ -179,7 +179,7 @@ export const products = [
     isTrending: true,
     inStock: true,
     delivery_time: "2-4 business days",
-    fewLeft: false
+    fewLeft: false,
   },
   {
     _id: "11",
@@ -196,7 +196,7 @@ export const products = [
     isTrending: false,
     inStock: true,
     delivery_time: "3-5 business days",
-    fewLeft: false
+    fewLeft: false,
   },
   {
     _id: "12",
@@ -214,7 +214,7 @@ export const products = [
     isTrending: true,
     inStock: false,
     delivery_time: "2-4 business days",
-    fewLeft: false
+    fewLeft: false,
   },
   {
     _id: "13",
@@ -231,7 +231,7 @@ export const products = [
     isTrending: false,
     inStock: true,
     delivery_time: "2-4 business days",
-    fewLeft: false
+    fewLeft: false,
   },
   {
     _id: "14",
@@ -248,7 +248,7 @@ export const products = [
     isTrending: false,
     inStock: true,
     delivery_time: "3-5 business days",
-    fewLeft: false
+    fewLeft: false,
   },
   {
     _id: "15",
@@ -282,7 +282,7 @@ export const products = [
     description: "A cozy and stylish sweater for Kids.",
     delivery_time: "2-4 business days",
     inStock: true,
-    fewLeft: false
+    fewLeft: false,
   },
   {
     _id: "17",
@@ -299,7 +299,7 @@ export const products = [
     description: "A comfortable and trendy pair of jeans for Women.",
     delivery_time: "3-5 business days",
     inStock: true,
-    fewLeft: true
+    fewLeft: true,
   },
   {
     _id: "18",
@@ -333,7 +333,7 @@ export const products = [
     description: "A warm and fashionable sweater for men.",
     delivery_time: "2-4 business days",
     inStock: true,
-    fewLeft: false
+    fewLeft: false,
   },
   {
     _id: "20",
@@ -350,7 +350,7 @@ export const products = [
     description: "Comfortable and stylish joggers for women.",
     delivery_time: "3-5 business days",
     inStock: true,
-    fewLeft: false
+    fewLeft: false,
   }
 ];
 

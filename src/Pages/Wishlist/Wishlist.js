@@ -13,7 +13,7 @@ export const Wishlist = () => {
   })
   return (
     <>
-      <h2 className='text-center top-margin'>My Wishlist(6)</h2>
+      <h2 className='text-center top-margin'>My Wishlist({wishlist.length})</h2>
       <div className='wishlist-container'>
         {
           wishlist?.map(product => <SingleProduct key={product._id} product={product} />)

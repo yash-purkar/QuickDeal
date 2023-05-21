@@ -1,8 +1,10 @@
 import React from 'react'
-import { AiOutlineStar, AiFillHeart, AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineStar, AiFillHeart } from 'react-icons/ai'
 import './SingleProduct.css'
 import { DataState } from '../../Contexts/Data/DataContext'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { addToCart } from '../../Services/Cart/CartServices'
+import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
 
 export const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
@@ -14,62 +16,11 @@ export const SingleProduct = ({ product }) => {
   const token = localStorage.getItem("encodedToken");
 
   // ************
-  const addToCart = async (product) => {
-    try {
-      const response = await fetch("/api/user/cart", {
-        method: "POST",
-        headers: {
-          authorization: token
-        },
-        body: JSON.stringify({ product })
-      })
-      const data = await response.json();
-      // console.log(data.cart)
-      dispatch({ type: "CART_OPERATIONS", payload: data.cart })
-
-
-    } catch (e) {
-      console.log(e)
-    }
-
-  }
 
   // **********
-  const addToWishlist = async (product) => {
-
-    try {
-      const response = await fetch('/api/user/wishlist', {
-        method: "POST",
-        headers: {
-          authorization: token
-        },
-        body: JSON.stringify({ product })
-      })
-
-      const data = await response.json()
-      // console.log(data)
-      dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist })
-    } catch (e) {
-      console.log(e)
-    }
-  }
 
   // **********
-  const removeFromWishlist = async () => {
-    try {
-      const response = await fetch(`/api/user/wishlist/${_id}`, {
-        method: "DELETE",
-        headers: {
-          authorization: token
-        }
-      })
 
-      const data = await response.json();
-      dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist })
-    } catch (error) {
-
-    }
-  }
 
   const handleProductClick = (id) => {
     navigate(`/product/${id}`)
@@ -84,7 +35,7 @@ export const SingleProduct = ({ product }) => {
           <div className='trending-like-box'>
             {isTrending && <span className='trending'>Trending</span>}
             {
-              wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={removeFromWishlist}><AiFillHeart /></span> : <span className='like' onClick={() => addToWishlist(product)} ><AiFillHeart /></span>
+              wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => removeFromWishlist(_id, dispatch)}><AiFillHeart /></span> : <span className='like' onClick={() => addToWishlist(product, dispatch)} ><AiFillHeart /></span>
             }
           </div>
 
@@ -106,12 +57,13 @@ export const SingleProduct = ({ product }) => {
         </div>
         <p className='discount'>{discount}% OFF</p>
       </div>
-
       {
-        cart?.some(item => item._id === _id) ? <NavLink to="/cart" className='go-to-cart-link '><button className="go-to-cart"><AiOutlineShoppingCart className='goto-cart-icon' /></button></NavLink> : <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
+        cart.some(product => product._id === _id) ? <NavLink to="/cart">
+          <button className="go-to-cart">Go To Cart</button></NavLink> :
+
+          <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product, dispatch)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
       }
 
-      {/* <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button> */}
 
     </div>
   )

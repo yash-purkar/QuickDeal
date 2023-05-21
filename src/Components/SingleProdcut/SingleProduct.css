@@ -104,14 +104,11 @@
   padding: 0.4rem;
   background-color: var(--primary);
   color: var(--white);
-  font-size: 0.9rem;
+  font-size: 1rem;
   border: 1px solid var(--white);
   align-self: flex-start;
   width: 100%;
   font-weight: bold;
-}
-.go-to-cart-link {
-  color: var(--white);
 }
 
 .add-to-cart:hover,
@@ -125,12 +122,10 @@
   font-weight: bold;
   cursor: not-allowed;
 }
-.go-to-cart {
+/* .go-to-cart {
   padding: 0px;
-}
-.goto-cart-icon {
-  font-size: 25.6px;
-}
+} */
+
 @media (min-width: 720px) {
   .product-card {
     margin: 1rem;

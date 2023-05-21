@@ -7,7 +7,7 @@ import { DataState } from '../../Contexts/Data/DataContext'
 export const Cart = () => {
   const { state: { cart } } = DataState()
 
-
+  console.log(cart, "cart")
 
   useEffect(() => {
     // getCartData()
