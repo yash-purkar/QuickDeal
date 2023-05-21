@@ -11,7 +11,7 @@ export const ProductDetail = () => {
   const { state: { products } } = DataState();
 
 
-  const product = products?.find(product => product._id === Number(id));
+  const product = products?.find(product => product._id === id);
   console.log(product, "detaio")
   const { _id, image, rating, reviews, size, category, description, itemName, oldPrice, newPrice, discount, isTrending, inStock, delivery_time, fewLeft } = product
   return (

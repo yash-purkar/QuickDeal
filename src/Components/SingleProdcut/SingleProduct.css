@@ -46,6 +46,10 @@
   color: var(--red);
   cursor: pointer;
 }
+
+.wishlist-red {
+  color: red;
+}
 /*  */
 .rating-star {
   background-color: var(--green);

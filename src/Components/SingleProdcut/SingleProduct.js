@@ -9,7 +9,7 @@ export const SingleProduct = ({ product }) => {
 
   const { _id, image, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending, inStock } = product
 
-  const { state: { cart }, dispatch } = DataState();
+  const { state: { cart, wishlist }, dispatch } = DataState();
 
   const token = localStorage.getItem("encodedToken");
 
@@ -34,7 +34,7 @@ export const SingleProduct = ({ product }) => {
 
   }
 
-
+  // **********
   const addToWishlist = async (product) => {
 
     try {
@@ -54,7 +54,22 @@ export const SingleProduct = ({ product }) => {
     }
   }
 
+  // **********
+  const removeFromWishlist = async () => {
+    try {
+      const response = await fetch(`/api/user/wishlist/${_id}`, {
+        method: "DELETE",
+        headers: {
+          authorization: token
+        }
+      })
 
+      const data = await response.json();
+      dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist })
+    } catch (error) {
+
+    }
+  }
 
   const handleProductClick = (id) => {
     navigate(`/product/${id}`)
@@ -68,7 +83,9 @@ export const SingleProduct = ({ product }) => {
         <div>
           <div className='trending-like-box'>
             {isTrending && <span className='trending'>Trending</span>}
-            <span className='like' onClick={() => addToWishlist(product)}><AiFillHeart /></span>
+            {
+              wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={removeFromWishlist}><AiFillHeart /></span> : <span className='like' onClick={() => addToWishlist(product)} ><AiFillHeart /></span>
+            }
           </div>
 
           <p className='prod-size'>{size}</p>
