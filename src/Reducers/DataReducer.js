@@ -10,7 +10,8 @@ export const initialState = {
   },
   categories: [],
   products: [],
-  cart: []
+  cart: [],
+  wishlist: []
 }
 
 
@@ -62,6 +63,10 @@ export const dataReducer = (state, action) => {
 
     case "CART_OPERATIONS": return {
       ...state, cart: action.payload
+    }
+
+    case "WISHLIST_OPERATIONS": return {
+      ...state, wishlist: action.payload
     }
 
     default: return state;

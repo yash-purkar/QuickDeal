@@ -5,7 +5,6 @@ const DataContext = createContext();
 
 export const DataContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(dataReducer, initialState);
-  const token = localStorage.getItem("encodedToken")
 
   const getCategories = async () => {
     try {

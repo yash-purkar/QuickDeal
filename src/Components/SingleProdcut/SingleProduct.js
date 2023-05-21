@@ -11,14 +11,15 @@ export const SingleProduct = ({ product }) => {
 
   const { state: { cart }, dispatch } = DataState();
 
-  const encodedToken = localStorage.getItem("encodedToken");
+  const token = localStorage.getItem("encodedToken");
 
+  // ************
   const addToCart = async (product) => {
     try {
       const response = await fetch("/api/user/cart", {
         method: "POST",
         headers: {
-          authorization: encodedToken
+          authorization: token
         },
         body: JSON.stringify({ product })
       })
@@ -34,6 +35,24 @@ export const SingleProduct = ({ product }) => {
   }
 
 
+  const addToWishlist = async (product) => {
+
+    try {
+      const response = await fetch('/api/user/wishlist', {
+        method: "POST",
+        headers: {
+          authorization: token
+        },
+        body: JSON.stringify({ product })
+      })
+
+      const data = await response.json()
+      // console.log(data)
+      dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist })
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
 
 
@@ -49,7 +68,7 @@ export const SingleProduct = ({ product }) => {
         <div>
           <div className='trending-like-box'>
             {isTrending && <span className='trending'>Trending</span>}
-            <span className='like'><AiFillHeart /></span>
+            <span className='like' onClick={() => addToWishlist(product)}><AiFillHeart /></span>
           </div>
 
           <p className='prod-size'>{size}</p>
