@@ -2,7 +2,10 @@ import React from 'react'
 import { RiCoupon2Fill } from 'react-icons/ri'
 import './PriceDetails.css'
 
-export const PriceDetails = () => {
+export const PriceDetails = ({ cartData }) => {
+  const newPrice = cartData?.reduce((acc, curr) => curr.newPrice * curr.qty + acc, 0);
+  const oldPrice = cartData?.reduce((acc, curr) => curr.oldPrice * curr.qty + acc, 0);
+
   return (
     <div className='price-detail-card'>
       <h4 className='price-detail-heading'>Price Details</h4>
@@ -10,13 +13,13 @@ export const PriceDetails = () => {
       <div>
 
         <div className='displayFlex'>
-          <p className='sm-fontsize sm-margin-bottom '>Price (2items)</p>
-          <p className='sm-fontsize'>₹ 2580</p>
+          <p className='sm-fontsize sm-margin-bottom '>Price ({cartData.length})</p>
+          <p className='sm-fontsize'>₹ {oldPrice}</p>
         </div>
 
         <div className='displayFlex'>
           <p className='sm-fontsize sm-margin-bottom'>Discount</p>
-          <p className='sm-fontsize sm-margin-bottom'>₹ -900</p>
+          <p className='sm-fontsize sm-margin-bottom'>-₹ {oldPrice - newPrice}</p>
         </div>
 
         <div className='displayFlex'>
@@ -26,7 +29,7 @@ export const PriceDetails = () => {
 
         <div className='displayFlex total-amt'>
           <h5 className='sm-fontsize sm-margin-bottom'>Total Amount</h5>
-          <h5 className='sm-fontsize sm-margin-bottom'>₹ 1598</h5>
+          <h5 className='sm-fontsize sm-margin-bottom'>₹ {newPrice}</h5>
         </div>
 
         <div className='displayFlex coupon-box'>

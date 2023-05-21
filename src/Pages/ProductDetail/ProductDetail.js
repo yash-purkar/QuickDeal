@@ -1,17 +1,21 @@
 import React from 'react'
-import { AiOutlineStar, AiFillHeart } from 'react-icons/ai'
+import { NavLink } from 'react-router-dom'
+import { AiOutlineStar, AiFillHeart, AiOutlineShoppingCart } from 'react-icons/ai'
 
 import './ProductDetail.css'
 import { useParams } from 'react-router-dom'
 import { DataState } from '../../Contexts/Data/DataContext'
+import { addToCart } from '../../Services/Cart/CartServices'
+import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
 
 export const ProductDetail = () => {
   const { id } = useParams();
 
-  const { state: { products } } = DataState();
+  const { state: { products, cart, wishlist }, dispatch } = DataState();
 
 
-  const product = products?.find(product => product._id === Number(id));
+  const product = products?.find(product => product._id === id);
+
   console.log(product, "detaio")
   const { _id, image, rating, reviews, size, category, description, itemName, oldPrice, newPrice, discount, isTrending, inStock, delivery_time, fewLeft } = product
   return (
@@ -19,7 +23,9 @@ export const ProductDetail = () => {
       <div className='detail-img-box'>
         <img src={image} alt={itemName} className='detail-img' />
         {isTrending && <span className='trending'>Trending</span>}
-        <span className='like'><AiFillHeart /></span>
+        {
+          wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => removeFromWishlist(product._id, dispatch)}><AiFillHeart /></span> : <span className='like' onClick={() => addToWishlist(product, dispatch)} ><AiFillHeart /></span>
+        }
       </div>
 
 
@@ -56,7 +62,12 @@ export const ProductDetail = () => {
         </div>
 
         <div>
-          <button className='add-to-cart sm-fontsize'>Add To Cart</button>
+          {
+            cart.some(product => product._id === _id) ? <NavLink to="/cart">
+              <button className="go-to-cart">Go To Cart</button></NavLink> :
+
+              <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product, dispatch)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
+          }
         </div>
       </div>
 

@@ -28,9 +28,10 @@ export const DataContextProvider = ({ children }) => {
 
   }
 
+
   useEffect(() => {
     getCategories();
-    getProducts()
+    getProducts();
   }, [])
 
 
