@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { ImCross } from 'react-icons/im'
 import './Cart.css'
 import { SingleCartProduct } from './Components/SingleCartProduct/SingleCartProduct'
 import { PriceDetails } from './Components/CartPriceDetails/PriceDetails'
 import { DataState } from '../../Contexts/Data/DataContext'
+import { CouponBox } from './Components/CouponBox/CouponBox'
 
 export const Cart = () => {
-  const { state: { cart } } = DataState()
+  const { state: { cart } } = DataState();
+  const [hideCouponBox, setHideCouponBox] = useState(true);
+  const [selectedCoupon, setSelectedCoupon] = useState(null);
+  const [couponApplied, setCouponApplied] = useState(false);
+  const [couponName, setCouponName] = useState();
+
+
 
   console.log(cart, "cart")
 
@@ -14,9 +20,30 @@ export const Cart = () => {
     // getCartData()
     window.scrollTo(0, 0)
   }, [])
+
+  const handleCouponChange = (e) => {
+    setSelectedCoupon(e.target.value)
+  }
+
+  const handleCouponApply = () => {
+    if (Number(selectedCoupon) === 50) {
+      setCouponName("DIWALI_DHAMAKA");
+    }
+    else {
+      setCouponName("NEW USER")
+    }
+    // setSelectedCoupon(offerValue)
+    if (selectedCoupon) {
+      setHideCouponBox(true)
+      setCouponApplied(true)
+    }
+  }
+
+
   return (
     <>
-      <h2 className='text-center top-margin'>My Cart({cart.length})</h2>
+      <h2 className='text-center top-margin'>{cart.length > 0 ? `My Cart(${cart.length})` : "Cart Is Empty🤪"}</h2>
+
       <div className="cart-main">
         <div className="cart-container">
           {
@@ -24,31 +51,15 @@ export const Cart = () => {
           }
 
         </div>
-        <PriceDetails cartData={cart} />
-        {/* ** */}
-        <div className='main-coupon-container flex justify-center align-center' >
+
+        {
+          cart.length > 0 && <PriceDetails cartData={cart} setHideCouponBox={setHideCouponBox} selectedCoupon={selectedCoupon} couponApplied={couponApplied} couponName={couponName} setCouponApplied={setCouponApplied} setSelectedCoupon={setSelectedCoupon} />
+
+        }
 
 
+        <CouponBox hideCouponBox={hideCouponBox} setHideCouponBox={setHideCouponBox} handleCouponChange={handleCouponChange} handleCouponApply={handleCouponApply} selectedCoupon={selectedCoupon} setSelectedCoupon={setSelectedCoupon} />
 
-          <div className='coupon-container flex direction-column justify-between '>
-            <div className='coupon-box-head flex justify-between margin-bottom-1'>
-              <h3>Apply Coupon</h3>
-              <span className='cross-icon cursor-pointer'><ImCross /></span>
-            </div>
-            <label htmlFor="coupon50" className='discount-type font-md flex align-center font-sm'>
-              <input type="radio" name="coupon" className='discount-radio' />
-              50% OFF:DIWALI_DHAMAKA
-            </label>
-            <label htmlFor="coupon10" className='discount-type font-md flex align-center margin-bottom-1 font-sm'>
-              <input type="radio" name="coupon" className='discount-radio' />
-              10% OFF:NEW_USER
-            </label>
-
-            <button className='apply-btn cursor-pointer'>Apply</button>
-          </div>
-
-        </div>
-        {/* ** */}
       </div>
     </>
   )
