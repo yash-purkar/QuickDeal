@@ -9,11 +9,6 @@
   margin: 1rem;
 }
 
-.displayFlex {
-  display: flex;
-  justify-content: space-between;
-}
-
 .price-detail-heading {
   text-transform: uppercase;
   text-align: center;
@@ -67,13 +62,23 @@
   color: var(--primary);
 }
 
+.coupon-name {
+  color: var(--green);
+}
+.clear-coupon {
+  color: rgb(178, 2, 2);
+}
+.clear-coupon:hover {
+  color: red;
+}
 @media (min-width: 720px) {
   .price-detail-card {
     width: 22rem;
     height: 28rem;
     align-self: start;
 
-    position: fixed;
+    position: sticky;
     right: 20rem;
+    top: 0px;
   }
 }

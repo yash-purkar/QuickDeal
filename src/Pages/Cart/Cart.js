@@ -4,18 +4,20 @@ import { SingleCartProduct } from './Components/SingleCartProduct/SingleCartProd
 import { PriceDetails } from './Components/CartPriceDetails/PriceDetails'
 import { DataState } from '../../Contexts/Data/DataContext'
 
-export const Cart = () => {
-  const { state: { cart } } = DataState()
 
-  console.log(cart, "cart")
+export const Cart = () => {
+  const { state: { cart } } = DataState();
+
 
   useEffect(() => {
-    // getCartData()
     window.scrollTo(0, 0)
   }, [])
+
+
   return (
     <>
-      <h2 className='text-center top-margin'>My Cart({cart.length})</h2>
+      <h2 className='text-center top-margin'>{cart.length > 0 ? `My Cart(${cart.length})` : "Cart Is Empty"}</h2>
+
       <div className="cart-main">
         <div className="cart-container">
           {
@@ -23,7 +25,15 @@ export const Cart = () => {
           }
 
         </div>
-        <PriceDetails cartData={cart} />
+
+        {
+          cart.length > 0 && <PriceDetails cartData={cart} />
+
+        }
+
+
+
+
       </div>
     </>
   )
