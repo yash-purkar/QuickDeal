@@ -137,6 +137,13 @@
 p {
   padding-bottom: 0.2rem;
 }
+
+.color-primary {
+  color: var(--primary);
+}
+.letter-spacing {
+  letter-spacing: 1px;
+}
 @media (min-width: 600px) {
   .font-md {
     font-size: 1.03rem;
