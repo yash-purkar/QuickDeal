@@ -13,6 +13,7 @@ import { RequiresAuth } from "./Auth/RequiresAuth";
 import { AuthState } from "./Contexts/Auth/AuthContext";
 import { Profile } from "./Pages/Profile/Profile";
 import { SignUp } from "./Pages/SignUp/SignUp";
+import { Checkout } from "./Pages/Checkout/Checkout";
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mockman" element={<Mockman />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
 
     </div>

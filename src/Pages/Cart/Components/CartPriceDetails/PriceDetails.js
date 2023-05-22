@@ -6,6 +6,7 @@ import { CouponBox } from '../CouponBox/CouponBox'
 
 import './PriceDetails.css'
 import { OrderState } from '../../../../Contexts/Order/OrderContext'
+import { NavLink } from 'react-router-dom'
 
 export const PriceDetails = ({ cartData, }) => {
   const [isHideCouponBox, setIsHideCouponBox] = useState(true);
@@ -14,7 +15,6 @@ export const PriceDetails = ({ cartData, }) => {
 
   const { couponInfo, setCouponInfo } = OrderState();
 
-  // console.log(couponDetails)
 
   const newPrice = cartData?.reduce((acc, curr) => curr.newPrice * curr.qty + acc, 0);
   const oldPrice = cartData?.reduce((acc, curr) => curr.oldPrice * curr.qty + acc, 0);
@@ -75,7 +75,10 @@ export const PriceDetails = ({ cartData, }) => {
       </div>
 
       <p className='sm-fontsize sm-margin-bottom saved-price-info'>You will save ₹ {(couponDisccount + oldPrice - newPrice).toFixed()} on this order</p>
-      <button className='checkout-btn'>Checkout</button>
+
+      <NavLink to="/checkout" >
+        <button className='checkout-btn width-100 cursor-pointer'>Checkout</button>
+      </NavLink>
 
 
 
