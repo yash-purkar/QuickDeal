@@ -38,7 +38,9 @@
 .bottom-margin-md {
   margin-bottom: 0.5rem;
 }
-
+.text-uppercase {
+  text-transform: uppercase;
+}
 .padding-bottom-1 {
   padding-bottom: 1rem;
 }
@@ -111,14 +113,37 @@
 .top-padding-08 {
   padding-top: 0.8rem;
 }
+.padding-1 {
+  padding: 0.5rem;
+}
 
 .bottom-border-1 {
-  border-bottom: 1px solid var(--gray);
+  border-bottom: 1px solid #b9b9b9;
 }
 .border-top-1 {
-  border-top: 1px solid var(--gray);
+  border-top: 1px solid #b9b9b9;
+}
+.padding-left-0 {
+  padding-left: 0px;
 }
 
+.padding-top-05 {
+  padding-top: 0.5rem;
+}
+
+.underline {
+  text-decoration: underline;
+}
+p {
+  padding-bottom: 0.2rem;
+}
+
+.color-primary {
+  color: var(--primary);
+}
+.letter-spacing {
+  letter-spacing: 1px;
+}
 @media (min-width: 600px) {
   .font-md {
     font-size: 1.03rem;
