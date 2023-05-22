@@ -5,31 +5,29 @@ import { ImCross } from 'react-icons/im'
 import { CouponBox } from '../CouponBox/CouponBox'
 
 import './PriceDetails.css'
+import { OrderState } from '../../../../Contexts/Order/OrderContext'
 
 export const PriceDetails = ({ cartData, }) => {
   const [isHideCouponBox, setIsHideCouponBox] = useState(true);
-  const [couponDetails, setCouponDetails] = useState({
-    name: "",
-    value: 0
-  });
 
 
+
+  const { couponInfo, setCouponInfo } = OrderState();
 
   // console.log(couponDetails)
 
   const newPrice = cartData?.reduce((acc, curr) => curr.newPrice * curr.qty + acc, 0);
   const oldPrice = cartData?.reduce((acc, curr) => curr.oldPrice * curr.qty + acc, 0);
 
-  const couponDisccount = (newPrice * couponDetails.value) / 100;
-  console.log(couponDisccount, "ggg")
+  const couponDisccount = (newPrice * couponInfo.value) / 100;
+
 
   const clearCoupon = () => {
-    setCouponDetails({ name: "", value: "" })
+    setCouponInfo({ name: "", value: "" })
   }
 
-  const handleApplyCoupon = () => {
-    setIsHideCouponBox(true);
-  }
+
+
 
   return (
     <div className='price-detail-card'>
@@ -53,9 +51,9 @@ export const PriceDetails = ({ cartData, }) => {
         </div>
         {
 
-          couponDetails.name && <div className='flex justify-between'>
+          couponInfo.name && <div className='flex justify-between'>
             <p className='sm-fontsize coupon-name font-bold'>
-              <RiCoupon3Fill />{couponDetails.name}
+              <RiCoupon3Fill />{couponInfo.name}
             </p>
 
             <p className='clear-coupon cursor-pointer' onClick={clearCoupon}>
@@ -66,7 +64,7 @@ export const PriceDetails = ({ cartData, }) => {
         }
         <div className='flex justify-between total-amt top-margin border-top-1 top-padding-08'>
           <h5 className='sm-fontsize sm-margin-bottom '>Total Amount</h5>
-          <h5 className='sm-fontsize sm-margin-bottom'>₹ {newPrice - couponDisccount}</h5>
+          <h5 className='sm-fontsize sm-margin-bottom'>₹ {(newPrice - couponDisccount).toFixed()}</h5>
         </div>
 
         <div className='flex justify-between coupon-box '>
@@ -81,8 +79,7 @@ export const PriceDetails = ({ cartData, }) => {
 
 
 
-      {!isHideCouponBox && <CouponBox setIsHideCouponBox={setIsHideCouponBox} setCouponDetails={setCouponDetails} couponDetails={couponDetails} handleApplyCoupon={handleApplyCoupon} />}
-      {/* <CouponBox /> */}
+      {!isHideCouponBox && <CouponBox setIsHideCouponBox={setIsHideCouponBox} />}
     </div>
   )
 }

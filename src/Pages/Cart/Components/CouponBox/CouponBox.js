@@ -1,8 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ImCross } from 'react-icons/im'
 import './CouponBox.css'
-export const CouponBox = ({ setIsHideCouponBox, setCouponDetails, couponDetails, handleApplyCoupon }) => {
+import { OrderState } from '../../../../Contexts/Order/OrderContext';
 
+export const CouponBox = ({ setIsHideCouponBox, }) => {
+
+  const { couponInfo, setCouponInfo } = OrderState();
+
+  const [couponDetails, setCouponDetails] = useState({
+    name: "",
+    value: couponInfo.value //for checked of radio inputs
+  });
+
+
+  const handleCancel = () => {
+    setIsHideCouponBox(true)
+  }
+
+  const handleApplyCoupon = () => {
+    if (couponDetails.value) {
+      setIsHideCouponBox(true)
+      setCouponInfo(couponDetails)
+    }
+  }
 
   return (
     <>
@@ -10,7 +30,7 @@ export const CouponBox = ({ setIsHideCouponBox, setCouponDetails, couponDetails,
         <div className='coupon-container flex direction-column justify-between '>
           <div className='coupon-box-head flex justify-between margin-bottom-1'>
             <h3>Apply Coupon</h3>
-            <span className='cross-icon cursor-pointer' onClick={() => setIsHideCouponBox(true)} ><ImCross /></span>
+            <span className='cross-icon cursor-pointer' onClick={handleCancel} ><ImCross /></span>
           </div>
           <label htmlFor="coupon50" className='discount-type font-md flex align-center font-sm'>
             <input type="radio" name="coupon" className='discount-radio' onChange={() => setCouponDetails({ name: "DIWALI_DHAMAKA", value: 50 })} checked={couponDetails.value === 50} />
@@ -21,7 +41,7 @@ export const CouponBox = ({ setIsHideCouponBox, setCouponDetails, couponDetails,
             10% OFF:NEW_USER
           </label>
 
-          <button className='apply-btn cursor-pointer' onClick={() => handleApplyCoupon(true)}>Apply</button>
+          <button className='apply-btn cursor-pointer' onClick={() => handleApplyCoupon()}>Apply</button>
         </div>
 
       </div>}
