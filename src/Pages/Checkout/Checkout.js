@@ -1,6 +1,37 @@
 import React from 'react'
 import './Checkout.css'
+
 export const Checkout = () => {
+  const amount = 6000;
+
+
+  const handlePlaceOrder = () => {
+    var options = {
+      key: "rzp_test_eIfzqLCuOyYMmK",
+      key_secret: "key_secret",
+      amount: amount * 100,
+      currency: "INR",
+      name: "QuickDeal",
+      description: "For testing purpose",
+      handler: function (response) {
+        alert(response.razorpay_payment_id);
+      },
+      prefill: {
+        name: "Yash Purkar",
+        email: "yashpurkar7079@gmail.com",
+        contact: "9370387079"
+      },
+      notes: {
+        address: "Razorpay Corporate office"
+      },
+      theme: {
+        color: "#2874f0"
+      }
+
+    }
+    var pay = new window.Razorpay(options);
+    pay.open();
+  }
   return (
     <div className='checkout-container flex direction-column'>
       <h3 className='text-uppercase border-top-1  padding-1 font-1 padding-left-0 text-center bottom-border-1'>order details</h3>
@@ -64,7 +95,10 @@ export const Checkout = () => {
         <p>Phone Number : 123456789</p>
       </div>
 
-      <button className='place-order-btn cursor-pointer'>Place Order</button>
+
+
+      <button className='place-order-btn cursor-pointer' onClick={handlePlaceOrder}>Place Order</button>
+
     </div>
   )
 }
