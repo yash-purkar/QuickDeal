@@ -65,7 +65,9 @@
 .coupon-name {
   color: var(--green);
 }
-
+.clear-coupon {
+  color: rgb(178, 2, 2);
+}
 .clear-coupon:hover {
   color: red;
 }
