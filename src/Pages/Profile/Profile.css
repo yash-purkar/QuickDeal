@@ -1,11 +1,14 @@
-.profile-card {
-  margin: auto;
-  width: 95%;
-  height: 200px;
+.profile-container {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  /* margin: 6rem; */
+}
+.profile-card {
+  /* margin: auto; */
+  width: 100%;
+  justify-content: flex-start;
   padding: 1rem;
-  margin-top: 3rem;
-  border-radius: 1rem;
 }
 /* .profile-head{
   mb
@@ -29,17 +32,69 @@
   align-self: flex-end;
   padding: 0.4rem 0.5rem;
   font-size: 1rem;
-  background-color: #ff0000;
-  border: 1px solid #ff0000;
+  background-color: var(--red);
+  border: 1px solid var(--red);
   color: var(--white);
 }
 .logout-btn:hover {
   background-color: var(--white);
-  color: #ff0000;
+  color: var(--red);
 }
 
-@media (min-width: 720px) {
-  .profile-card {
-    width: 40%;
-  }
+/*  */
+.profile-nav {
+  width: 100%;
+  margin-top: 1rem;
+  border-bottom: 1px solid var(--primary);
+}
+
+.profile-tab-btn,
+.address-tab-btn {
+  width: 50%;
+  padding: 0.3rem;
+  background-color: var(--white);
+  border: none;
+}
+.profile-tab-btn {
+  border-right: 1.5px solid var(--white);
+}
+.profile-tab-btn:hover,
+.address-tab-btn:hover {
+  color: var(--white);
+  background: var(--primary);
+  transition: background 1s;
+}
+
+.active-tab {
+  color: var(--white);
+  background-color: var(--primary);
+}
+
+/* address */
+.address-user-name {
+  font-size: 1rem;
+}
+.address-edit,
+.address-remove {
+  color: var(--primary);
+  background-color: var(--white);
+  border: 1px solid;
+  padding: 0.2rem 0.6rem;
+  margin: 1rem 0rem;
+  border-radius: 0.2rem;
+}
+
+.address-remove {
+  color: var(--red);
+  margin-left: 0.5rem;
+}
+
+.address-edit:hover {
+  background-color: var(--primary);
+  color: var(--white);
+  border: 1px solid;
+}
+.address-remove:hover {
+  background-color: var(--red);
+  color: var(--white);
 }
