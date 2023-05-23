@@ -1,8 +1,14 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
+import { addressInitialState, addressReducer } from "../../Reducers/AddressReducer";
 
 const AddressContext = createContext();
 
-export const AddressContextProvider = () => {
-  const [addressState, addressDispatch] = useReducer()
+export const AddressContextProvider = ({ children }) => {
+  const [addressState, addressDispatch] = useReducer(addressReducer, addressInitialState);
 
+  return (
+    <AddressContext.Provider value={{ addressState, addressDispatch }}>{children}</AddressContext.Provider>
+  )
 }
+
+export const AddressState = () => useContext(AddressContext);

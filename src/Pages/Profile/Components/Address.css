@@ -1,0 +1,29 @@
+/* address */
+.address-user-name {
+  font-size: 1rem;
+  color: var(--header-color);
+}
+.address-edit,
+.address-remove {
+  color: var(--primary);
+  background-color: var(--white);
+  border: 1px solid;
+  padding: 0.2rem 0.6rem;
+  margin: 1rem 0rem;
+  border-radius: 0.2rem;
+}
+
+.address-remove {
+  color: var(--red);
+  margin-left: 0.5rem;
+}
+
+.address-edit:hover {
+  background-color: var(--primary);
+  color: var(--white);
+  border: 1px solid;
+}
+.address-remove:hover {
+  background-color: var(--red);
+  color: var(--white);
+}

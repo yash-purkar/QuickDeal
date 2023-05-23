@@ -1,8 +1,8 @@
 .profile-container {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  max-width: 500px;
+  max-width: 450px;
+
   margin: auto;
-  /* margin: 6rem; */
 }
 .profile-card {
   /* margin: auto; */
@@ -68,33 +68,4 @@
 .active-tab {
   color: var(--white);
   background-color: var(--primary);
-}
-
-/* address */
-.address-user-name {
-  font-size: 1rem;
-}
-.address-edit,
-.address-remove {
-  color: var(--primary);
-  background-color: var(--white);
-  border: 1px solid;
-  padding: 0.2rem 0.6rem;
-  margin: 1rem 0rem;
-  border-radius: 0.2rem;
-}
-
-.address-remove {
-  color: var(--red);
-  margin-left: 0.5rem;
-}
-
-.address-edit:hover {
-  background-color: var(--primary);
-  color: var(--white);
-  border: 1px solid;
-}
-.address-remove:hover {
-  background-color: var(--red);
-  color: var(--white);
 }
