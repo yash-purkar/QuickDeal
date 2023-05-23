@@ -1,12 +1,23 @@
 export const addressInitialState = {
+  addressDetails: {
+    name: "",
+    street: "",
+    cityName: "",
+    state: "",
+    country: "",
+    postalCode: null,
+    mobileNumber: null
+  },
+
   addresses: [{
+    id: new Date().getTime(),
     name: "Yash Purkar",
     street: "Akshya Nagar 1st Block 1st Cross",
     cityName: "Bangalore",
     state: "Karanataka",
     country: "India",
-    postalCode: "560016",
-    mobileNumber: "055-6985-779"
+    postalCode: 560016,
+    mobileNumber: 556985779
   }]
 }
 
@@ -17,8 +28,17 @@ export const addressReducer = (state, action) => {
     }
 
     case "REMOVE_ADDRESS": return {
-      ...state, addresses: state.addresses.filter((addr, index) => index !== action.payload)
+      ...state, addresses: state.addresses.filter((addr, i) => addr.id !== action.payload)
     }
+
+    case "SELECT_ADDRESS_TO_EDIT": return {
+      ...state, addressDetails: action.payload
+    }
+
+    case "CLEAR_ADDRESS_DETAILS": return {
+      ...state, addressDetails: { ...addressInitialState.addressDetails }
+    }
+
     default: return state;
   }
 }

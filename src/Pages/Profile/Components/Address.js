@@ -4,7 +4,17 @@ import { AddressForm } from './AddressForm/AddressForm'
 import { AddressState } from '../../../Contexts/Address/AddressContext';
 export const Address = () => {
   const [isHideForm, setIsHideForm] = useState(true);
-  const { addressState: { addresses }, addressDispatch } = AddressState()
+  const { addressState: { addresses }, addressDispatch } = AddressState();
+  const [selectedAddrId, setSelectedAddrId] = useState();
+
+  const handleEdit = (id) => {
+    setIsHideForm(false);
+    const selectedAddress = addresses.find((addr) => addr.id === id);
+    // console.log(selectedAddress)
+    setSelectedAddrId(selectedAddress.id)
+
+    addressDispatch({ type: "SELECT_ADDRESS_TO_EDIT", payload: selectedAddress })
+  }
 
   return (
     <div className='flex justify-center  '>
@@ -15,7 +25,8 @@ export const Address = () => {
         </div>
         {
           addresses?.map((addr, i) => {
-            const { name, street, cityName, state, country, postalCode, mobileNumber } = addr;
+            const { name, street, cityName, state, country, postalCode, mobileNumber
+            } = addr;
             return (
               <div className='margin-bottom-1 bottom-border-1' key={i}>
                 <p className='profile-label address-user-name letter-spacing'>{name}</p>
@@ -28,15 +39,16 @@ export const Address = () => {
                 </div>
 
                 <div>
-                  <button className='address-edit letter-spacing cursor-pointer'>Edit</button>
-                  <button className='address-remove letter-spacing cursor-pointer' onClick={() => addressDispatch({ type: "REMOVE_ADDRESS", payload: i })}>Remove</button>
+                  <button className='address-edit letter-spacing cursor-pointer' onClick={() => handleEdit(addr.id)}>Edit</button>
+
+                  <button className='address-remove letter-spacing cursor-pointer' onClick={() => addressDispatch({ type: "REMOVE_ADDRESS", payload: addr.id })}>Remove</button>
                 </div>
               </div>
             )
           })
         }
       </div>
-      {!isHideForm && <AddressForm setIsHideForm={setIsHideForm} />}
+      {!isHideForm && <AddressForm setIsHideForm={setIsHideForm} selectedAddrId={selectedAddrId} setSelectedAddrId={setSelectedAddrId} />}
 
     </div>
   )

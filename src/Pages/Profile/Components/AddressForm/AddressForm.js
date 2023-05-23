@@ -2,19 +2,11 @@ import React, { useState } from 'react';
 import './AddressForm.css'
 import { AddressState } from '../../../../Contexts/Address/AddressContext';
 
-export const AddressForm = ({ setIsHideForm }) => {
+export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }) => {
 
-  const { addressDispatch } = AddressState();
+  const { addressDispatch, addressState: { addressDetails } } = AddressState();
 
-  const [inputs, setInputs] = useState({
-    name: "",
-    street: "",
-    cityName: "",
-    state: "",
-    country: "",
-    postalCode: null,
-    mobileNumber: null
-  })
+  const [inputs, setInputs] = useState(addressDetails);
 
   const { name, street, cityName, state, country, postalCode, mobileNumber } = inputs;
 
@@ -25,12 +17,13 @@ export const AddressForm = ({ setIsHideForm }) => {
 
   const handleAdd = () => {
     if (name && street && cityName && state && country && postalCode && mobileNumber) {
-      addressDispatch({ type: "ADD_NEW_ADDRESS", payload: inputs })
-      setIsHideForm(true)
+      addressDispatch({ type: "ADD_NEW_ADDRESS", payload: { ...inputs, id: new Date().getTime() } })
+      setIsHideForm(true);
     }
     else {
       alert("Fill the details")
     }
+    addressDispatch({ type: "CLEAR_ADDRESS_DETAILS" })
   }
 
 
@@ -44,6 +37,11 @@ export const AddressForm = ({ setIsHideForm }) => {
       postalCode: 411258,
       mobileNumber: 7798745845,
     })
+  }
+
+  const handleCancle = () => {
+    setIsHideForm(true)
+    addressDispatch({ type: "CLEAR_ADDRESS_DETAILS" })
   }
 
   return (
@@ -68,9 +66,9 @@ export const AddressForm = ({ setIsHideForm }) => {
 
           <div className='flex wrap justify-around top-padding-08'>
 
-            <button className='addr-add-btn cursor-pointer' onClick={handleAdd}>Add</button>
+            <button className='addr-add-btn cursor-pointer' onClick={handleAdd}>Save</button>
 
-            <button className='addr-cancel-btn cursor-pointer' onClick={() => setIsHideForm(true)}>Cancel</button>
+            <button className='addr-cancel-btn cursor-pointer' onClick={handleCancle}>Cancel</button>
 
             <button className='addr-dummy-data cursor-pointer' onClick={handleDummyAddress}>Dummy Data</button>
           </div>
