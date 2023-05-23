@@ -20,10 +20,10 @@ export const Address = () => {
                 <p className='profile-label address-user-name letter-spacing'>{name}</p>
 
                 <div className='font-sm flex direction-column'>
-                  <span>{street}</span>
-                  <span>{cityName},{state} . {postalCode}</span>
-                  <span>{country}</span>
-                  <span> Phone Number : {mobileNumber}</span>
+                  <span className='capitalize'>{street}</span>
+                  <span className='capitalize'>{cityName},{state} . {postalCode}</span>
+                  <span className='capitalize'>{country}</span>
+                  <span className='capitalize'> Phone Number : {mobileNumber}</span>
                 </div>
 
                 <div>

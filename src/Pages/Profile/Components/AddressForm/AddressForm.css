@@ -40,7 +40,24 @@
   background-color: var(--red);
 }
 .addr-dummy-data {
-  background-color: var(--gray);
+  background-color: #6c6b6b;
+}
+
+.addr-add-btn:hover {
+  background-color: var(--white);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.addr-cancel-btn:hover {
+  background-color: var(--white);
+  color: var(--red);
+  border-color: var(--red);
+}
+.addr-dummy-data:hover {
+  background-color: var(--white);
+  color: #6c6b6b;
+  border-color: #6c6b6b;
 }
 
 @media (min-width: 600px) {
