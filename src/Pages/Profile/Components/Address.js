@@ -4,7 +4,8 @@ import { AddressForm } from './AddressForm/AddressForm'
 import { AddressState } from '../../../Contexts/Address/AddressContext';
 export const Address = () => {
   const [isHideForm, setIsHideForm] = useState(true);
-  const { addressState: { addresses } } = AddressState()
+  const { addressState: { addresses }, addressDispatch } = AddressState()
+
   return (
     <div className='flex justify-center  '>
       <div className='width-100'>
@@ -13,10 +14,10 @@ export const Address = () => {
           <h4 className=' underline margin-bottom-1 cursor-pointer' onClick={() => setIsHideForm(false)}>Add New Address+</h4>
         </div>
         {
-          addresses?.map(addr => {
+          addresses?.map((addr, i) => {
             const { name, street, cityName, state, country, postalCode, mobileNumber } = addr;
             return (
-              <div className='margin-bottom-1 bottom-border-1'>
+              <div className='margin-bottom-1 bottom-border-1' key={i}>
                 <p className='profile-label address-user-name letter-spacing'>{name}</p>
 
                 <div className='font-sm flex direction-column'>
@@ -28,7 +29,7 @@ export const Address = () => {
 
                 <div>
                   <button className='address-edit letter-spacing cursor-pointer'>Edit</button>
-                  <button className='address-remove letter-spacing cursor-pointer'>Remove</button>
+                  <button className='address-remove letter-spacing cursor-pointer' onClick={() => addressDispatch({ type: "REMOVE_ADDRESS", payload: i })}>Remove</button>
                 </div>
               </div>
             )

@@ -16,6 +16,9 @@ export const addressReducer = (state, action) => {
       ...state, addresses: [...state.addresses, action.payload]
     }
 
+    case "REMOVE_ADDRESS": return {
+      ...state, addresses: state.addresses.filter((addr, index) => index !== action.payload)
+    }
     default: return state;
   }
 }
