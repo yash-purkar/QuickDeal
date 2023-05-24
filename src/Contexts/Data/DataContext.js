@@ -2,9 +2,11 @@ import { createContext, useContext, useEffect, useReducer, useState } from "reac
 import { dataReducer, initialState } from "../../Reducers/DataReducer";
 
 const DataContext = createContext();
-
+const token = localStorage.getItem("encodedToken");
 export const DataContextProvider = ({ children }) => {
+
   const [state, dispatch] = useReducer(dataReducer, initialState);
+  const [isLoggedIn, setIsLoggedIn] = useState(token)
   const [loading, setLoading] = useState(true);
 
   const getCategories = async () => {
@@ -42,7 +44,7 @@ export const DataContextProvider = ({ children }) => {
 
 
 
-  return <DataContext.Provider value={{ state, dispatch, setLoading }}>
+  return <DataContext.Provider value={{ state, dispatch, isLoggedIn, setIsLoggedIn, setLoading }}>
     {
       loading ? <h1>Loading....</h1> : <>{children}</>
     }

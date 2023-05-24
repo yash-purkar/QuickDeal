@@ -5,11 +5,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const token = localStorage.getItem("encodedToken");
 
-  const [isLoggedIn, setIsLoggedIn] = useState(token)
 
-  return <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>{children}</AuthContext.Provider>
+
+
+  return <AuthContext.Provider >{children}</AuthContext.Provider>
 }
 
 export const AuthState = () => useContext(AuthContext);

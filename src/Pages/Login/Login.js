@@ -3,6 +3,7 @@ import './Login.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import { BiShow, BiHide } from 'react-icons/bi'
+import { DataState } from '../../Contexts/Data/DataContext'
 
 
 export const Login = () => {
@@ -13,7 +14,7 @@ export const Login = () => {
     e.preventDefault()
   }
 
-  const { setIsLoggedIn } = AuthState()
+  const { setIsLoggedIn } = DataState()
 
   const location = useLocation();
   const navigate = useNavigate();
