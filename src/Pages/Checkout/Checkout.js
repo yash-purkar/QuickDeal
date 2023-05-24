@@ -40,9 +40,9 @@ export const Checkout = () => {
     pay.open();
   }
   return (
-    <div className='checkout-main-container flex justify-around align-center wrap'>
+    <div className='checkout-main-container flex justify-around  wrap'>
       {/* addr */}
-      <div className='checkout-addresses'>
+      <div className='checkout-addresses '>
         {
           addresses?.map((addr) => {
             const { id, name, street, cityName, state, country, postalCode, mobileNumber } = addr

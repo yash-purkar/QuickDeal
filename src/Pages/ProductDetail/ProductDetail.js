@@ -9,12 +9,12 @@ import { addToCart } from '../../Services/Cart/CartServices'
 import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
 
 export const ProductDetail = () => {
-  const { id } = useParams();
+  const { productId } = useParams();
 
   const { state: { products, cart, wishlist }, dispatch } = DataState();
 
 
-  const product = products?.find(product => product._id === id);
+  const product = products?.find(product => product._id === productId);
 
   console.log(product, "detaio")
   const { _id, image, rating, reviews, size, category, description, itemName, oldPrice, newPrice, discount, isTrending, inStock, delivery_time, fewLeft } = product

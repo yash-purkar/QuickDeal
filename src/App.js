@@ -26,7 +26,7 @@ function App() {
         <Route path="/cart" element={<RequiresAuth><Cart /></RequiresAuth>} />
 
         <Route path="/wishlist" element={<RequiresAuth><Wishlist /></RequiresAuth>} />
-        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/product/:productId" element={<ProductDetail />} />
         <Route path="/profile" element={<RequiresAuth>
           <Profile />
         </RequiresAuth>} />
