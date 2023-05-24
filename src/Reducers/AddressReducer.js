@@ -18,7 +18,8 @@ export const addressInitialState = {
     country: "India",
     postalCode: 560016,
     mobileNumber: 556985779
-  }]
+  }],
+
 }
 
 export const addressReducer = (state, action) => {

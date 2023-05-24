@@ -20,8 +20,8 @@ export const Address = () => {
     <div className='flex justify-center  '>
       <div className='width-100'>
         <div className='flex justify-between bottom-border-1 margin-bottom-1'>
-          <h2 className='profile-head margin-bottom-1'>My Addresses</h2>
-          <h4 className=' underline margin-bottom-1 cursor-pointer' onClick={() => setIsHideForm(false)}>Add New Address+</h4>
+          <h2 className='profile-head my-addr margin-bottom-1'>My Addresses</h2>
+          <h4 className='margin-bottom-1 cursor-pointer add-new-address' onClick={() => setIsHideForm(false)}>Add New Address+</h4>
         </div>
         {
           addresses?.map((addr, i) => {

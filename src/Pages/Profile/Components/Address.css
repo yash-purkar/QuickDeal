@@ -1,7 +1,11 @@
 /* address */
+.my-addr {
+  color: var(--header-color);
+  letter-spacing: 1px;
+}
 .address-user-name {
   font-size: 1rem;
-  color: var(--header-color);
+  color: var(--primary);
 }
 .address-edit,
 .address-remove {
@@ -26,4 +30,15 @@
 .address-remove:hover {
   background-color: var(--red);
   color: var(--white);
+}
+
+.add-new-address {
+  /* background-color: var(--lightgray); */
+  letter-spacing: 1px;
+  color: var(--primary);
+  padding-top: 0.2rem;
+}
+
+.add-new-address:hover {
+  color: blue;
 }
