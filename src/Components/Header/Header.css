@@ -29,6 +29,7 @@
   text-transform: capitalize;
   color: var(--header-color);
   margin-bottom: 0.8rem;
+  font-family: "Quicksand", sans-serif;
 }
 
 .header-left .header-desc {

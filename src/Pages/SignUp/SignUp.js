@@ -48,7 +48,7 @@ export const SignUp = () => {
 
       } catch (e) {
         console.log(e)
-        warning("Email Already Exist")
+        failed("Something Went Wrong")
       }
     }
   }
