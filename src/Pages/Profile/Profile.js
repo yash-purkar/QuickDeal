@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import './Profile.css';
 import { Address } from './Components/Address';
-import { AddressForm } from './Components/AddressForm/AddressForm';
 
 export const Profile = () => {
   const [active, setActive] = useState("profile")
