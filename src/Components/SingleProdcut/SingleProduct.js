@@ -6,6 +6,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { addToCart } from '../../Services/Cart/CartServices'
 import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
+import { success } from '../../Services/Toasts/ToastServices'
 export const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
   const location = useLocation()
@@ -32,7 +33,8 @@ export const SingleProduct = ({ product }) => {
 
   const handleAddToWishlist = (product, dispatch) => {
     if (token) {
-      addToWishlist(product, dispatch, token, navigate, location)
+      addToWishlist(product, dispatch, token, navigate, location);
+      success("Added To Wishlist");
     }
     else {
       navigate("/login", { state: { from: location } })
@@ -41,7 +43,8 @@ export const SingleProduct = ({ product }) => {
 
   const handleAddToCart = () => {
     if (token) {
-      addToCart(product, dispatch, token, navigate, location)
+      addToCart(product, dispatch, token, navigate, location);
+      success("Added To Cart");
     }
     else {
       navigate("/login", { state: { from: location } })
