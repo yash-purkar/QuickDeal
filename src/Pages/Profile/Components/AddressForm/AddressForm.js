@@ -4,7 +4,7 @@ import { AddressState } from '../../../../Contexts/Address/AddressContext';
 
 export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }) => {
 
-  const { addressDispatch, addressState: { addressDetails } } = AddressState();
+  const { addressDispatch, addressState: { addressDetails, addresses } } = AddressState();
 
   const [inputs, setInputs] = useState(addressDetails);
 
@@ -15,15 +15,24 @@ export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }
     setInputs(prev => ({ ...prev, [name]: value }))
   }
 
+
+
   const handleAdd = () => {
     if (name && street && cityName && state && country && postalCode && mobileNumber) {
-      addressDispatch({ type: "ADD_NEW_ADDRESS", payload: { ...inputs, id: new Date().getTime() } })
+      if (selectedAddrId) {
+        const updatedAddressArr = addresses.map(addr => addr.id === selectedAddrId ? { ...inputs } : addr);
+        addressDispatch({ type: "UPDATE_ADDRESS", payload: updatedAddressArr })
+      }
+      else {
+        addressDispatch({ type: "ADD_NEW_ADDRESS", payload: { ...inputs, id: selectedAddrId ? selectedAddrId : new Date().getTime().toString() } })
+      }
       setIsHideForm(true);
     }
     else {
       alert("Fill the details")
     }
     addressDispatch({ type: "CLEAR_ADDRESS_DETAILS" })
+    setSelectedAddrId(null)
   }
 
 
@@ -42,6 +51,7 @@ export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }
   const handleCancle = () => {
     setIsHideForm(true)
     addressDispatch({ type: "CLEAR_ADDRESS_DETAILS" })
+    setSelectedAddrId(null)
   }
 
   return (

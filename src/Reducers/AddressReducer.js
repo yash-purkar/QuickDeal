@@ -10,7 +10,7 @@ export const addressInitialState = {
   },
 
   addresses: [{
-    id: new Date().getTime(),
+    id: new Date().getTime().toString(),
     name: "Yash Purkar",
     street: "Akshya Nagar 1st Block 1st Cross",
     cityName: "Bangalore",
@@ -22,6 +22,7 @@ export const addressInitialState = {
 }
 
 export const addressReducer = (state, action) => {
+
   switch (action.type) {
     case "ADD_NEW_ADDRESS": return {
       ...state, addresses: [...state.addresses, action.payload]
@@ -37,6 +38,10 @@ export const addressReducer = (state, action) => {
 
     case "CLEAR_ADDRESS_DETAILS": return {
       ...state, addressDetails: { ...addressInitialState.addressDetails }
+    }
+
+    case "UPDATE_ADDRESS": return {
+      ...state, addresses: action.payload
     }
 
     default: return state;
