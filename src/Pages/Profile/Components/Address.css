@@ -1,0 +1,44 @@
+/* address */
+.my-addr {
+  color: var(--header-color);
+  letter-spacing: 1px;
+}
+.address-user-name {
+  font-size: 1rem;
+  color: var(--primary);
+}
+.address-edit,
+.address-remove {
+  color: var(--primary);
+  background-color: var(--white);
+  border: 1px solid;
+  padding: 0.2rem 0.6rem;
+  margin: 1rem 0rem;
+  border-radius: 0.2rem;
+}
+
+.address-remove {
+  color: var(--red);
+  margin-left: 0.5rem;
+}
+
+.address-edit:hover {
+  background-color: var(--primary);
+  color: var(--white);
+  border: 1px solid;
+}
+.address-remove:hover {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.add-new-address {
+  /* background-color: var(--lightgray); */
+  letter-spacing: 1px;
+  color: var(--primary);
+  padding-top: 0.2rem;
+}
+
+.add-new-address:hover {
+  color: blue;
+}

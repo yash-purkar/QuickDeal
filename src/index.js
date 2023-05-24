@@ -9,6 +9,7 @@ import { makeServer } from "./server";
 import { DataContextProvider } from "./Contexts/Data/DataContext";
 import { AuthContextProvider } from "./Contexts/Auth/AuthContext";
 import { OrderContextProvider } from "./Contexts/Order/OrderContext";
+import { AddressContextProvider } from "./Contexts/Address/AddressContext";
 
 
 // Call make Server
@@ -20,7 +21,9 @@ ReactDOM.render(
       <DataContextProvider>
         <AuthContextProvider>
           <OrderContextProvider>
-            <App />
+            <AddressContextProvider>
+              <App />
+            </AddressContextProvider>
           </OrderContextProvider>
         </AuthContextProvider>
       </DataContextProvider>
