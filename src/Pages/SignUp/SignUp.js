@@ -74,7 +74,7 @@ export const SignUp = () => {
             <label htmlFor="password" className='display-inline-block bottom-margin-md'>Password</label>
             <input type={showPassword ? "text" : "password"} name="password" id="password" className='login-password bottom-margin-md' placeholder='***********' autoComplete='off' onChange={(e) => setUser(prev => ({ ...prev, password: e.target.value }))} value={password} required />
             {
-              password.length > 0 && <p className='hide-icon cursor-pointer' onClick={() => setShowPassword(prev => !prev)}>{showPassword ? <BiShow /> : <BiHide />}</p>
+              password?.length > 0 && <p className='hide-icon cursor-pointer' onClick={() => setShowPassword(prev => !prev)}>{showPassword ? <BiShow /> : <BiHide />}</p>
             }
           </div>
           {/* <div className='login-btn-box'> */}

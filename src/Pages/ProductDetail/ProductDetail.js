@@ -63,7 +63,7 @@ export const ProductDetail = () => {
 
         <div>
           {
-            cart.some(product => product._id === _id) ? <NavLink to="/cart">
+            cart?.some(product => product._id === _id) ? <NavLink to="/cart">
               <button className="go-to-cart">Go To Cart</button></NavLink> :
 
               <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product, dispatch)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
