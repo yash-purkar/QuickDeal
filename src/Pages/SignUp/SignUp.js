@@ -4,9 +4,8 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import './SignUp.css'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import { BiShow, BiHide } from 'react-icons/bi'
-import { DataState } from '../../Contexts/Data/DataContext';
 export const SignUp = () => {
-  const { setIsLoggedIn } = DataState();
+  const { setIsLoggedIn } = AuthState();
   const [user, setUser] = useState({
     _id: uuid(),
     firstName: "",

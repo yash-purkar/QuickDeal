@@ -4,9 +4,11 @@ import './SingleCartProduct.css';
 import { removeFromCart, moveToWishlist, updateCartItemQty } from '../../../../Services/Cart/CartServices';
 import { useState } from 'react';
 
+
 export const SingleCartProduct = ({ product }) => {
   const { _id, image, qty, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending } = product
   const { dispatch, state: { cart, wishlist } } = DataState()
+
 
 
   // console.log(product._id)

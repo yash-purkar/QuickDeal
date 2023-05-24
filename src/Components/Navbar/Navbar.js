@@ -16,7 +16,7 @@ export const Navbar = () => {
   const location = useLocation();
 
   const { state: { products }, dispatch } = DataState()
-  const { isLoggedIn, setIsLoggedIn } = DataState();
+  const { isLoggedIn, setIsLoggedIn } = AuthState();
 
   const handleMenuClick = (data) => {
     const updatedDisplay = data === "hide" ? "hide-menu" : "menus";

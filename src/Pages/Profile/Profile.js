@@ -2,12 +2,11 @@ import React, { useState } from 'react'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import './Profile.css';
 import { Address } from './Components/Address';
-import { DataState } from '../../Contexts/Data/DataContext';
 
 export const Profile = () => {
   const [active, setActive] = useState("profile")
 
-  const { setIsLoggedIn } = DataState();
+  const { setIsLoggedIn } = AuthState();
   const user = JSON.parse(localStorage.getItem("user"))
 
   const handleLogOut = () => {

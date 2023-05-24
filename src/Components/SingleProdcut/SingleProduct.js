@@ -5,14 +5,14 @@ import { DataState } from '../../Contexts/Data/DataContext'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { addToCart } from '../../Services/Cart/CartServices'
 import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
-
+import { AuthState } from '../../Contexts/Auth/AuthContext'
 export const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
 
   const { _id, image, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending, inStock } = product
 
   const { state: { cart, wishlist }, dispatch } = DataState();
-
+  const { isLoggedIn } = AuthState()
   const token = localStorage.getItem("encodedToken");
 
   // ************
@@ -26,6 +26,26 @@ export const SingleProduct = ({ product }) => {
     navigate(`/product/${id}`)
   }
 
+
+  const handleAddToWishlist = (product, dispatch) => {
+    if (isLoggedIn) {
+      addToWishlist(product, dispatch)
+    }
+    else {
+      navigate("/wishlist")
+    }
+  }
+
+  const handleAddToCart = () => {
+    if (isLoggedIn) {
+      addToCart(product, dispatch)
+    }
+    else {
+      navigate("/cart")
+    }
+  }
+
+
   return (
     <div className='product-card flex direction-column'>
 
@@ -35,7 +55,7 @@ export const SingleProduct = ({ product }) => {
           <div className='trending-like-box'>
             {isTrending && <span className='trending'>Trending</span>}
             {
-              wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => removeFromWishlist(_id, dispatch)}><AiFillHeart /></span> : <span className='like' onClick={() => addToWishlist(product, dispatch)} ><AiFillHeart /></span>
+              wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => removeFromWishlist(_id, dispatch)}><AiFillHeart /></span> : <span className='like' onClick={() => handleAddToWishlist(product, dispatch)} ><AiFillHeart /></span>
             }
           </div>
 
@@ -61,7 +81,7 @@ export const SingleProduct = ({ product }) => {
         cart?.some(product => product._id === _id) ? <NavLink to="/cart">
           <button className="go-to-cart">Go To Cart</button></NavLink> :
 
-          <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product, dispatch)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
+          <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => handleAddToCart(product, dispatch)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
       }
 
 
