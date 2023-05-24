@@ -47,13 +47,13 @@ export const Checkout = () => {
           addresses?.map((addr) => {
             const { id, name, street, cityName, state, country, postalCode, mobileNumber } = addr
             return (
-              <div key={id} className='single-checkout-address'>
+              <div key={id} className='single-checkout-address cursor-pointer' onClick={() => setSelectedAddress(addr)}>
                 <label htmlFor="" className='checkout-addr-name'>
-                  <input type="radio" name='address' checked={selectedAddress.id === id} onChange={() => setSelectedAddress(addr)} />
+                  <input type="radio" name='address' checked={selectedAddress.id === id} />
                   <span className='left-padding-sm'>{name}</span>
                 </label>
                 <div className='left-padding-sm'>
-                  <p>{street} {cityName} {state} {postalCode}</p>
+                  <p>{street}, {cityName}, {state}, {postalCode}</p>
                   <p>{country}</p>
                   <p>Mobile Number: {mobileNumber}</p>
                 </div>
@@ -120,7 +120,7 @@ export const Checkout = () => {
 
         <div className='delivery-address margin-bottom-1 font-sm'>
           <p className='font-1 address-name font-bold'>{name}</p>
-          <p>{street} {cityName} {state} - {postalCode}</p>
+          <p>{street}, {cityName}, {state}, - {postalCode}</p>
           <p>{country}</p>
           <p>Mobile Number :{mobileNumber}</p>
         </div>
