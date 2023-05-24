@@ -1,8 +1,6 @@
-import React from 'react'
+// const token = localStorage.getItem("encodedToken");
+export const addToCart = async (product, dispatch, token, navigate, location) => {
 
-const token = localStorage.getItem("encodedToken");
-
-export const addToCart = async (product, dispatch) => {
   try {
     const response = await fetch("/api/user/cart", {
       method: "POST",
@@ -13,16 +11,15 @@ export const addToCart = async (product, dispatch) => {
     })
     const data = await response.json();
     // console.log(data.cart)
-    dispatch({ type: "CART_OPERATIONS", payload: data.cart })
-
+    dispatch({ type: "CART_OPERATIONS", payload: data.cart });
+    navigate(location?.state?.from?.pathname)
 
   } catch (e) {
     console.log(e)
   }
-
 }
 
-export const removeFromCart = async (_id, dispatch) => {
+export const removeFromCart = async (_id, dispatch, token) => {
   try {
     const response = await fetch(`/api/user/cart/${_id}`, {
       method: "DELETE",
@@ -39,7 +36,7 @@ export const removeFromCart = async (_id, dispatch) => {
   }
 }
 
-export const moveToWishlist = async (product, dispatch) => {
+export const moveToWishlist = async (product, dispatch, token) => {
   try {
     const response = await fetch('/api/user/wishlist', {
       method: "POST",
@@ -59,7 +56,7 @@ export const moveToWishlist = async (product, dispatch) => {
 }
 
 
-export const updateCartItemQty = async (_id, type, dispatch) => {
+export const updateCartItemQty = async (_id, type, dispatch, token) => {
   try {
     const response = await fetch(`/api/user/cart/${_id}`, {
       method: "POST",

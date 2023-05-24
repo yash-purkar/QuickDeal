@@ -2,18 +2,21 @@ import React from 'react'
 import { AiOutlineStar, AiFillHeart } from 'react-icons/ai'
 import './SingleProduct.css'
 import { DataState } from '../../Contexts/Data/DataContext'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { addToCart } from '../../Services/Cart/CartServices'
 import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 export const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
+  const location = useLocation()
 
   const { _id, image, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending, inStock } = product
 
   const { state: { cart, wishlist }, dispatch } = DataState();
   const { isLoggedIn } = AuthState()
-  const token = localStorage.getItem("encodedToken");
+
+  // const token = localStorage.getItem("encodedToken");
+  const { state: { token } } = DataState()
 
   // ************
 
@@ -21,27 +24,27 @@ export const SingleProduct = ({ product }) => {
 
   // **********
 
-
+  // const prevLocation = location;
   const handleProductClick = (id) => {
     navigate(`/product/${id}`)
   }
 
 
   const handleAddToWishlist = (product, dispatch) => {
-    if (isLoggedIn) {
-      addToWishlist(product, dispatch)
+    if (token) {
+      addToWishlist(product, dispatch, token, navigate, location)
     }
     else {
-      navigate("/wishlist")
+      navigate("/login", { state: { from: location } })
     }
   }
 
   const handleAddToCart = () => {
-    if (isLoggedIn) {
-      addToCart(product, dispatch)
+    if (token) {
+      addToCart(product, dispatch, token, navigate, location)
     }
     else {
-      navigate("/cart")
+      navigate("/login", { state: { from: location } })
     }
   }
 
@@ -55,7 +58,7 @@ export const SingleProduct = ({ product }) => {
           <div className='trending-like-box'>
             {isTrending && <span className='trending'>Trending</span>}
             {
-              wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => removeFromWishlist(_id, dispatch)}><AiFillHeart /></span> : <span className='like' onClick={() => handleAddToWishlist(product, dispatch)} ><AiFillHeart /></span>
+              wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => removeFromWishlist(_id, dispatch, token)}><AiFillHeart /></span> : <span className='like' onClick={() => handleAddToWishlist(product, dispatch)} ><AiFillHeart /></span>
             }
           </div>
 

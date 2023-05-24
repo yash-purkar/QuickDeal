@@ -3,6 +3,7 @@ import './Login.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import { BiShow, BiHide } from 'react-icons/bi'
+import { DataState } from '../../Contexts/Data/DataContext'
 
 
 export const Login = () => {
@@ -13,6 +14,7 @@ export const Login = () => {
     e.preventDefault()
   }
 
+  const { dispatch } = DataState()
   const { setIsLoggedIn } = AuthState()
 
   const location = useLocation();
@@ -33,7 +35,8 @@ export const Login = () => {
 
         if (response.status === 200) {
           localStorage.clear()
-          localStorage.setItem("encodedToken", encodedToken);
+          dispatch({ type: "encodedToken", payload: encodedToken })
+          // localStorage.setItem("encodedToken", encodedToken);
           localStorage.setItem("user", JSON.stringify(foundUser))
 
 
@@ -82,7 +85,8 @@ export const Login = () => {
 
       const { foundUser, encodedToken } = data;
       localStorage.clear()
-      localStorage.setItem("encodedToken", encodedToken)
+      dispatch({ type: "SET_TOKEN", payload: encodedToken })
+      // localStorage.setItem("encodedToken", encodedToken)
       localStorage.setItem("user", JSON.stringify(foundUser))
 
       // const token = localStorage.getItem("encodedToken")

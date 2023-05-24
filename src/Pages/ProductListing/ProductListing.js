@@ -6,9 +6,15 @@ import './ProductListing.css';
 
 
 export const ProductListing = () => {
-  const { state: { products, filters } } = DataState();
+  const { state: { products, filters }, setLoading, loading } = DataState();
   const { searchValue, priceRange, sort, selectedCategories, selectedSizes, rating } = filters;
 
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 1000);
+  // }, []);
 
   const transformData = () => {
     let filteredData = [...products];
@@ -38,7 +44,10 @@ export const ProductListing = () => {
     window.scrollTo(0, 0)
   }, [])
 
-  return (
+  if (loading) {
+    return null;
+  }
+  else return (
     <>
       <div className='main-product-listing'>
         <Filters />
