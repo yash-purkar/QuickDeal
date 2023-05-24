@@ -6,7 +6,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { addToCart } from '../../Services/Cart/CartServices'
 import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
-import { success } from '../../Services/Toasts/ToastServices'
+import { loginTocontinue, remove, success } from '../../Services/Toasts/ToastServices'
 export const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
   const location = useLocation()
@@ -31,15 +31,6 @@ export const SingleProduct = ({ product }) => {
   }
 
 
-  const handleAddToWishlist = (product, dispatch) => {
-    if (token) {
-      addToWishlist(product, dispatch, token, navigate, location);
-      success("Added To Wishlist");
-    }
-    else {
-      navigate("/login", { state: { from: location } })
-    }
-  }
 
   const handleAddToCart = () => {
     if (token) {
@@ -48,9 +39,25 @@ export const SingleProduct = ({ product }) => {
     }
     else {
       navigate("/login", { state: { from: location } })
+      loginTocontinue("Login To Continue")
     }
   }
 
+  const handleAddToWishlist = (product, dispatch) => {
+    if (token) {
+      addToWishlist(product, dispatch, token, navigate, location);
+      success("Added To Wishlist");
+    }
+    else {
+      navigate("/login", { state: { from: location } })
+      loginTocontinue("Login To Continue")
+    }
+  }
+
+  const handleRemoveWishlistItem = () => {
+    removeFromWishlist(_id, dispatch, token);
+    remove("Removed From Wishlist")
+  }
 
   return (
     <div className='product-card flex direction-column'>
@@ -61,7 +68,7 @@ export const SingleProduct = ({ product }) => {
           <div className='trending-like-box'>
             {isTrending && <span className='trending'>Trending</span>}
             {
-              wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => removeFromWishlist(_id, dispatch, token)}><AiFillHeart /></span> : <span className='like' onClick={() => handleAddToWishlist(product, dispatch)} ><AiFillHeart /></span>
+              wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => handleRemoveWishlistItem(_id, dispatch, token)}><AiFillHeart /></span> : <span className='like' onClick={() => handleAddToWishlist(product, dispatch)} ><AiFillHeart /></span>
             }
           </div>
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ImCross } from 'react-icons/im'
 import './CouponBox.css'
 import { OrderState } from '../../../../Contexts/Order/OrderContext';
+import { success } from '../../../../Services/Toasts/ToastServices';
 
 export const CouponBox = ({ setIsHideCouponBox, }) => {
 
@@ -21,6 +22,7 @@ export const CouponBox = ({ setIsHideCouponBox, }) => {
     if (couponDetails.value) {
       setIsHideCouponBox(true)
       setCouponInfo(couponDetails)
+      success("Coupon Applied")
     }
   }
 

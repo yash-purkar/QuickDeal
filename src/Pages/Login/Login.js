@@ -4,6 +4,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import { BiShow, BiHide } from 'react-icons/bi'
 import { DataState } from '../../Contexts/Data/DataContext'
+import { success } from '../../Services/Toasts/ToastServices'
 
 
 export const Login = () => {
@@ -39,7 +40,7 @@ export const Login = () => {
           // localStorage.setItem("encodedToken", encodedToken);
           localStorage.setItem("user", JSON.stringify(foundUser))
 
-
+          success("Login Succesful")
           setIsLoggedIn(true)
           navigate(prevLocation)
         }
@@ -93,7 +94,7 @@ export const Login = () => {
       // if (token) {
       setIsLoggedIn(true)
       // }
-
+      success("Login Succesful")
       navigate(prevLocation)
 
     }

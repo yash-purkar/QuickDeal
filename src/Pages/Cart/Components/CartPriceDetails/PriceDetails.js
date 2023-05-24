@@ -7,6 +7,7 @@ import { CouponBox } from '../CouponBox/CouponBox'
 import './PriceDetails.css'
 import { OrderState } from '../../../../Contexts/Order/OrderContext'
 import { useNavigate } from 'react-router-dom'
+import { warning } from '../../../../Services/Toasts/ToastServices'
 
 export const PriceDetails = ({ cartData, }) => {
   const [isHideCouponBox, setIsHideCouponBox] = useState(true);
@@ -24,7 +25,8 @@ export const PriceDetails = ({ cartData, }) => {
 
 
   const clearCoupon = () => {
-    setCouponInfo({ name: "", value: "" })
+    setCouponInfo({ name: "", value: "" });
+    warning("Coupon Removed")
   }
 
 
