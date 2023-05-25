@@ -10,7 +10,6 @@ import { ProductDetail } from "./Pages/ProductDetail/ProductDetail";
 import Mockman from "mockman-js";
 import { Login } from "./Pages/Login/Login";
 import { RequiresAuth } from "./Auth/RequiresAuth";
-import { AuthState } from "./Contexts/Auth/AuthContext";
 import { Profile } from "./Pages/Profile/Profile";
 import { SignUp } from "./Pages/SignUp/SignUp";
 import { Checkout } from "./Pages/Checkout/Checkout";
@@ -28,7 +27,7 @@ function App() {
         <Route path="/cart" element={<RequiresAuth><Cart /></RequiresAuth>} />
 
         <Route path="/wishlist" element={<RequiresAuth><Wishlist /></RequiresAuth>} />
-        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/product/:productId" element={<ProductDetail />} />
         <Route path="/profile" element={<RequiresAuth>
           <Profile />
         </RequiresAuth>} />
@@ -38,7 +37,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
 
-      <ToastContainer position="top-right"
+      <ToastContainer position="top-center"
         autoClose={1000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -46,7 +45,9 @@ function App() {
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover />
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AiOutlineStar, AiFillHeart, AiOutlineShoppingCart } from 'react-icons/ai'
 
@@ -10,20 +10,26 @@ import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/Wishl
 import { loginTocontinue, remove, success } from '../../Services/Toasts/ToastServices'
 
 export const ProductDetail = () => {
-  const { id } = useParams();
+  const { productId } = useParams();
 
 
   const { state: { products, cart, wishlist, token }, dispatch } = DataState();
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [disabledBtn, setDisabledBtn] = useState();
 
-  const product = products?.find(product => product._id === id);
+
+  const product = products?.find(product => product._id === productId);
 
   const handleAddToCart = (product, dispatch, token, navigate, location) => {
     if (token) {
+      setDisabledBtn(true)
       addToCart(product, dispatch, token, navigate, location);
-      success("Added To Cart")
+      success("Added To Cart");
+      setTimeout(() => {
+        setDisabledBtn(false)
+      }, 1000)
     }
     else {
       navigate("/login", { state: { from: location } })
@@ -33,8 +39,12 @@ export const ProductDetail = () => {
 
   const handleAddToWishlist = (product, dispatch, token, navigate, location) => {
     if (token) {
+      setDisabledBtn(true)
       addToWishlist(product, dispatch, token, navigate, location);
       success("Added To Wishlist");
+      setTimeout(() => {
+        setDisabledBtn(false)
+      }, 1000)
     }
     else {
       navigate("/login", { state: { from: location } })
@@ -54,7 +64,7 @@ export const ProductDetail = () => {
         <img src={image} alt={itemName} className='detail-img' />
         {isTrending && <span className='trending'>Trending</span>}
         {
-          wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => handleRemoveWishlist(product._id, dispatch, token)}><AiFillHeart /></span> : <span className='like' onClick={() => handleAddToWishlist(product, dispatch, token, navigate, location)} ><AiFillHeart /></span>
+          wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => handleRemoveWishlist(product._id, dispatch, token)}><AiFillHeart /></span> : <button className='like' disabled={disabledBtn} onClick={() => handleAddToWishlist(product, dispatch, token, navigate, location)} ><AiFillHeart /></button>
         }
       </div>
 
@@ -96,7 +106,7 @@ export const ProductDetail = () => {
             cart?.some(product => product._id === _id) ? <NavLink to="/cart">
               <button className="go-to-cart">Go To Cart</button></NavLink> :
 
-              <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => handleAddToCart(product, dispatch, token, navigate, location)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
+              <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock || disabledBtn} onClick={() => handleAddToCart(product, dispatch, token, navigate, location)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
           }
         </div>
       </div>
