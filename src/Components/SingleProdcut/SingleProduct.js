@@ -68,7 +68,7 @@ export const SingleProduct = ({ product }) => {
           <div className='trending-like-box'>
             {isTrending && <span className='trending'>Trending</span>}
             {
-              wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => handleRemoveWishlistItem(_id, dispatch, token)}><AiFillHeart /></span> : <span className='like' onClick={() => handleAddToWishlist(product, dispatch)} ><AiFillHeart /></span>
+              wishlist?.some(product => product._id === _id) && token ? <span className='like  wishlist-red' onClick={() => handleRemoveWishlistItem(_id, dispatch, token)}><AiFillHeart /></span> : <span className='like' onClick={() => handleAddToWishlist(product, dispatch)} ><AiFillHeart /></span>
             }
           </div>
 
@@ -91,7 +91,7 @@ export const SingleProduct = ({ product }) => {
         <p className='discount'>{discount}% OFF</p>
       </div>
       {
-        cart?.some(product => product._id === _id) ? <NavLink to="/cart">
+        cart?.some(product => product._id === _id) && token ? <NavLink to="/cart">
           <button className="go-to-cart">Go To Cart</button></NavLink> :
 
           <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => handleAddToCart(product, dispatch)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
