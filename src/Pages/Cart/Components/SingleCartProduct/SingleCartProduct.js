@@ -3,6 +3,7 @@ import { DataState } from '../../../../Contexts/Data/DataContext';
 import './SingleCartProduct.css';
 import { removeFromCart, moveToWishlist, updateCartItemQty } from '../../../../Services/Cart/CartServices';
 import { useState } from 'react';
+import { remove, success } from '../../../../Services/Toasts/ToastServices';
 
 
 export const SingleCartProduct = ({ product }) => {
@@ -22,6 +23,15 @@ export const SingleCartProduct = ({ product }) => {
     updateCartItemQty(_id, type, dispatch, token)
   }
 
+  const handleRemoveFromCart = (_id, dispatch, token) => {
+    removeFromCart(_id, dispatch, token)
+    remove("Removed From Cart")
+  }
+
+  const handleMoveToWishlist = (product, dispatch, token) => {
+    moveToWishlist(product, dispatch, token);
+    success("Moved To Wishlist");
+  }
   return (
     <div className="cart-product-card ">
       <div className="cart-product-details">
@@ -44,8 +54,8 @@ export const SingleCartProduct = ({ product }) => {
         </div>
       </div>
       <div className='remove-operations'>
-        <button className='remove-product ' onClick={() => removeFromCart(_id, dispatch, token)}>Remove</button>
-        {wishlist?.some(product => product._id === _id) ? <NavLink to="/wishlist"><button className='already-in-wishlist' >Already in wishlist</button></NavLink> : <button className='move-to-wishlist' onClick={() => moveToWishlist(product, dispatch, token)}>Move To Wishlist</button>}
+        <button className='remove-product ' onClick={() => handleRemoveFromCart(_id, dispatch, token)}>Remove</button>
+        {wishlist?.some(product => product._id === _id) ? <NavLink to="/wishlist"><button className='already-in-wishlist' >Already in wishlist</button></NavLink> : <button className='move-to-wishlist' onClick={() => handleMoveToWishlist(product, dispatch, token)}>Move To Wishlist</button>}
       </div>
     </div>
   )

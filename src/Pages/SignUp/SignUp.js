@@ -5,6 +5,7 @@ import './SignUp.css'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import { BiShow, BiHide } from 'react-icons/bi'
 import { DataState } from '../../Contexts/Data/DataContext';
+import { failed, success, warning } from '../../Services/Toasts/ToastServices';
 export const SignUp = () => {
   const { setIsLoggedIn } = AuthState();
   const { state: { token }, dispatch } = DataState();
@@ -39,13 +40,15 @@ export const SignUp = () => {
           localStorage.setItem("user", JSON.stringify(createdUser))
           setIsLoggedIn(true)
           navigate("/productlisting")
+          success("SignUp Succesful")
         }
         else {
-          alert(`${response.status}, ${response.statusText}`)
+          warning("Email Already Exist")
         }
 
       } catch (e) {
         console.log(e)
+        failed("Something Went Wrong")
       }
     }
   }

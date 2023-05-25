@@ -108,7 +108,7 @@ export const Checkout = () => {
             <p>-₹ {couponDiscount}</p>
           </div>
 
-          <div className='flex justify-between top-margin font-bold'>
+          <div className='flex justify-between top-margin font-bold checkout-total letter-spacing'>
             <p>Total Amount</p>
             <p>₹ {totalAmount}</p>
           </div>
