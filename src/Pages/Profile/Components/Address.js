@@ -21,7 +21,7 @@ export const Address = () => {
       <div className='width-100'>
         <div className='flex justify-between bottom-border-1 margin-bottom-1'>
           <h2 className='profile-head my-addr margin-bottom-1'>My Addresses</h2>
-          <h4 className='margin-bottom-1 cursor-pointer add-new-address' onClick={() => setIsHideForm(false)}>Add New Address+</h4>
+          <h4 className='margin-bottom-1 cursor-pointer add-new-address font-1-2' onClick={() => setIsHideForm(false)}>Add New Address+</h4>
         </div>
         {
           addresses?.map((addr, i) => {
@@ -29,9 +29,9 @@ export const Address = () => {
             } = addr;
             return (
               <div className='margin-bottom-1 bottom-border-1' key={i}>
-                <p className='profile-label address-user-name letter-spacing'>{name}</p>
+                <p className='profile-label address-user-name letter-spacing font-1-2'>{name}</p>
 
-                <div className='font-sm flex direction-column'>
+                <div className='font-1 letter-spacing flex direction-column'>
                   <span className='capitalize'>{street}</span>
                   <span className='capitalize'>{cityName},{state} . {postalCode}</span>
                   <span className='capitalize'>{country}</span>

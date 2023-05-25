@@ -3,10 +3,13 @@ import { DataState } from '../../../../Contexts/Data/DataContext';
 import './SingleCartProduct.css';
 import { removeFromCart, moveToWishlist, updateCartItemQty } from '../../../../Services/Cart/CartServices';
 import { useState } from 'react';
+import { remove, success } from '../../../../Services/Toasts/ToastServices';
+
 
 export const SingleCartProduct = ({ product }) => {
   const { _id, image, qty, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending } = product
-  const { dispatch, state: { cart, wishlist } } = DataState()
+  const { dispatch, state: { cart, wishlist, token } } = DataState()
+
 
 
   // console.log(product._id)
@@ -17,9 +20,18 @@ export const SingleCartProduct = ({ product }) => {
   }
 
   const handleQuantity = (type) => {
-    updateCartItemQty(_id, type, dispatch)
+    updateCartItemQty(_id, type, dispatch, token)
   }
 
+  const handleRemoveFromCart = (_id, dispatch, token) => {
+    removeFromCart(_id, dispatch, token)
+    remove("Removed From Cart")
+  }
+
+  const handleMoveToWishlist = (product, dispatch, token) => {
+    moveToWishlist(product, dispatch, token);
+    success("Moved To Wishlist");
+  }
   return (
     <div className="cart-product-card ">
       <div className="cart-product-details">
@@ -34,16 +46,16 @@ export const SingleCartProduct = ({ product }) => {
 
           <div className='quantity-operations'>
             <p className='qty-label'>Quantity: </p>
-            <button onClick={() => handleQuantity("decrement")} className='decrease-qty cursor-pointer' disabled={qty < 2}>-</button>
+            <button onClick={() => handleQuantity("decrement", token)} className='decrease-qty cursor-pointer' disabled={qty < 2}>-</button>
             <p className='qty'>{qty}</p>
-            <button onClick={() => handleQuantity("increment")} className='increase-qty cursor-pointer' >+</button>
+            <button onClick={() => handleQuantity("increment", token)} className='increase-qty cursor-pointer' >+</button>
           </div>
 
         </div>
       </div>
       <div className='remove-operations'>
-        <button className='remove-product ' onClick={() => removeFromCart(_id, dispatch)}>Remove</button>
-        {wishlist?.some(product => product._id === _id) ? <NavLink to="/wishlist"><button className='already-in-wishlist' >Already in wishlist</button></NavLink> : <button className='move-to-wishlist' onClick={() => moveToWishlist(product, dispatch)}>Move To Wishlist</button>}
+        <button className='remove-product ' onClick={() => handleRemoveFromCart(_id, dispatch, token)}>Remove</button>
+        {wishlist?.some(product => product._id === _id) ? <NavLink to="/wishlist"><button className='already-in-wishlist' >Already in wishlist</button></NavLink> : <button className='move-to-wishlist' onClick={() => handleMoveToWishlist(product, dispatch, token)}>Move To Wishlist</button>}
       </div>
     </div>
   )

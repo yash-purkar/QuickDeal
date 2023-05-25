@@ -3,6 +3,8 @@ import './Login.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import { BiShow, BiHide } from 'react-icons/bi'
+import { DataState } from '../../Contexts/Data/DataContext'
+import { failed, success, warning } from '../../Services/Toasts/ToastServices'
 
 
 export const Login = () => {
@@ -13,6 +15,7 @@ export const Login = () => {
     e.preventDefault()
   }
 
+  const { dispatch } = DataState()
   const { setIsLoggedIn } = AuthState()
 
   const location = useLocation();
@@ -33,26 +36,27 @@ export const Login = () => {
 
         if (response.status === 200) {
           localStorage.clear()
-          localStorage.setItem("encodedToken", encodedToken);
+          dispatch({ type: "encodedToken", payload: encodedToken })
+          // localStorage.setItem("encodedToken", encodedToken);
           localStorage.setItem("user", JSON.stringify(foundUser))
 
-
+          success("Login Succesful")
           setIsLoggedIn(true)
           navigate(prevLocation)
         }
 
         else {
-          alert(`${response.status}, ${response.statusText}`)
+          warning("No Data Found")
         }
       }
 
       catch (e) {
-        console.log(e)
+        failed("Something Went Wrong")
       }
     }
     else {
 
-      alert("Plz fill the details first")
+      warning("Plz fill the details first")
     }
   }
 
@@ -67,8 +71,8 @@ export const Login = () => {
 
     const prevLocation = location?.state?.from?.pathname;
     const creds = {
-      email: "adarshbalak@gmail.com",
-      password: "adarsh_1234",
+      email: "yashpurkar@gmail.com",
+      password: "yash_1234",
     }
     setEmail(creds.email)
     setPassword(creds.password)
@@ -81,21 +85,24 @@ export const Login = () => {
       const data = await response.json();
 
       const { foundUser, encodedToken } = data;
-      localStorage.clear()
-      localStorage.setItem("encodedToken", encodedToken)
-      localStorage.setItem("user", JSON.stringify(foundUser))
 
-      // const token = localStorage.getItem("encodedToken")
-      // if (token) {
-      setIsLoggedIn(true)
-      // }
+      if (response.status === 200 || response.status === 201) {
+        localStorage.clear()
+        dispatch({ type: "SET_TOKEN", payload: encodedToken })
+        localStorage.setItem("user", JSON.stringify(foundUser))
 
-      navigate(prevLocation)
+        setIsLoggedIn(true)
+        success("Login Succesful")
+        navigate(prevLocation)
+      }
+      else {
+        warning("Data Not Found")
+      }
 
     }
 
     catch (e) {
-      console.error(e)
+      failed("Something Went Wrong")
     }
   }
 
@@ -108,7 +115,7 @@ export const Login = () => {
 
           <div className='flex direction-column margin-bottom-1'>
             <label htmlFor="email" className='display-inline-block bottom-margin-md top-margin'>Email</label>
-            <input type="email" name="email" id="email" className='login-email' placeholder='test@gmail.com' autoComplete='off' onChange={(e) => setEmail(e.target.value)} value={email} />
+            <input type="text" name="email" id="email" className='login-email' placeholder='test@gmail.com' autoComplete='off' onChange={(e) => setEmail(e.target.value)} value={email} />
           </div>
           <div className='flex direction-column margin-bottom-1 relative'>
             <label htmlFor="password" className='display-inline-block bottom-margin-md'>Password</label>

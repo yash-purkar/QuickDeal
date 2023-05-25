@@ -2,18 +2,22 @@ import React from 'react'
 import { AiOutlineStar, AiFillHeart } from 'react-icons/ai'
 import './SingleProduct.css'
 import { DataState } from '../../Contexts/Data/DataContext'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { addToCart } from '../../Services/Cart/CartServices'
 import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
-
+import { AuthState } from '../../Contexts/Auth/AuthContext'
+import { loginTocontinue, remove, success } from '../../Services/Toasts/ToastServices'
 export const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
+  const location = useLocation()
 
   const { _id, image, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending, inStock } = product
 
   const { state: { cart, wishlist }, dispatch } = DataState();
+  const { isLoggedIn } = AuthState()
 
-  const token = localStorage.getItem("encodedToken");
+  // const token = localStorage.getItem("encodedToken");
+  const { state: { token } } = DataState()
 
   // ************
 
@@ -21,9 +25,38 @@ export const SingleProduct = ({ product }) => {
 
   // **********
 
-
+  // const prevLocation = location;
   const handleProductClick = (id) => {
     navigate(`/product/${id}`)
+  }
+
+
+
+  const handleAddToCart = () => {
+    if (token) {
+      addToCart(product, dispatch, token, navigate, location);
+      success("Added To Cart");
+    }
+    else {
+      navigate("/login", { state: { from: location } })
+      loginTocontinue("Login To Continue")
+    }
+  }
+
+  const handleAddToWishlist = (product, dispatch) => {
+    if (token) {
+      addToWishlist(product, dispatch, token, navigate, location);
+      success("Added To Wishlist");
+    }
+    else {
+      navigate("/login", { state: { from: location } })
+      loginTocontinue("Login To Continue")
+    }
+  }
+
+  const handleRemoveWishlistItem = () => {
+    removeFromWishlist(_id, dispatch, token);
+    remove("Removed From Wishlist")
   }
 
   return (
@@ -35,7 +68,7 @@ export const SingleProduct = ({ product }) => {
           <div className='trending-like-box'>
             {isTrending && <span className='trending'>Trending</span>}
             {
-              wishlist?.some(product => product._id === _id) ? <span className='like  wishlist-red' onClick={() => removeFromWishlist(_id, dispatch)}><AiFillHeart /></span> : <span className='like' onClick={() => addToWishlist(product, dispatch)} ><AiFillHeart /></span>
+              wishlist?.some(product => product._id === _id) && token ? <span className='like  wishlist-red' onClick={() => handleRemoveWishlistItem(_id, dispatch, token)}><AiFillHeart /></span> : <span className='like' onClick={() => handleAddToWishlist(product, dispatch)} ><AiFillHeart /></span>
             }
           </div>
 
@@ -58,10 +91,10 @@ export const SingleProduct = ({ product }) => {
         <p className='discount'>{discount}% OFF</p>
       </div>
       {
-        cart.some(product => product._id === _id) ? <NavLink to="/cart">
+        cart?.some(product => product._id === _id) && token ? <NavLink to="/cart">
           <button className="go-to-cart">Go To Cart</button></NavLink> :
 
-          <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => addToCart(product, dispatch)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
+          <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock} onClick={() => handleAddToCart(product, dispatch)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
       }
 
 

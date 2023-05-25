@@ -7,6 +7,7 @@ import { CouponBox } from '../CouponBox/CouponBox'
 import './PriceDetails.css'
 import { OrderState } from '../../../../Contexts/Order/OrderContext'
 import { useNavigate } from 'react-router-dom'
+import { warning } from '../../../../Services/Toasts/ToastServices'
 
 export const PriceDetails = ({ cartData, }) => {
   const [isHideCouponBox, setIsHideCouponBox] = useState(true);
@@ -24,7 +25,8 @@ export const PriceDetails = ({ cartData, }) => {
 
 
   const clearCoupon = () => {
-    setCouponInfo({ name: "", value: "" })
+    setCouponInfo({ name: "", value: "" });
+    warning("Coupon Removed")
   }
 
 
@@ -75,8 +77,8 @@ export const PriceDetails = ({ cartData, }) => {
 
         }
         <div className='flex justify-between total-amt top-margin border-top-1 top-padding-08'>
-          <h5 className='sm-fontsize sm-margin-bottom '>Total Amount</h5>
-          <h5 className='sm-fontsize sm-margin-bottom'>₹ {(newPrice - couponDiscount).toFixed()}</h5>
+          <h5 className='font-1 sm-margin-bottom '>Total Amount</h5>
+          <h5 className='font-1 sm-margin-bottom'>₹ {(newPrice - couponDiscount).toFixed()}</h5>
         </div>
 
         <div className='flex justify-between coupon-box '>
@@ -86,7 +88,7 @@ export const PriceDetails = ({ cartData, }) => {
 
       </div>
 
-      <p className='sm-fontsize sm-margin-bottom saved-price-info'>You will save ₹ {(couponDiscount + oldPrice - newPrice).toFixed()} on this order</p>
+      <p className='font-1 sm-margin-bottom saved-price-info'>You will save ₹ {(couponDiscount + oldPrice - newPrice).toFixed()} on this order</p>
 
 
       <button className='checkout-btn  cursor-pointer' onClick={handleCheckOut}>Checkout</button>

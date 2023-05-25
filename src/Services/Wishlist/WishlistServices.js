@@ -1,6 +1,6 @@
-const token = localStorage.getItem("encodedToken");
+// const token = localStorage.getItem("encodedToken");
 
-export const addToWishlist = async (product, dispatch) => {
+export const addToWishlist = async (product, dispatch, token, navigate, location) => {
 
   try {
     const response = await fetch('/api/user/wishlist', {
@@ -12,15 +12,16 @@ export const addToWishlist = async (product, dispatch) => {
     })
 
     const data = await response.json()
-    // console.log(data)
     dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist })
+    navigate(location?.state?.from?.pathname)
+
   } catch (e) {
     console.log(e)
   }
 }
 
 
-export const removeFromWishlist = async (_id, dispatch) => {
+export const removeFromWishlist = async (_id, dispatch, token) => {
   try {
     const response = await fetch(`/api/user/wishlist/${_id}`, {
       method: "DELETE",

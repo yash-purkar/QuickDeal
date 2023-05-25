@@ -1,10 +1,11 @@
 .header {
   width: 100%;
   padding: 2.5rem;
-  background-color: var(--lightgray);
+  background-color: #f7f7f7;
   display: flex;
   position: relative;
   margin-bottom: 1.5rem;
+  /* margin-top: 2rem; */
 }
 
 .header-left {
@@ -28,6 +29,7 @@
   text-transform: capitalize;
   color: var(--header-color);
   margin-bottom: 0.8rem;
+  font-family: "Quicksand", sans-serif;
 }
 
 .header-left .header-desc {

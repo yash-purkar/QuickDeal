@@ -14,6 +14,8 @@ import { AuthState } from "./Contexts/Auth/AuthContext";
 import { Profile } from "./Pages/Profile/Profile";
 import { SignUp } from "./Pages/SignUp/SignUp";
 import { Checkout } from "./Pages/Checkout/Checkout";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -36,6 +38,15 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
 
+      <ToastContainer position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
     </div>
   );
 }

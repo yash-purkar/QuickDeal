@@ -16,7 +16,7 @@ export const Cart = () => {
 
   return (
     <>
-      <h2 className='text-center top-margin'>{cart.length > 0 ? `My Cart(${cart.length})` : "Cart Is Empty"}</h2>
+      <h2 className='text-center top-margin'>{cart?.length > 0 ? `My Cart(${cart?.length})` : "Cart Is Empty"}</h2>
 
       <div className="cart-main">
         <div className="cart-container">
@@ -27,7 +27,7 @@ export const Cart = () => {
         </div>
 
         {
-          cart.length > 0 && <PriceDetails cartData={cart} />
+          cart?.length > 0 && <PriceDetails cartData={cart} />
 
         }
 

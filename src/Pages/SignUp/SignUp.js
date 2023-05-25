@@ -4,8 +4,12 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import './SignUp.css'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import { BiShow, BiHide } from 'react-icons/bi'
+import { DataState } from '../../Contexts/Data/DataContext';
+import { failed, success, warning } from '../../Services/Toasts/ToastServices';
 export const SignUp = () => {
   const { setIsLoggedIn } = AuthState();
+  const { state: { token }, dispatch } = DataState();
+
   const [user, setUser] = useState({
     _id: uuid(),
     firstName: "",
@@ -31,17 +35,20 @@ export const SignUp = () => {
 
         if (response.status === 201) {
           localStorage.clear();
-          localStorage.setItem("encodedToken", encodedToken);
+          dispatch({ type: "SET_TOKEN", payload: encodedToken })
+          // localStorage.setItem("encodedToken", encodedToken);
           localStorage.setItem("user", JSON.stringify(createdUser))
           setIsLoggedIn(true)
           navigate("/productlisting")
+          success("SignUp Succesful")
         }
         else {
-          alert(`${response.status}, ${response.statusText}`)
+          warning("Email Already Exist")
         }
 
       } catch (e) {
         console.log(e)
+        failed("Something Went Wrong")
       }
     }
   }
@@ -74,7 +81,7 @@ export const SignUp = () => {
             <label htmlFor="password" className='display-inline-block bottom-margin-md'>Password</label>
             <input type={showPassword ? "text" : "password"} name="password" id="password" className='login-password bottom-margin-md' placeholder='***********' autoComplete='off' onChange={(e) => setUser(prev => ({ ...prev, password: e.target.value }))} value={password} required />
             {
-              password.length > 0 && <p className='hide-icon cursor-pointer' onClick={() => setShowPassword(prev => !prev)}>{showPassword ? <BiShow /> : <BiHide />}</p>
+              password?.length > 0 && <p className='hide-icon cursor-pointer' onClick={() => setShowPassword(prev => !prev)}>{showPassword ? <BiShow /> : <BiHide />}</p>
             }
           </div>
           {/* <div className='login-btn-box'> */}
