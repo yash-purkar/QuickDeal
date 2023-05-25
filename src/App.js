@@ -10,7 +10,6 @@ import { ProductDetail } from "./Pages/ProductDetail/ProductDetail";
 import Mockman from "mockman-js";
 import { Login } from "./Pages/Login/Login";
 import { RequiresAuth } from "./Auth/RequiresAuth";
-import { AuthState } from "./Contexts/Auth/AuthContext";
 import { Profile } from "./Pages/Profile/Profile";
 import { SignUp } from "./Pages/SignUp/SignUp";
 import { Checkout } from "./Pages/Checkout/Checkout";
@@ -38,7 +37,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
 
-      <ToastContainer position="top-right"
+      <ToastContainer position="top-center"
         autoClose={1000}
         hideProgressBar={false}
         newestOnTop={false}

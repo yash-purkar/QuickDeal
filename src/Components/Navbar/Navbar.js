@@ -10,13 +10,12 @@ import { AuthState } from '../../Contexts/Auth/AuthContext'
 
 export const Navbar = () => {
   const [menuClass, setMenuClass] = useState("hide-menu");
+  const { state: { cart, wishlist } } = DataState()
 
   const navigate = useNavigate();
 
-  const location = useLocation();
 
-  const { state: { products }, dispatch } = DataState()
-  const { isLoggedIn, setIsLoggedIn } = AuthState();
+  const { state: { products, token }, dispatch } = DataState()
 
   const handleMenuClick = (data) => {
     const updatedDisplay = data === "hide" ? "hide-menu" : "menus";
@@ -58,16 +57,16 @@ export const Navbar = () => {
           <li className='menu-item'>
             <NavLink className="nav-link" to="/productlisting"><MdOutlineLocalMall /></NavLink>
           </li>
-          <li className='menu-item'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart /></NavLink></li>
-          <li className='menu-item'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart /></NavLink></li>
+          <li className='menu-item wishlist-icon-li'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart />{wishlist?.length > 0 && token && <span className='wishlist-counter'>{wishlist?.length}</span>}</NavLink></li>
+          <li className='menu-item cart-icon-li'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart />{cart?.length > 0 && token && <span className='cart-counter'>{cart?.length}</span>}</NavLink></li>
           <li className='menu-item'><NavLink to="/profile" className="nav-link"><AiOutlineUser /></NavLink></li>
         </ul>
 
         <ul className='menus-md' >
 
           <li className='menu-item'><NavLink className="nav-link" to="/productlisting" ><MdOutlineLocalMall /></NavLink></li>
-          <li className='menu-item'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart /></NavLink></li>
-          <li className='menu-item'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart /></NavLink></li>
+          <li className='menu-item wishlist-icon-li'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart />{wishlist?.length > 0 && token && <span className='wishlist-counter'>{wishlist?.length}</span>}</NavLink></li>
+          <li className='menu-item cart-icon-li'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart />{cart?.length > 0 && token && <span className='cart-counter'>{cart?.length}</span>}</NavLink></li>
           <li className='menu-item'><NavLink to="/profile" className="nav-link"><AiOutlineUser /></NavLink></li>
 
         </ul>
