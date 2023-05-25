@@ -45,7 +45,9 @@ function App() {
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover />
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }

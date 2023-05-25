@@ -37,8 +37,10 @@
   right: -9px;
   font-size: 1.6rem;
   width: fit-content;
-  color: var(--primary);
   color: gray;
+
+  background-color: none;
+  border: none;
 }
 
 .wishlist-red {
