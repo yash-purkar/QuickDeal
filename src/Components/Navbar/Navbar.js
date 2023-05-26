@@ -29,7 +29,7 @@ export const Navbar = () => {
 
 
 
-  const allProductNames = products.reduce((acc, curr) => acc.includes(curr.itemName) ? acc : [...acc, curr.itemName], [])
+  // const allProductNames = products.reduce((acc, curr) => acc.includes(curr.itemName) ? acc : [...acc, curr.itemName], [])
 
   return (
     <>

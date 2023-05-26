@@ -3,7 +3,9 @@ import { DataState } from '../../../../Contexts/Data/DataContext';
 import './SingleCartProduct.css';
 import { removeFromCart, moveToWishlist, updateCartItemQty } from '../../../../Services/Cart/CartServices';
 import { useState } from 'react';
+import { addToWishlist, removeFromWishlist } from '../../../../Services/Wishlist/WishlistServices';
 import { remove, success } from '../../../../Services/Toasts/ToastServices';
+import { AiFillHeart } from 'react-icons/ai';
 
 
 export const SingleCartProduct = ({ product }) => {
@@ -28,14 +30,15 @@ export const SingleCartProduct = ({ product }) => {
     remove("Removed From Cart")
   }
 
-  const handleMoveToWishlist = (product, dispatch, token) => {
-    moveToWishlist(product, dispatch, token);
-    success("Moved To Wishlist");
-  }
+
   return (
     <div className="cart-product-card ">
       <div className="cart-product-details">
+
         <img src={image} alt={itemName} className="cart-product-img cursor-pointer" onClick={() => handleProductClick(_id)} />
+        {
+          wishlist?.some(product => product._id === _id) && token ? <span className='like cart-like  wishlist-red' onClick={() => removeFromWishlist(_id, dispatch, token)}><AiFillHeart /></span> : <button className='like cart-like' onClick={() => addToWishlist(product, dispatch, token)} ><AiFillHeart /></button>
+        }
         <div className="product-info">
           <h4 className='cart-item-name'>{itemName}</h4>
           <div className="cart-product-prices">
@@ -55,7 +58,6 @@ export const SingleCartProduct = ({ product }) => {
       </div>
       <div className='remove-operations'>
         <button className='remove-product ' onClick={() => handleRemoveFromCart(_id, dispatch, token)}>Remove</button>
-        {wishlist?.some(product => product._id === _id) ? <NavLink to="/wishlist"><button className='already-in-wishlist' >Already in wishlist</button></NavLink> : <button className='move-to-wishlist' onClick={() => handleMoveToWishlist(product, dispatch, token)}>Move To Wishlist</button>}
       </div>
     </div>
   )
