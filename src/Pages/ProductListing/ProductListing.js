@@ -6,15 +6,9 @@ import './ProductListing.css';
 
 
 export const ProductListing = () => {
-  const { state: { products, filters }, setLoading, loading } = DataState();
+  const { state: { products, filters }, setLoading } = DataState();
   const { searchValue, priceRange, sort, selectedCategories, selectedSizes, rating } = filters;
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 1000);
-  // }, []);
 
   const transformData = () => {
     let filteredData = [...products];
@@ -42,16 +36,16 @@ export const ProductListing = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }, [])
 
-  if (loading) {
-    return null;
-  }
-  else return (
+  return (
     <>
       <div className='main-product-listing'>
         <Filters />
-
         <div className='products-container flex justify-center align-start wrap'>
           {
             transformData()?.length === 0 ? <h1>Product Not Found</h1> : <div className="productlisting-header">

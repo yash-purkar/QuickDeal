@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import { DataState } from '../../Contexts/Data/DataContext'
 import { addToCart } from '../../Services/Cart/CartServices'
 import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
-import { loginTocontinue, remove, success } from '../../Services/Toasts/ToastServices'
+import { loginTocontinue } from '../../Services/Toasts/ToastServices'
 
 export const ProductDetail = () => {
   const { productId } = useParams();
@@ -52,7 +52,6 @@ export const ProductDetail = () => {
 
   const handleRemoveWishlist = (_id, dispatch, token) => {
     removeFromWishlist(_id, dispatch, token);
-    remove("Removed From Wishlist")
   }
 
   const { _id, image, rating, reviews, size, category, description, itemName, oldPrice, newPrice, discount, isTrending, inStock, delivery_time, fewLeft } = product
@@ -104,7 +103,10 @@ export const ProductDetail = () => {
             cart?.some(product => product._id === _id) ? <NavLink to="/cart">
               <button className="go-to-cart">Go To Cart</button></NavLink> :
 
-              <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock || disabledBtn} onClick={() => handleAddToCart(product, dispatch, token, navigate, location)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
+              <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock || disabledBtn} onClick={() => handleAddToCart(product, dispatch, token, navigate, location)}>
+
+                {inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}
+              </button>
           }
         </div>
       </div>

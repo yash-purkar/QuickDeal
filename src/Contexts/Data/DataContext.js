@@ -43,10 +43,7 @@ export const DataContextProvider = ({ children }) => {
 
 
 
-  return <DataContext.Provider value={{ state, dispatch, setLoading }}>
-    {
-      loading ? <h1>Loading....</h1> : <>{children}</>
-    }
+  return <DataContext.Provider value={{ state, dispatch, setLoading, loading }}>{children}
   </DataContext.Provider>
 }
 
