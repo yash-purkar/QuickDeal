@@ -5,7 +5,7 @@ import { RxCross1 } from 'react-icons/rx'
 import './Navbar.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { DataState } from '../../Contexts/Data/DataContext'
-import { AuthState } from '../../Contexts/Auth/AuthContext'
+import logo from '../Header/Images/logo.png'
 
 
 export const Navbar = () => {
@@ -34,18 +34,20 @@ export const Navbar = () => {
   return (
     <>
       <nav className='navigation flex justify-between align-center'>
-        <h1 className='navigation-header'><NavLink className="header-link" to="/" >QuickDeal</NavLink></h1>
+        <div className='navigation-header flex'>
+          <NavLink className="header-link flex align-center flex direction-column" to="/" > <span><img src={logo} alt="icon" className='brand-icon' /></span> <span>QuickDeal</span></NavLink></div>
+
 
         <div>
           <input type="search" list="search-products" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
           <span></span>
         </div>
 
-        <datalist id='search-products' >
+        {/* <datalist id='search-products' >
           {
             allProductNames.map(name => <option key={name}>{name}</option>)
           }
-        </datalist>
+        </datalist> */}
 
         {
           menuClass === "hide-menu" ? <div className='navigation-menu' onClick={() => handleMenuClick()}><AiOutlineMenu /></div> : <div className='navigation-menu' onClick={() => handleMenuClick("hide")}><RxCross1 /></div>

@@ -1,5 +1,7 @@
 // const token = localStorage.getItem("encodedToken");
 
+import { remove, success } from "../Toasts/ToastServices"
+
 export const addToWishlist = async (product, dispatch, token, navigate, location) => {
 
   try {
@@ -13,6 +15,8 @@ export const addToWishlist = async (product, dispatch, token, navigate, location
 
     const data = await response.json()
     dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist })
+
+    success("Added To Wishlist")
     navigate(location?.state?.from?.pathname)
 
   } catch (e) {
@@ -32,6 +36,7 @@ export const removeFromWishlist = async (_id, dispatch, token) => {
 
     const data = await response.json();
     dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist })
+    remove("Removed From Wishlist")
   } catch (error) {
 
   }

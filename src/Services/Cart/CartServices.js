@@ -1,3 +1,5 @@
+import { success } from "../Toasts/ToastServices";
+
 // const token = localStorage.getItem("encodedToken");
 export const addToCart = async (product, dispatch, token, navigate, location) => {
 
@@ -12,7 +14,8 @@ export const addToCart = async (product, dispatch, token, navigate, location) =>
     const data = await response.json();
     // console.log(data.cart)
     dispatch({ type: "CART_OPERATIONS", payload: data.cart });
-    navigate(location?.state?.from?.pathname)
+    navigate(location?.state?.from?.pathname);
+    success("Added To Cart");
 
   } catch (e) {
     console.log(e)
@@ -36,24 +39,24 @@ export const removeFromCart = async (_id, dispatch, token) => {
   }
 }
 
-export const moveToWishlist = async (product, dispatch, token) => {
-  try {
-    const response = await fetch('/api/user/wishlist', {
-      method: "POST",
-      headers: {
-        authorization: token
-      },
-      body: JSON.stringify({ product })
-    })
+// export const moveToWishlist = async (product, dispatch, token) => {
+//   try {
+//     const response = await fetch('/api/user/wishlist', {
+//       method: "POST",
+//       headers: {
+//         authorization: token
+//       },
+//       body: JSON.stringify({ product })
+//     })
 
-    const data = await response.json();
-    removeFromCart(product._id, dispatch);
-    dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist });
+//     const data = await response.json();
+//     dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist });
+//     removeFromCart(product._id, dispatch, token);
 
-  } catch (e) {
-    console.log(e)
-  }
-}
+//   } catch (e) {
+//     console.log(e)
+//   }
+// }
 
 
 export const updateCartItemQty = async (_id, type, dispatch, token) => {

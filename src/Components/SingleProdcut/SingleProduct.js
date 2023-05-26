@@ -7,6 +7,7 @@ import { addToCart } from '../../Services/Cart/CartServices'
 import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import { loginTocontinue, remove, success } from '../../Services/Toasts/ToastServices'
+
 export const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
   const location = useLocation()
@@ -38,7 +39,7 @@ export const SingleProduct = ({ product }) => {
     if (token) {
       setDisabledBtn(true);
       addToCart(product, dispatch, token, navigate, location);
-      success("Added To Cart");
+
       setTimeout(() => {
         setDisabledBtn(false)
       }, 1000)
@@ -53,7 +54,6 @@ export const SingleProduct = ({ product }) => {
     if (token) {
       setDisabledBtn(true);
       addToWishlist(product, dispatch, token, navigate, location);
-      success("Added To Wishlist");
       setTimeout(() => {
         setDisabledBtn(false)
       }, 1000)
@@ -66,7 +66,7 @@ export const SingleProduct = ({ product }) => {
 
   const handleRemoveWishlistItem = () => {
     removeFromWishlist(_id, dispatch, token);
-    remove("Removed From Wishlist")
+
   }
 
   return (

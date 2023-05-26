@@ -16,7 +16,7 @@ export const Wishlist = () => {
       <h2 className='text-center top-margin letter-spacing'>{wishlist?.length === 0 ? "Wishlist is Empty🙁" : `My Wishlist(${wishlist?.length})`} </h2>
       <div className='wishlist-container'>
         {
-          wishlist?.map(product => <SingleProduct key={product._id} product={product} />)
+          wishlist?.map(product => <SingleProduct key={product._id} product={product} fromWishlist />)
         }
       </div>
     </>

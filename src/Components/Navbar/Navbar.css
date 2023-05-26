@@ -10,26 +10,36 @@
   height: 3.5rem;
 }
 
+.brand-icon {
+  width: 25px;
+  margin-right: 0.4rem;
+}
+
 .navigation .navigation-header {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: var(--white);
+  /* display: flex;
+  flex-direction: ; */
 }
 
 .search-bar {
-  width: 15rem;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.9rem;
+  padding: 0.4rem;
+  font-size: 0.8rem;
   border: none;
   outline: 1px solid var(--gray);
   letter-spacing: 1px;
   color: var(--header-color);
-  display: none;
+  /* max-width: 18rem; */
+  /* display: none; */
+  width: 100%;
+  /* margin: 0rem 0.rem; */
 }
 
 .navigation-menu {
   font-size: 1.5rem;
   color: var(--white);
   cursor: pointer;
+  margin-left: 0.5rem;
 }
 
 /* Menus */
@@ -63,6 +73,7 @@
 
 .header-link {
   color: var(--white);
+  margin-left: 1rem;
 }
 
 .search-bar:hover {
@@ -73,6 +84,7 @@
 .cart-icon-li {
   position: relative;
 }
+
 .wishlist-counter,
 .cart-counter {
   position: absolute;
@@ -90,7 +102,15 @@
 }
 
 @media (min-width: 720px) {
+  .header-link {
+    flex-direction: row;
+  }
+  .brand-icon {
+    width: 40px;
+  }
   .search-bar {
+    max-width: none;
+    font-size: 0.9rem;
     width: 18rem;
     padding: 0.5rem;
     display: block;

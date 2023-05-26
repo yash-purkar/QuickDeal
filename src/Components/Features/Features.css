@@ -1,10 +1,11 @@
 .features {
-  margin-bottom: 3rem;
+  margin: 0 0.9rem 2rem 0.9rem;
   background-color: #f3f8ff;
+  border-radius: 0.3rem;
 }
 
 .features-list-item {
-  width: 5rem;
+  width: 3.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +17,7 @@
 
 .feature-icon {
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--primary);
 }
 
@@ -26,6 +27,11 @@
 }
 
 @media (min-width: 720px) {
+  .features {
+    margin: 0rem;
+    margin-bottom: 3rem;
+  }
+
   .feature-icon {
     font-size: 1.5rem;
   }

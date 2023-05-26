@@ -9,6 +9,17 @@
   display: flex;
   padding: 0.5rem;
   border-bottom: 1px solid var(--gray);
+
+  position: relative;
+}
+
+.img-box {
+  position: relative;
+}
+.cart-like {
+  position: absolute;
+  left: 0px;
+  top: 0.1rem;
 }
 .cart-product-img {
   width: 35%;

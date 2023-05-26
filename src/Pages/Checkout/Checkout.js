@@ -3,64 +3,81 @@ import './Checkout.css'
 import { OrderState } from '../../Contexts/Order/OrderContext';
 import { DataState } from '../../Contexts/Data/DataContext';
 import { AddressState } from '../../Contexts/Address/AddressContext';
+import { warning } from '../../Services/Toasts/ToastServices';
+import { useNavigate } from 'react-router-dom';
 
 export const Checkout = () => {
   const { state: { cart } } = DataState();
   const { orderState: { price, discount, couponDiscount, totalAmount } } = OrderState();
 
+  const navigate = useNavigate();
+
   const { addressState: { addresses } } = AddressState()
   const [selectedAddress, setSelectedAddress] = useState(addresses[0]);
-  const { name, street, cityName, state, country, postalCode, mobileNumber } = selectedAddress;
+  const { name, street, cityName, state, country, postalCode, mobileNumber } = addresses.length > 0 && selectedAddress;
 
   const handlePlaceOrder = () => {
-    var options = {
-      key: "rzp_test_eIfzqLCuOyYMmK",
-      key_secret: "key_secret",
-      amount: totalAmount * 100,
-      currency: "INR",
-      name: "QuickDeal",
-      description: "For testing purpose",
-      handler: function (response) {
-        alert(response.razorpay_payment_id);
-      },
-      prefill: {
-        name: "Yash Purkar",
-        email: "yashpurkar7079@gmail.com",
-        contact: "9370387079"
-      },
-      notes: {
-        address: "Razorpay Corporate office"
-      },
-      theme: {
-        color: "#2874f0"
-      }
+    if (addresses.length > 0) {
+      var options = {
+        key: "rzp_test_eIfzqLCuOyYMmK",
+        key_secret: "key_secret",
+        amount: totalAmount * 100,
+        currency: "INR",
+        name: "QuickDeal",
+        description: "For testing purpose",
+        handler: function (response) {
+          alert(response.razorpay_payment_id);
+        },
+        prefill: {
+          name: "Yash Purkar",
+          email: "yashpurkar7079@gmail.com",
+          contact: "9370387079"
+        },
+        notes: {
+          address: "Razorpay Corporate office"
+        },
+        theme: {
+          color: "#2874f0"
+        }
 
+      }
+      var pay = new window.Razorpay(options);
+      pay.open();
     }
-    var pay = new window.Razorpay(options);
-    pay.open();
+
+    else {
+      warning("Add the Address First");
+      setTimeout(() => {
+        navigate("/profile")
+      }, 2000)
+    }
   }
   return (
     <div className='checkout-main-container flex justify-around  wrap'>
       {/* addr */}
       <div className='checkout-addresses '>
-        {
-          addresses?.map((addr) => {
-            const { id, name, street, cityName, state, country, postalCode, mobileNumber } = addr
-            return (
-              <div key={id} className='single-checkout-address cursor-pointer' onClick={() => setSelectedAddress(addr)}>
-                <label htmlFor="" className='checkout-addr-name'>
-                  <input type="radio" name='address' checked={selectedAddress.id === id} />
-                  <span className='left-padding-sm'>{name}</span>
-                </label>
-                <div className='left-padding-sm'>
-                  <p>{street}, {cityName}, {state}, {postalCode}</p>
-                  <p>{country}</p>
-                  <p>Mobile Number: {mobileNumber}</p>
-                </div>
-              </div>
-            )
-          })
-        }
+        <>
+          {
+            addresses.length > 0 ?
+              <>{addresses?.map((addr) => {
+                const { id, name, street, cityName, state, country, postalCode, mobileNumber } = addr
+                return (
+                  <div key={id} className='single-checkout-address cursor-pointer' onClick={() => setSelectedAddress(addr)}>
+                    <label htmlFor="" className='checkout-addr-name'>
+                      <input type="radio" name='address' checked={selectedAddress.id === id} />
+                      <span className='left-padding-sm'>{name}</span>
+                    </label>
+                    <div className='left-padding-sm'>
+                      <p>{street}, {cityName}, {state}, {postalCode}</p>
+                      <p>{country}</p>
+                      <p>Mobile Number: {mobileNumber}</p>
+                    </div>
+                  </div>
+                )
+              })}</>
+              : <h1 className='select-address-heading letter-spacing'>Add The Address First</h1>}
+
+        </>
       </div>
       {/*  */}
 
@@ -118,12 +135,12 @@ export const Checkout = () => {
 
         <h3 className='text-uppercase border-top-1  margin-bottom-1 padding-1 font-1 padding-left-0 text-center bottom-border-1 color-primary letter-spacing'>deliver to</h3>
 
-        <div className='delivery-address margin-bottom-1 font-sm'>
+        {addresses?.length > 0 && <div className='delivery-address margin-bottom-1 font-sm'>
           <p className='font-1 address-name font-bold'>{name}</p>
           <p>{street}, {cityName}, {state}, - {postalCode}</p>
           <p>{country}</p>
           <p>Mobile Number :{mobileNumber}</p>
-        </div>
+        </div>}
 
 
 
