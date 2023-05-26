@@ -12,6 +12,7 @@ export const SingleCartProduct = ({ product }) => {
   const { _id, image, qty, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending } = product
   const { dispatch, state: { cart, wishlist, token } } = DataState()
 
+  const [disabledBtn, setDisabledBtn] = useState(false);
 
 
   // console.log(product._id)
@@ -21,13 +22,33 @@ export const SingleCartProduct = ({ product }) => {
     navigate(`/product/${id}`)
   }
 
+  const handleAddToWishlist = (product, dispatch, token) => {
+    setDisabledBtn(true)
+    addToWishlist(product, dispatch, token)
+    setTimeout(() => {
+      setDisabledBtn(false)
+    }, 1000)
+  }
+
   const handleQuantity = (type) => {
     updateCartItemQty(_id, type, dispatch, token)
   }
 
   const handleRemoveFromCart = (_id, dispatch, token) => {
+    setDisabledBtn(true)
     removeFromCart(_id, dispatch, token)
     remove("Removed From Cart")
+    setTimeout(() => {
+      setDisabledBtn(false)
+    }, 1000)
+  }
+
+  const handleRemoveFromWishlist = (_id, dispatch, token) => {
+    setDisabledBtn(true)
+    removeFromWishlist(_id, dispatch, token)
+    setTimeout(() => {
+      setDisabledBtn(false)
+    }, 1000)
   }
 
 
@@ -37,7 +58,7 @@ export const SingleCartProduct = ({ product }) => {
 
         <img src={image} alt={itemName} className="cart-product-img cursor-pointer" onClick={() => handleProductClick(_id)} />
         {
-          wishlist?.some(product => product._id === _id) && token ? <span className='like cart-like  wishlist-red' onClick={() => removeFromWishlist(_id, dispatch, token)}><AiFillHeart /></span> : <button className='like cart-like' onClick={() => addToWishlist(product, dispatch, token)} ><AiFillHeart /></button>
+          wishlist?.some(product => product._id === _id) && token ? <button className='like cart-like  wishlist-red' disabled={disabledBtn} onClick={() => handleRemoveFromWishlist(_id, dispatch, token)}><AiFillHeart /></button> : <button className='like cart-like' disabled={disabledBtn} onClick={() => handleAddToWishlist(product, dispatch, token)} ><AiFillHeart /></button>
         }
         <div className="product-info">
           <h4 className='cart-item-name'>{itemName}</h4>
@@ -57,7 +78,7 @@ export const SingleCartProduct = ({ product }) => {
         </div>
       </div>
       <div className='remove-operations'>
-        <button className='remove-product ' onClick={() => handleRemoveFromCart(_id, dispatch, token)}>Remove</button>
+        <button className='remove-product ' disabled={disabledBtn} onClick={() => handleRemoveFromCart(_id, dispatch, token)}>Remove</button>
       </div>
     </div>
   )

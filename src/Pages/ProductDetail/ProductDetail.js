@@ -26,7 +26,6 @@ export const ProductDetail = () => {
     if (token) {
       setDisabledBtn(true)
       addToCart(product, dispatch, token, navigate, location);
-      success("Added To Cart");
       setTimeout(() => {
         setDisabledBtn(false)
       }, 1000)
@@ -41,7 +40,6 @@ export const ProductDetail = () => {
     if (token) {
       setDisabledBtn(true)
       addToWishlist(product, dispatch, token, navigate, location);
-      success("Added To Wishlist");
       setTimeout(() => {
         setDisabledBtn(false)
       }, 1000)

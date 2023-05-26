@@ -29,12 +29,14 @@ export const Navbar = () => {
 
 
 
-  // const allProductNames = products.reduce((acc, curr) => acc.includes(curr.itemName) ? acc : [...acc, curr.itemName], [])
+  const allProductNames = products.reduce((acc, curr) => acc.includes(curr.itemName) ? acc : [...acc, curr.itemName], [])
 
   return (
     <>
       <nav className='navigation flex justify-between align-center'>
-        <h1 className='navigation-header'><NavLink className="header-link flex align-center" to="/" > <span><img src={logo} alt="icon" className='brand-icon' /></span> <span>QuickDeal</span></NavLink></h1>
+        <div className='navigation-header flex'>
+          <NavLink className="header-link flex align-center flex direction-column" to="/" > <span><img src={logo} alt="icon" className='brand-icon' /></span> <span>QuickDeal</span></NavLink></div>
+
 
         <div>
           <input type="search" list="search-products" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
