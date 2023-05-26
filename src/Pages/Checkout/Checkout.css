@@ -49,6 +49,9 @@
 .checkout-total {
   font-size: 1.1rem;
 }
+.select-address-heading {
+  color: var(--gray);
+}
 
 @media (min-width: 600px) {
   .checkout-main-container {
