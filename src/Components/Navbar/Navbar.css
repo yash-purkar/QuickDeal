@@ -10,13 +10,17 @@
   height: 3.5rem;
 }
 
+.brand-icon {
+  width: 30px;
+  margin-right: 0.4rem;
+}
+
 .navigation .navigation-header {
   font-size: 1.5rem;
   color: var(--white);
 }
 
 .search-bar {
-  width: 15rem;
   padding: 0.2rem 0.5rem;
   font-size: 0.9rem;
   border: none;
@@ -63,6 +67,7 @@
 
 .header-link {
   color: var(--white);
+  margin-left: 1rem;
 }
 
 .search-bar:hover {
@@ -73,6 +78,7 @@
 .cart-icon-li {
   position: relative;
 }
+
 .wishlist-counter,
 .cart-counter {
   position: absolute;
@@ -90,6 +96,9 @@
 }
 
 @media (min-width: 720px) {
+  .brand-icon {
+    width: 40px;
+  }
   .search-bar {
     width: 18rem;
     padding: 0.5rem;
