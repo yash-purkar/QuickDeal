@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Address.css'
 import { AddressForm } from './AddressForm/AddressForm'
 import { AddressState } from '../../../Contexts/Address/AddressContext';
+import { remove } from '../../../Services/Toasts/ToastServices';
 export const Address = () => {
   const [isHideForm, setIsHideForm] = useState(true);
   const { addressState: { addresses }, addressDispatch } = AddressState();
@@ -14,6 +15,11 @@ export const Address = () => {
     setSelectedAddrId(selectedAddress.id)
 
     addressDispatch({ type: "SELECT_ADDRESS_TO_EDIT", payload: selectedAddress })
+  }
+
+  const handleRemoveAddress = (id) => {
+    addressDispatch({ type: "REMOVE_ADDRESS", payload: id })
+    remove("Address Removed")
   }
 
   return (
@@ -41,7 +47,7 @@ export const Address = () => {
                 <div>
                   <button className='address-edit letter-spacing cursor-pointer' onClick={() => handleEdit(addr.id)}>Edit</button>
 
-                  <button className='address-remove letter-spacing cursor-pointer' onClick={() => addressDispatch({ type: "REMOVE_ADDRESS", payload: addr.id })}>Remove</button>
+                  <button className='address-remove letter-spacing cursor-pointer' onClick={() => handleRemoveAddress(addr.id)}>Remove</button>
                 </div>
               </div>
             )

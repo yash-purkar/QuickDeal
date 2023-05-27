@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddressForm.css'
 import { AddressState } from '../../../../Contexts/Address/AddressContext';
+import { success } from '../../../../Services/Toasts/ToastServices';
 
 export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }) => {
 
@@ -25,6 +26,7 @@ export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }
       }
       else {
         addressDispatch({ type: "ADD_NEW_ADDRESS", payload: { ...inputs, id: selectedAddrId ? selectedAddrId : new Date().getTime().toString() } })
+        success("Addres Added")
       }
       setIsHideForm(true);
     }

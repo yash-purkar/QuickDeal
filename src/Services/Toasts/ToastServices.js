@@ -8,4 +8,4 @@ export const failed = (msg) => toast.error(msg)
 
 export const loginTocontinue = (msg) => toast.warn(msg);
 
-export const warning = (msg) => toast.warn(msg)
+export const warning = (msg) => toast.warn(msg) 
