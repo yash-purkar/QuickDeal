@@ -4,13 +4,13 @@
   top: 4rem;
   background-color: var(--white);
   padding: 2rem;
-  width: 500px;
   box-shadow: 0px 5px 15px rgba(90, 90, 90, 0.35);
 }
 
 .address-form-container {
   background-color: var(--white);
   padding: 1rem 2rem;
+  width: 290px;
   height: 100%;
 }
 
@@ -65,7 +65,8 @@
     width: 500px;
   }
   .address-form-container {
-    max-width: 500px;
+    width: 100%;
+    /* width: 500px; */
     /* padding: 2rem 4rem; */
   }
 }
