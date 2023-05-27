@@ -34,11 +34,12 @@ export const Navbar = () => {
   return (
     <>
       <nav className='navigation flex justify-between align-center'>
-        <div className='navigation-header flex'>
-          <NavLink className="header-link flex align-center flex direction-column" to="/" > <span><img src={logo} alt="icon" className='brand-icon' /></span> <span>QuickDeal</span></NavLink></div>
+        <div className='navigation-header flex '>
+          <NavLink className="header-link flex align-center" to="/" > <span><img src={logo} alt="icon" className='brand-icon' /></span> <span>QuickDeal</span></NavLink>
+        </div>
 
 
-        <div>
+        <div className='search-box'>
           <input type="search" list="search-products" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
           <span></span>
         </div>
@@ -74,6 +75,10 @@ export const Navbar = () => {
         </ul>
 
       </nav>
+      <div className='search-box-mobile'>
+        <input type="search" list="search-products" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
+        <span></span>
+      </div>
     </>
   )
 }
