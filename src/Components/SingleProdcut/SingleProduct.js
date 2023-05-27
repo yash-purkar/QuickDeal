@@ -9,7 +9,7 @@ import { loginTocontinue } from '../../Services/Toasts/ToastServices'
 
 export const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
 
   const { _id, image, rating, size, itemName, oldPrice, newPrice, discount, isTrending, inStock } = product
 
@@ -19,8 +19,8 @@ export const SingleProduct = ({ product }) => {
 
   const token = localStorage.getItem("encodedToken");
 
-  const handleProductClick = (id) => {
-    navigate(`/product/${id}`)
+  const handleProductClick = (_id) => {
+    navigate(`/product/${_id}`)
   }
 
 

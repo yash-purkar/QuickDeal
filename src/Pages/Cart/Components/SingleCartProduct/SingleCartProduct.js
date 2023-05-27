@@ -17,8 +17,8 @@ export const SingleCartProduct = ({ product }) => {
 
   const navigate = useNavigate();
 
-  const handleProductClick = (id) => {
-    navigate(`/product/${id}`)
+  const handleProductClick = (_id) => {
+    navigate(`/product/${_id}`)
   }
 
   const handleAddToWishlist = (product, dispatch, token) => {

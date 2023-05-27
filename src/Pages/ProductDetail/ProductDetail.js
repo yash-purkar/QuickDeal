@@ -12,8 +12,8 @@ import { getProductDetails } from '../../Services/Product/ProductDetailServices'
 
 export const ProductDetail = () => {
   const { productId } = useParams();
-  const [product, setProduct] = useState();
   const [disabledBtn, setDisabledBtn] = useState();
+  const [product, setProduct] = useState();
 
 
   const { state: { cart, wishlist }, dispatch, setLoading } = DataState();
@@ -22,17 +22,18 @@ export const ProductDetail = () => {
 
   const token = localStorage.getItem("encodedToken")
 
-
   useEffect(() => {
-
-    getProductDetails(productId, setProduct);
-
+    setLoading(true);
+    getProductDetails(productId, setProduct)
+    setTimeout(() => {
+      setLoading(false)
+    }, 250)
   }, [])
 
-  const handleAddToCart = (product, dispatch, token, navigate, location) => {
+  const handleAddToCart = (viewProduct, dispatch, token, navigate, location) => {
     if (token) {
       setDisabledBtn(true)
-      addToCart(product, dispatch, token, navigate, location);
+      addToCart(viewProduct, dispatch, token, navigate, location);
       setTimeout(() => {
         setDisabledBtn(false)
       }, 1000)
@@ -43,10 +44,10 @@ export const ProductDetail = () => {
     }
   }
 
-  const handleAddToWishlist = (product, dispatch, token, navigate, location) => {
+  const handleAddToWishlist = (viewProduct, dispatch, token, navigate, location) => {
     if (token) {
       setDisabledBtn(true)
-      addToWishlist(product, dispatch, token, navigate, location);
+      addToWishlist(viewProduct, dispatch, token, navigate, location);
       setTimeout(() => {
         setDisabledBtn(false)
       }, 1000)
@@ -56,7 +57,6 @@ export const ProductDetail = () => {
       loginTocontinue("Login To Continue")
     }
   }
-
 
   return (
     <>
