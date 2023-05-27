@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { AiOutlineStar, AiFillHeart, AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineStar, AiFillHeart } from 'react-icons/ai'
 
 import './ProductDetail.css'
 import { useParams } from 'react-router-dom'
@@ -13,16 +13,18 @@ import { getProductDetails } from '../../Services/Product/ProductDetailServices'
 export const ProductDetail = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState();
-
-  const { state: { cart, wishlist, token }, dispatch } = DataState();
-  const navigate = useNavigate();
-  const location = useLocation();
-
   const [disabledBtn, setDisabledBtn] = useState();
 
 
+  const { state: { cart, wishlist, token }, dispatch, setLoading } = DataState();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+
   useEffect(() => {
+
     getProductDetails(productId, setProduct);
+
   }, [])
 
   const handleAddToCart = (product, dispatch, token, navigate, location) => {
@@ -53,10 +55,6 @@ export const ProductDetail = () => {
     }
   }
 
-  const handleRemoveWishlist = (_id, dispatch, token) => {
-    removeFromWishlist(_id, dispatch, token);
-  }
-
 
   return (
     <>
@@ -65,7 +63,14 @@ export const ProductDetail = () => {
           <img src={product.image} alt={product.itemName} className='detail-img' />
           {product.isTrending && <span className='trending'>Trending</span>}
           {
-            wishlist?.some(prod => prod._id === product._id) ? <span className='like  wishlist-red' onClick={() => handleRemoveWishlist(product._id, dispatch, token)}><AiFillHeart /></span> : <button className='like' disabled={disabledBtn} onClick={() => handleAddToWishlist(product, dispatch, token, navigate, location)} ><AiFillHeart /></button>
+            wishlist?.some(prod => prod._id === product._id) ?
+              <span className='like  wishlist-red' onClick={() => removeFromWishlist(product._id, dispatch, token)}>
+                <AiFillHeart />
+              </span>
+              :
+              <button className='like' disabled={disabledBtn} onClick={() => handleAddToWishlist(product, dispatch, token, navigate, location)} >
+                <AiFillHeart />
+              </button>
           }
         </div>
 

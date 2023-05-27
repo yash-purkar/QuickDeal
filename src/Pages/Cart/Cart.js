@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './Cart.css'
 import { SingleCartProduct } from './Components/SingleCartProduct/SingleCartProduct'
 import { PriceDetails } from './Components/CartPriceDetails/PriceDetails'
@@ -30,9 +30,6 @@ export const Cart = () => {
           cart?.length > 0 && <PriceDetails cartData={cart} />
 
         }
-
-
-
 
       </div>
     </>

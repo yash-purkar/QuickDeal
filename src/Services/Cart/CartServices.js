@@ -39,26 +39,6 @@ export const removeFromCart = async (_id, dispatch, token) => {
   }
 }
 
-// export const moveToWishlist = async (product, dispatch, token) => {
-//   try {
-//     const response = await fetch('/api/user/wishlist', {
-//       method: "POST",
-//       headers: {
-//         authorization: token
-//       },
-//       body: JSON.stringify({ product })
-//     })
-
-//     const data = await response.json();
-//     dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist });
-//     removeFromCart(product._id, dispatch, token);
-
-//   } catch (e) {
-//     console.log(e)
-//   }
-// }
-
-
 export const updateCartItemQty = async (_id, type, dispatch, token) => {
   try {
     const response = await fetch(`/api/user/cart/${_id}`, {

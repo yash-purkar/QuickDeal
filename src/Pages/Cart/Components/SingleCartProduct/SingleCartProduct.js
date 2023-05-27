@@ -1,23 +1,21 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { DataState } from '../../../../Contexts/Data/DataContext';
 import './SingleCartProduct.css';
-import { removeFromCart, moveToWishlist, updateCartItemQty } from '../../../../Services/Cart/CartServices';
+import { removeFromCart, updateCartItemQty } from '../../../../Services/Cart/CartServices';
 import { useState } from 'react';
 import { addToWishlist, removeFromWishlist } from '../../../../Services/Wishlist/WishlistServices';
-import { remove, success } from '../../../../Services/Toasts/ToastServices';
+import { remove } from '../../../../Services/Toasts/ToastServices';
 import { AiFillHeart } from 'react-icons/ai';
 
 
 export const SingleCartProduct = ({ product }) => {
-  const { _id, image, qty, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending } = product
-  const { dispatch, state: { cart, wishlist, token } } = DataState()
+  const { _id, image, qty, itemName, oldPrice, newPrice, discount } = product
+  const { dispatch, state: { wishlist, token } } = DataState()
 
   const [disabledBtn, setDisabledBtn] = useState(false);
 
-
-  // console.log(product._id)
-
   const navigate = useNavigate();
+
   const handleProductClick = (id) => {
     navigate(`/product/${id}`)
   }
@@ -58,7 +56,14 @@ export const SingleCartProduct = ({ product }) => {
 
         <img src={image} alt={itemName} className="cart-product-img cursor-pointer" onClick={() => handleProductClick(_id)} />
         {
-          wishlist?.some(product => product._id === _id) && token ? <button className='like cart-like  wishlist-red' disabled={disabledBtn} onClick={() => handleRemoveFromWishlist(_id, dispatch, token)}><AiFillHeart /></button> : <button className='like cart-like' disabled={disabledBtn} onClick={() => handleAddToWishlist(product, dispatch, token)} ><AiFillHeart /></button>
+          wishlist?.some(product => product._id === _id) && token ?
+            <button className='like cart-like  wishlist-red' disabled={disabledBtn} onClick={() => handleRemoveFromWishlist(_id, dispatch, token)}>
+              <AiFillHeart />
+            </button>
+            :
+            <button className='like cart-like' disabled={disabledBtn} onClick={() => handleAddToWishlist(product, dispatch, token)} >
+              <AiFillHeart />
+            </button>
         }
         <div className="product-info">
           <h4 className='cart-item-name'>{itemName}</h4>
@@ -70,9 +75,13 @@ export const SingleCartProduct = ({ product }) => {
 
           <div className='quantity-operations'>
             <p className='qty-label'>Quantity: </p>
-            <button onClick={() => handleQuantity("decrement", token)} className='decrease-qty cursor-pointer' disabled={qty < 2}>-</button>
+            <button onClick={() => handleQuantity("decrement", token)} className='decrease-qty cursor-pointer' disabled={qty < 2}>
+              -
+            </button>
             <p className='qty'>{qty}</p>
-            <button onClick={() => handleQuantity("increment", token)} className='increase-qty cursor-pointer' >+</button>
+            <button onClick={() => handleQuantity("increment", token)} className='increase-qty cursor-pointer' >
+              +
+            </button>
           </div>
 
         </div>

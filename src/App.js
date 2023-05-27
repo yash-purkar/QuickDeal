@@ -39,7 +39,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mockman" element={<Mockman />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout" element={<RequiresAuth><Checkout /></RequiresAuth>} />
       </Routes>
 
       <ToastContainer position="top-center"

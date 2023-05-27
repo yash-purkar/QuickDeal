@@ -5,6 +5,7 @@ import { AuthState } from '../../Contexts/Auth/AuthContext'
 import { BiShow, BiHide } from 'react-icons/bi'
 import { DataState } from '../../Contexts/Data/DataContext'
 import { failed, success, warning } from '../../Services/Toasts/ToastServices'
+import { loginAsGuest, loginUser } from '../../Services/Auth/AuthService'
 
 
 export const Login = () => {
@@ -25,34 +26,7 @@ export const Login = () => {
   const handleLogin = async () => {
     const prevLocation = location?.state?.from?.pathname;
     if (email && password) {
-      try {
-        const response = await fetch('/api/auth/login', {
-          method: "POST",
-          body: JSON.stringify({ email, password })
-        })
-        console.log(response)
-        const data = await response.json();
-        const { encodedToken, foundUser } = data;
-
-        if (response.status === 200) {
-          localStorage.clear()
-          dispatch({ type: "encodedToken", payload: encodedToken })
-          // localStorage.setItem("encodedToken", encodedToken);
-          localStorage.setItem("user", JSON.stringify(foundUser))
-
-          success("Login Succesful")
-          setIsLoggedIn(true)
-          navigate(prevLocation)
-        }
-
-        else {
-          warning("No Data Found")
-        }
-      }
-
-      catch (e) {
-        failed("Something Went Wrong")
-      }
+      loginUser(email, password, dispatch, setIsLoggedIn, navigate, prevLocation)
     }
     else {
 
@@ -76,34 +50,8 @@ export const Login = () => {
     }
     setEmail(creds.email)
     setPassword(creds.password)
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: "POST",
-        body: JSON.stringify(creds)
-      })
+    loginAsGuest(creds, dispatch, setIsLoggedIn, navigate, prevLocation);
 
-      const data = await response.json();
-
-      const { foundUser, encodedToken } = data;
-
-      if (response.status === 200 || response.status === 201) {
-        localStorage.clear()
-        dispatch({ type: "SET_TOKEN", payload: encodedToken })
-        localStorage.setItem("user", JSON.stringify(foundUser))
-
-        setIsLoggedIn(true)
-        success("Login Succesful")
-        navigate(prevLocation)
-      }
-      else {
-        warning("Data Not Found")
-      }
-
-    }
-
-    catch (e) {
-      failed("Something Went Wrong")
-    }
   }
 
 
