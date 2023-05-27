@@ -3,19 +3,19 @@ import { AiOutlineMenu, AiOutlineShoppingCart, AiOutlineHeart, AiOutlineUser } f
 import { MdOutlineLocalMall } from 'react-icons/md'
 import { RxCross1 } from 'react-icons/rx'
 import './Navbar.css'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { DataState } from '../../Contexts/Data/DataContext'
 import logo from '../Header/Images/logo.png'
 
 
 export const Navbar = () => {
   const [menuClass, setMenuClass] = useState("hide-menu");
-  const { state: { cart, wishlist } } = DataState()
+  const { state: { products, cart, wishlist }, dispatch } = DataState()
 
   const navigate = useNavigate();
 
 
-  const { state: { products, token }, dispatch } = DataState()
+  const token = localStorage.getItem("encodedToken");
 
   const handleMenuClick = (data) => {
     const updatedDisplay = data === "hide" ? "hide-menu" : "menus";
@@ -34,11 +34,12 @@ export const Navbar = () => {
   return (
     <>
       <nav className='navigation flex justify-between align-center'>
-        <div className='navigation-header flex'>
-          <NavLink className="header-link flex align-center flex direction-column" to="/" > <span><img src={logo} alt="icon" className='brand-icon' /></span> <span>QuickDeal</span></NavLink></div>
+        <div className='navigation-header flex '>
+          <NavLink className="header-link flex align-center" to="/" > <span><img src={logo} alt="icon" className='brand-icon' /></span> <span>QuickDeal</span></NavLink>
+        </div>
 
 
-        <div>
+        <div className='search-box'>
           <input type="search" list="search-products" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
           <span></span>
         </div>
@@ -74,6 +75,10 @@ export const Navbar = () => {
         </ul>
 
       </nav>
+      <div className='search-box-mobile'>
+        <input type="search" list="search-products" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
+        <span></span>
+      </div>
     </>
   )
 }

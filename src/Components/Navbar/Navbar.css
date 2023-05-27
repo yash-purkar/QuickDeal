@@ -8,18 +8,28 @@
   z-index: 3;
   width: 100%;
   height: 3.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .brand-icon {
-  width: 25px;
+  width: 30px;
   margin-right: 0.4rem;
 }
 
 .navigation .navigation-header {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: var(--white);
-  /* display: flex;
-  flex-direction: ; */
+}
+.search-box-mobile {
+  width: 100%;
+  padding: 0.3rem;
+  background-color: var(--primary);
+  position: fixed;
+  top: 3rem;
+  z-index: 1;
+}
+.search-box {
+  display: none;
 }
 
 .search-bar {
@@ -29,10 +39,7 @@
   outline: 1px solid var(--gray);
   letter-spacing: 1px;
   color: var(--header-color);
-  /* max-width: 18rem; */
-  /* display: none; */
   width: 100%;
-  /* margin: 0rem 0.rem; */
 }
 
 .navigation-menu {
@@ -50,6 +57,7 @@
   top: 62px;
   background-color: var(--alice-blue);
   flex-direction: column;
+  z-index: 2;
 }
 
 .hide-menu {
@@ -108,6 +116,12 @@
   .brand-icon {
     width: 40px;
   }
+  .search-box-mobile {
+    display: none;
+  }
+  .search-box {
+    display: block;
+  }
   .search-bar {
     max-width: none;
     font-size: 0.9rem;
@@ -139,7 +153,7 @@
 
 @media (min-width: 1024px) {
   .search-bar {
-    width: 40rem;
+    width: 33rem;
     padding: 0.5rem;
     font-size: 1rem;
   }

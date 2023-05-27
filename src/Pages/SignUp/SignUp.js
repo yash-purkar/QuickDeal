@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { v4 as uuid } from "uuid";
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import './SignUp.css'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import { BiShow, BiHide } from 'react-icons/bi'
 import { DataState } from '../../Contexts/Data/DataContext';
-import { failed, success, warning } from '../../Services/Toasts/ToastServices';
+import { signUpUser } from '../../Services/Auth/AuthService';
 export const SignUp = () => {
   const { setIsLoggedIn } = AuthState();
-  const { state: { token }, dispatch } = DataState();
+  const { dispatch } = DataState();
 
   const [user, setUser] = useState({
     _id: uuid(),
@@ -19,37 +19,13 @@ export const SignUp = () => {
   })
   const [showPassword, setShowPassword] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { firstName, lastName, email, password } = user;
 
   const signUpHandler = async () => {
     if (firstName && lastName && email && password) {
-      try {
-        const response = await fetch('/api/auth/signup', {
-          method: "POST",
-          body: JSON.stringify(user)
-        });
-        const data = await response.json();
-        const { createdUser, encodedToken } = data;
-
-        if (response.status === 201) {
-          localStorage.clear();
-          dispatch({ type: "SET_TOKEN", payload: encodedToken })
-          // localStorage.setItem("encodedToken", encodedToken);
-          localStorage.setItem("user", JSON.stringify(createdUser))
-          setIsLoggedIn(true)
-          navigate("/productlisting")
-          success("SignUp Succesful")
-        }
-        else {
-          warning("Email Already Exist")
-        }
-
-      } catch (e) {
-        console.log(e)
-        failed("Something Went Wrong")
-      }
+      signUpUser(user, dispatch, setIsLoggedIn, navigate)
     }
   }
 
@@ -74,7 +50,7 @@ export const SignUp = () => {
 
           <div className='flex direction-column margin-bottom-1'>
             <label htmlFor="email" className='display-inline-block bottom-margin-md top-margin'>Email</label>
-            <input type="email" name="email" id="email" className='login-email' placeholder='test@gmail.com' autoComplete='off' onChange={(e) => setUser(prev => ({ ...prev, email: e.target.value }))} value={email} required />
+            <input type="text" name="email" id="email" className='login-email' placeholder='test@gmail.com' autoComplete='off' onChange={(e) => setUser(prev => ({ ...prev, email: e.target.value }))} value={email} required />
           </div>
 
           <div className='flex direction-column margin-bottom-1 relative'>

@@ -6,8 +6,8 @@ import { DataState } from '../../Contexts/Data/DataContext';
 
 
 export const Wishlist = () => {
-  const { state: { wishlist, token } } = DataState();
-
+  const { state: { wishlist } } = DataState();
+  console.log(wishlist)
   useEffect(() => {
     window.scrollTo(0, 0)
   })

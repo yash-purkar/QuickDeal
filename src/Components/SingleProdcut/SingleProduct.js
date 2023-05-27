@@ -5,32 +5,22 @@ import { DataState } from '../../Contexts/Data/DataContext'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { addToCart } from '../../Services/Cart/CartServices'
 import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
-import { AuthState } from '../../Contexts/Auth/AuthContext'
-import { loginTocontinue, remove, success } from '../../Services/Toasts/ToastServices'
+import { loginTocontinue } from '../../Services/Toasts/ToastServices'
 
 export const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
 
-  const { _id, image, rating, reviews, size, category, itemName, oldPrice, newPrice, discount, isTrending, inStock } = product
+  const { _id, image, rating, size, itemName, oldPrice, newPrice, discount, isTrending, inStock } = product
 
   const { state: { cart, wishlist }, dispatch } = DataState();
-  const { isLoggedIn } = AuthState()
 
   const [disabledBtn, setDisabledBtn] = useState(false);
 
-  // const token = localStorage.getItem("encodedToken");
-  const { state: { token } } = DataState()
+  const token = localStorage.getItem("encodedToken");
 
-  // ************
-
-  // **********
-
-  // **********
-
-  // const prevLocation = location;
-  const handleProductClick = (id) => {
-    navigate(`/product/${id}`)
+  const handleProductClick = (_id) => {
+    navigate(`/product/${_id}`)
   }
 
 

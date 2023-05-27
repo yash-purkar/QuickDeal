@@ -15,11 +15,16 @@ import { SignUp } from "./Pages/SignUp/SignUp";
 import { Checkout } from "./Pages/Checkout/Checkout";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { DataState } from "./Contexts/Data/DataContext";
+import { Loader } from "./Components/Loader/Loader";
 
 function App() {
 
+  const { loading } = DataState()
+
   return (
     <div className="App">
+      {loading && <Loader />}
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -34,7 +39,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mockman" element={<Mockman />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout" element={<RequiresAuth><Checkout /></RequiresAuth>} />
       </Routes>
 
       <ToastContainer position="top-center"

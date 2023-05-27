@@ -1,6 +1,9 @@
 .cart-main {
-  display: grid;
-  place-items: center;
+  /* display: grid;
+  place-items: center; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   margin-top: 3rem;
 }
 
@@ -13,7 +16,6 @@
 
 @media (min-width: 1024px) {
   .cart-main {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0rem 18rem;
+    padding: 1rem 7rem;
   }
 }
