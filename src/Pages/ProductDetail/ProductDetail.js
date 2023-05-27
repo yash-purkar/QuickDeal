@@ -8,32 +8,28 @@ import { DataState } from '../../Contexts/Data/DataContext'
 import { addToCart } from '../../Services/Cart/CartServices'
 import { addToWishlist, removeFromWishlist } from '../../Services/Wishlist/WishlistServices'
 import { loginTocontinue } from '../../Services/Toasts/ToastServices'
-import { getProductDetails } from '../../Services/Product/ProductDetailServices'
 
 export const ProductDetail = () => {
   const { productId } = useParams();
   const [disabledBtn, setDisabledBtn] = useState();
-  const [product, setProduct] = useState();
 
-
-  const { state: { cart, wishlist }, dispatch, setLoading } = DataState();
+  const { state: { products, cart, wishlist }, dispatch } = DataState();
   const navigate = useNavigate();
   const location = useLocation();
 
   const token = localStorage.getItem("encodedToken")
 
-  useEffect(() => {
-    setLoading(true);
-    getProductDetails(productId, setProduct)
-    setTimeout(() => {
-      setLoading(false)
-    }, 250)
-  }, [])
 
-  const handleAddToCart = (viewProduct, dispatch, token, navigate, location) => {
+  const product = products?.find(prod => prod._id === productId) || {};
+  //{ } bcz we can't destructure properties of undefined so {}
+
+  const { _id, image, itemName, isTrending, rating, newPrice, oldPrice, discount, fewLeft, inStock, description, size, delivery_time } = product;
+
+
+  const handleAddToCart = (product, dispatch, token, navigate, location) => {
     if (token) {
       setDisabledBtn(true)
-      addToCart(viewProduct, dispatch, token, navigate, location);
+      addToCart(product, dispatch, token, navigate, location);
       setTimeout(() => {
         setDisabledBtn(false)
       }, 1000)
@@ -44,10 +40,10 @@ export const ProductDetail = () => {
     }
   }
 
-  const handleAddToWishlist = (viewProduct, dispatch, token, navigate, location) => {
+  const handleAddToWishlist = (product, dispatch, token, navigate, location) => {
     if (token) {
       setDisabledBtn(true)
-      addToWishlist(viewProduct, dispatch, token, navigate, location);
+      addToWishlist(product, dispatch, token, navigate, location);
       setTimeout(() => {
         setDisabledBtn(false)
       }, 1000)
@@ -57,16 +53,17 @@ export const ProductDetail = () => {
       loginTocontinue("Login To Continue")
     }
   }
+
 
   return (
     <>
       {product && <div className='product-detail-container flex justify-center align-center wrap'>
         <div className='detail-img-box'>
-          <img src={product.image} alt={product.itemName} className='detail-img' />
-          {product.isTrending && <span className='trending'>Trending</span>}
+          <img src={image} alt={itemName} className='detail-img' />
+          {isTrending && <span className='trending'>Trending</span>}
           {
-            wishlist?.some(prod => prod._id === product._id) ?
-              <span className='like  wishlist-red' onClick={() => removeFromWishlist(product._id, dispatch, token)}>
+            wishlist?.some(prod => prod._id === _id) ?
+              <span className='like  wishlist-red' onClick={() => removeFromWishlist(_id, dispatch, token)}>
                 <AiFillHeart />
               </span>
               :
@@ -81,42 +78,42 @@ export const ProductDetail = () => {
 
           <div className='flex justify-between align-center'>
 
-            <h2 className='font-1-3 header-md'>{product.itemName}</h2>
+            <h2 className='font-1-3 header-md'>{itemName}</h2>
             <div className='detail-star-rating rating-star ' style={{ position: "unset" }}>
               <span><AiOutlineStar /></span>
-              <span>{product.rating}</span>
+              <span>{rating}</span>
             </div>
           </div>
           <div>
-            <span className='new-price sm-fontsize'>₹{product.newPrice}</span>
-            <span className='old-price right-margin sm-fontsize'>₹{product.oldPrice}</span>
-            <span className='discount sm-fontsize'>{product.discount}% OFF</span>
+            <span className='new-price sm-fontsize'>₹{newPrice}</span>
+            <span className='old-price right-margin sm-fontsize'>₹{oldPrice}</span>
+            <span className='discount sm-fontsize'>{discount}% OFF</span>
           </div>
-          {product.fewLeft && <p className='few-left font-extra-sm font-bold-md'> Hurry, Only Few Left!</p>}
+          {fewLeft && <p className='few-left font-extra-sm font-bold-md'> Hurry, Only Few Left!</p>}
           <div>
-            <span className='right-margin font-bold font-sm font-md'>Availability : </span> <span className='in-stock font-md sm-fontsize'>{product.inStock ? "In Stock" : <span className='font-sm font-md' style={{ color: "red" }}>Out Of Stock</span>}</span>
+            <span className='right-margin font-bold font-sm font-md'>Availability : </span> <span className='in-stock font-md sm-fontsize'>{inStock ? "In Stock" : <span className='font-sm font-md' style={{ color: "red" }}>Out Of Stock</span>}</span>
           </div>
           <div>
             <span className='right-margin font-sm font-bold font-md'>Description : </span>
-            <span className='sm-fontsize line-height'>{product.description}</span>
+            <span className='sm-fontsize line-height'>{description}</span>
           </div>
           <div>
             <span className='right-margin font-bold font-sm font-md'>Size :</span>
-            <span className='sm-fontsize'>{product.size}</span>
+            <span className='sm-fontsize'>{size}</span>
           </div>
           <div>
             <span className='right-margin font-bold font-sm font-md'>Delivery : </span>
-            <span className='sm-fontsize'>{product.delivery_time}</span>
+            <span className='sm-fontsize'>{delivery_time}</span>
           </div>
 
           <div>
             {
-              cart?.some(prod => prod._id === product._id) ? <NavLink to="/cart">
+              cart?.some(prod => prod._id === _id) ? <NavLink to="/cart">
                 <button className="go-to-cart">Go To Cart</button></NavLink> :
 
-                <button className={`${product.inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!product.inStock || disabledBtn} onClick={() => handleAddToCart(product, dispatch, token, navigate, location)}>
+                <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock || disabledBtn} onClick={() => handleAddToCart(product, dispatch, token, navigate, location)}>
 
-                  {product.inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}
+                  {inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}
                 </button>
             }
           </div>
