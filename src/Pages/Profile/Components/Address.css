@@ -2,6 +2,7 @@
 .my-addr {
   color: var(--header-color);
   letter-spacing: 1px;
+  font-size: 0.8rem;
 }
 .address-user-name {
   color: var(--primary);
@@ -11,9 +12,10 @@
   color: var(--primary);
   background-color: var(--white);
   border: 1px solid;
-  padding: 0.2rem 0.6rem;
+  padding: 0.2rem 0.4rem;
   margin: 1rem 0rem;
   border-radius: 0.2rem;
+  font-size: 0.6rem;
 }
 
 .address-remove {
@@ -33,6 +35,7 @@
 
 .add-new-address {
   /* background-color: var(--lightgray); */
+  font-size: 0.8rem;
   letter-spacing: 1px;
   color: var(--primary);
   padding-top: 0.2rem;
@@ -40,4 +43,27 @@
 
 .add-new-address:hover {
   color: blue;
+}
+.singleAddr {
+  font-size: 0.9rem;
+}
+.addr-detail {
+  font-size: 0.7rem;
+}
+@media (min-width: 600px) {
+  .my-addr,
+  .add-new-address {
+    font-size: 1.2rem;
+  }
+  .singleAddr {
+    font-size: 1.2rem;
+  }
+  .addr-detail {
+    font-size: 1rem;
+  }
+  .address-edit,
+  .address-remove {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+  }
 }
