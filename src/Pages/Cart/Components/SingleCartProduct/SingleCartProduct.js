@@ -10,7 +10,8 @@ import { AiFillHeart } from 'react-icons/ai';
 
 export const SingleCartProduct = ({ product }) => {
   const { _id, image, qty, itemName, oldPrice, newPrice, discount } = product
-  const { dispatch, state: { wishlist, token } } = DataState()
+  const { dispatch, state: { wishlist } } = DataState();
+  const token = localStorage.getItem("encodedToken")
 
   const [disabledBtn, setDisabledBtn] = useState(false);
 

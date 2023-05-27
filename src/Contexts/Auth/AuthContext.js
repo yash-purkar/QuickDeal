@@ -1,6 +1,5 @@
-import React, { createContext, useContext, useReducer, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 // import { authInitialState, authReducer } from "../../Reducers/AuthReducer";
-import { useLocation, useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 

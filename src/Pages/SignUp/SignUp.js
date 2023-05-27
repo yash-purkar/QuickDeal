@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { v4 as uuid } from "uuid";
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import './SignUp.css'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import { BiShow, BiHide } from 'react-icons/bi'

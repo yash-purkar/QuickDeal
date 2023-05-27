@@ -12,10 +12,11 @@ export const loginUser = async (email, password, dispatch, setIsLoggedIn, naviga
     const { encodedToken, foundUser } = data;
 
     if (response.status === 200) {
-      localStorage.clear()
-      dispatch({ type: "encodedToken", payload: encodedToken })
+      // dispatch({ type: "encodedToken", payload: encodedToken })
 
-      localStorage.setItem("user", JSON.stringify(foundUser))
+      localStorage.clear()
+      localStorage.setItem("user", JSON.stringify(foundUser));
+      localStorage.setItem("encodedToken", encodedToken);
 
       success("Login Succesful")
       setIsLoggedIn(true)
@@ -46,9 +47,10 @@ export const loginAsGuest = async (creds, dispatch, setIsLoggedIn, navigate, pre
     const { foundUser, encodedToken } = data;
 
     if (response.status === 200 || response.status === 201) {
+
       localStorage.clear()
-      dispatch({ type: "SET_TOKEN", payload: encodedToken })
       localStorage.setItem("user", JSON.stringify(foundUser))
+      localStorage.setItem("encodedToken", encodedToken);
 
       setIsLoggedIn(true)
       success("Login Succesful")
@@ -77,11 +79,10 @@ export const signUpUser = async (user, dispatch, setIsLoggedIn, navigate) => {
     const { createdUser, encodedToken } = data;
     console.log(response)
     if (response.status === 200 || response.status === 201) {
+
       localStorage.clear();
-
-      dispatch({ type: "SET_TOKEN", payload: encodedToken })
-
-      localStorage.setItem("user", JSON.stringify(createdUser))
+      localStorage.setItem("user", JSON.stringify(createdUser));
+      localStorage.setItem("encodedToken", encodedToken);
 
       setIsLoggedIn(true)
       navigate("/productlisting")

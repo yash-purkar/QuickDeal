@@ -1,5 +1,4 @@
 export const initialState = {
-  token: "",
   filters: {
     searchValue: null,
     priceRange: null,
@@ -70,13 +69,6 @@ export const dataReducer = (state, action) => {
       ...state, wishlist: action.payload
     }
 
-    case "SET_TOKEN": return {
-      ...state, token: action.payload
-    }
-
-    case "CLEAR_TOKEN": return {
-      ...state, token: null
-    }
     default: return state;
   }
 }

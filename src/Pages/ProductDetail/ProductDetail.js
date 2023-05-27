@@ -16,9 +16,11 @@ export const ProductDetail = () => {
   const [disabledBtn, setDisabledBtn] = useState();
 
 
-  const { state: { cart, wishlist, token }, dispatch, setLoading } = DataState();
+  const { state: { cart, wishlist }, dispatch, setLoading } = DataState();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const token = localStorage.getItem("encodedToken")
 
 
   useEffect(() => {

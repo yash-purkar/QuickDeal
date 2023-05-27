@@ -3,19 +3,19 @@ import { AiOutlineMenu, AiOutlineShoppingCart, AiOutlineHeart, AiOutlineUser } f
 import { MdOutlineLocalMall } from 'react-icons/md'
 import { RxCross1 } from 'react-icons/rx'
 import './Navbar.css'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { DataState } from '../../Contexts/Data/DataContext'
 import logo from '../Header/Images/logo.png'
 
 
 export const Navbar = () => {
   const [menuClass, setMenuClass] = useState("hide-menu");
-  const { state: { cart, wishlist } } = DataState()
+  const { state: { products, cart, wishlist }, dispatch } = DataState()
 
   const navigate = useNavigate();
 
 
-  const { state: { products, token }, dispatch } = DataState()
+  const token = localStorage.getItem("encodedToken");
 
   const handleMenuClick = (data) => {
     const updatedDisplay = data === "hide" ? "hide-menu" : "menus";
