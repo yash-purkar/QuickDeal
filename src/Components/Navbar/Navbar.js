@@ -5,12 +5,11 @@ import { RxCross1 } from 'react-icons/rx'
 import './Navbar.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { DataState } from '../../Contexts/Data/DataContext'
-import logo from '../Header/Images/logo.png'
 
 
 export const Navbar = () => {
   const [menuClass, setMenuClass] = useState("hide-menu");
-  const { state: { products, cart, wishlist }, dispatch } = DataState()
+  const { state: { cart, wishlist }, dispatch } = DataState()
 
   const navigate = useNavigate();
 
@@ -29,13 +28,11 @@ export const Navbar = () => {
 
 
 
-  const allProductNames = products.reduce((acc, curr) => acc.includes(curr.itemName) ? acc : [...acc, curr.itemName], [])
-
   return (
     <>
       <nav className='navigation flex justify-between align-center'>
         <div className='navigation-header flex '>
-          <NavLink className="header-link flex align-center" to="/" > <span><img src={logo} alt="icon" className='brand-icon' /></span> <span>QuickDeal</span></NavLink>
+          <NavLink className="header-link flex align-center" to="/" > <span><img src="https://i.ibb.co/f4VvsJx/logo.png" alt="icon" className='brand-icon' /></span> <span>QuickDeal</span></NavLink>
         </div>
 
 
@@ -43,12 +40,6 @@ export const Navbar = () => {
           <input type="search" list="search-products" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
           <span></span>
         </div>
-
-        {/* <datalist id='search-products' >
-          {
-            allProductNames.map(name => <option key={name}>{name}</option>)
-          }
-        </datalist> */}
 
         {
           menuClass === "hide-menu" ? <div className='navigation-menu' onClick={() => handleMenuClick()}><AiOutlineMenu /></div> : <div className='navigation-menu' onClick={() => handleMenuClick("hide")}><RxCross1 /></div>

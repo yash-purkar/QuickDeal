@@ -1,6 +1,5 @@
 import React from 'react'
 import './Header.css'
-import headerImg from './Images/head-img-3.png'
 import { NavLink } from 'react-router-dom'
 export const Header = () => {
   return (
@@ -14,7 +13,7 @@ export const Header = () => {
           <div className='toggle-div'>
 
             <div className='circle'></div>
-            <img src={headerImg} alt="header" className='img' />
+            <img src="https://i.ibb.co/3shx3ZX/head-img-3.png" alt="header" className='img' />
           </div>
         </div>
 
