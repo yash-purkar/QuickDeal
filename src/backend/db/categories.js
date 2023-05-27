@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
-import MensCategory from './Images/category-1.png'
-import WomensCategory from './Images/category-2.png'
-import KidsCategory from './Images/category-3.png'
+import MensCategory from './Images/category-1.jpg'
+import WomensCategory from './Images/category-2.jpg'
+import KidsCategory from './Images/category-3.jpg'
 /**
  * Category Database can be added here.
  * You can add category of your wish with different attributes
