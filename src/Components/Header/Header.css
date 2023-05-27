@@ -92,6 +92,7 @@
 
   .header .img {
     width: 450px;
+    background: none;
     position: absolute;
     right: 0px;
     bottom: -0.2rem;
