@@ -1,5 +1,5 @@
 .cart-product-card {
-  width: 19rem;
+  width: 18rem;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
   padding: 1.2rem 0rem;
@@ -119,7 +119,7 @@
 
 @media (min-width: 720px) {
   .cart-product-card {
-    width: 22rem;
+    width: 20rem;
   }
   .cart-item-name {
     font-size: 1.3rem;
@@ -157,5 +157,11 @@
   .move-to-wishlist,
   .already-in-wishlist {
     font-size: 1.17rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cart-product-card {
+    width: 24rem;
   }
 }
