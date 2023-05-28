@@ -17,6 +17,7 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { DataState } from "./Contexts/Data/DataContext";
 import { Loader } from "./Components/Loader/Loader";
+import { ErrorPage } from "./Pages/ErrorPage/ErrorPage";
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/checkout" element={<RequiresAuth><Checkout /></RequiresAuth>} />
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
 
       <ToastContainer position="top-center"

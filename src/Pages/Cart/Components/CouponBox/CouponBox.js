@@ -19,7 +19,7 @@ export const CouponBox = ({ setIsHideCouponBox, }) => {
   }
 
   const handleApplyCoupon = () => {
-    if (couponDetails.value) {
+    if (couponDetails.name) {
       setIsHideCouponBox(true)
       setCouponInfo(couponDetails)
       success("Coupon Applied")

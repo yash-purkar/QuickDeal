@@ -63,7 +63,7 @@
 @media (min-width: 720px) {
   .header {
     justify-content: space-around;
-    padding: 4rem 0.3rem;
+    padding: 2rem 0.3rem;
     margin-bottom: 1rem;
   }
   .header-left .sale-on {
@@ -103,7 +103,7 @@
 @media (min-width: 1024px) {
   .header {
     justify-content: flex-start;
-    padding: 5rem;
+    padding: 3rem;
   }
   .header-left .sale-on {
     font-size: 1.25rem;
