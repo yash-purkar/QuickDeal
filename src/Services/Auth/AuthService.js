@@ -12,7 +12,6 @@ export const loginUser = async (email, password, dispatch, setIsLoggedIn, naviga
     const { encodedToken, foundUser } = data;
 
     if (response.status === 200) {
-      // dispatch({ type: "encodedToken", payload: encodedToken })
 
       localStorage.clear()
       localStorage.setItem("user", JSON.stringify(foundUser));

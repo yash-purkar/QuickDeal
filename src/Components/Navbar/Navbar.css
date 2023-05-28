@@ -110,6 +110,9 @@
 }
 
 @media (min-width: 720px) {
+  .navigation {
+    margin: 0rem;
+  }
   .header-link {
     flex-direction: row;
   }

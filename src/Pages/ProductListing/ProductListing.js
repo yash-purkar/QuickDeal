@@ -47,8 +47,9 @@ export const ProductListing = () => {
       <div className='main-product-listing'>
         <Filters />
         <div className='products-container flex justify-center align-start wrap'>
+          {transformData()?.length === 0 && products?.length > 0 && <h1>Product Not Found</h1>}
           {
-            transformData()?.length === 0 ? <h1>Product Not Found</h1> : <div className="productlisting-header">
+            transformData()?.length > 0 && <div className="productlisting-header">
               <p className='all-products-heading'>{searchValue ? "Search Results for" : "Showing All Products"} </p>
               <p className='products-count'>{searchValue ? <strong>{searchValue}</strong> : `(${transformData().length} products)`}</p>
             </div>
