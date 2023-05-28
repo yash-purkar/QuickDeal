@@ -116,6 +116,9 @@
 .padding-1 {
   padding: 0.5rem;
 }
+.top-margin-5 {
+  margin-top: 5rem;
+}
 
 .bottom-border-1 {
   border-bottom: 1px solid #b9b9b9;
@@ -130,7 +133,9 @@
 .padding-top-05 {
   padding-top: 0.5rem;
 }
-
+.color-primary {
+  color: var(--primary);
+}
 .underline {
   text-decoration: underline;
 }

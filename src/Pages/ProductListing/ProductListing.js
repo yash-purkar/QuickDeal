@@ -3,6 +3,7 @@ import { Filters } from './Filters/Filters'
 import { DataState } from '../../Contexts/Data/DataContext'
 import { SingleProduct } from '../../Components/SingleProdcut/SingleProduct'
 import './ProductListing.css';
+import notFound from '../../assets/prodNotFound.svg'
 
 
 export const ProductListing = () => {
@@ -47,7 +48,10 @@ export const ProductListing = () => {
       <div className='main-product-listing'>
         <Filters />
         <div className='products-container flex justify-center align-start wrap'>
-          {transformData()?.length === 0 && products?.length > 0 && <h1>Product Not Found</h1>}
+          {transformData()?.length === 0 && products?.length > 0 && <div className='top-margin-5'>
+            <img src={notFound} alt="not found" className='illustrations' />
+            <h2 className='color-primary letter-spacing'>Product Not Found</h2>
+          </div>}
           {
             transformData()?.length > 0 && <div className="productlisting-header">
               <p className='all-products-heading'>{searchValue ? "Search Results for" : "Showing All Products"} </p>
