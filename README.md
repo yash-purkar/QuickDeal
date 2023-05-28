@@ -8,8 +8,8 @@
 ## How to install and run locally ?
 
 ```
-$ git clone https://github.com/yash-purkar/quick-deal-ecommerce-app.git
-$ cd quick-deal-ecommerce-app
+$ git clone https://github.com/yash-purkar/QuickDeal.git
+$ cd QuickDeal
 $ npm install
 $ npm start
 ```
