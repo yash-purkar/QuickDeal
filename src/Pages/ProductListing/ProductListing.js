@@ -54,7 +54,7 @@ export const ProductListing = () => {
           </div>}
           {
             transformData()?.length > 0 && <div className="productlisting-header">
-              <p className='all-products-heading'>{searchValue ? "Search Results for" : "Showing All Products"} </p>
+              <p className='all-products-heading letter-spacing'>{searchValue ? "Search Results for" : "Showing All Products"} </p>
               <p className='products-count'>{searchValue ? <strong>{searchValue}</strong> : `(${transformData().length} products)`}</p>
             </div>
           }
