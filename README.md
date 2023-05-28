@@ -8,8 +8,8 @@
 ## How to install and run locally ?
 
 ```
-$ git clone https://github.com/yash-purkar/quick-deal-ecommerce-app.git
-$ cd quick-deal-ecommerce-app
+$ git clone https://github.com/yash-purkar/QuickDeal.git
+$ cd QuickDeal
 $ npm install
 $ npm start
 ```
@@ -18,20 +18,26 @@ $ npm start
 
 - Home Page
 - Product Listing Page
-- Filter and sort products
-- Search Product
-- Individual Product Page
-- Cart Management
+- Single Product Page
+- Filters by:
+  - Price
+  - Category
+  - Sizes
+  - Ratings
+- Search
 - Wishlist Management
-- Address Management
-- Checkout Page
-- Payment Gateway Integration
+- Cart Management
+- Search
+- Loading & Alerts
 - Authentication:
 
-  - User Login
-  - User Signup
-  - Login as Guest
+  - Sign-up
+  - Login
+  - Logout
 
+- Address Management
+- Checkout
+- Payment Gateway Integration
 - Fully Responsive
 - Toasts
 
