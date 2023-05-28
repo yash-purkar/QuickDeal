@@ -5,16 +5,22 @@ import { DataState } from '../../Contexts/Data/DataContext';
 import { AddressState } from '../../Contexts/Address/AddressContext';
 import { warning } from '../../Services/Toasts/ToastServices';
 import { useNavigate } from 'react-router-dom';
+import { removeFromCart } from '../../Services/Cart/CartServices';
 
 export const Checkout = () => {
-  const { state: { cart } } = DataState();
-  const { orderState: { price, discount, couponDiscount, totalAmount } } = OrderState();
+  const { state: { cart }, dispatch } = DataState();
+  const { orderState: { price, discount, couponDiscount, totalAmount }, orderDispatch } = OrderState();
+  const [isOrderPlaced, setIsOrderPlaced] = useState(false);
 
   const navigate = useNavigate();
 
   const { addressState: { addresses } } = AddressState()
   const [selectedAddress, setSelectedAddress] = useState(addresses[0]);
   const { name, street, cityName, state, country, postalCode, mobileNumber } = addresses.length > 0 && selectedAddress;
+
+  const token = localStorage.getItem("encodedToken");
+
+  const cartItemsId = cart.reduce((acc, curr) => [...acc, curr._id], [])
 
   const handlePlaceOrder = () => {
     if (addresses.length > 0) {
@@ -26,7 +32,15 @@ export const Checkout = () => {
         name: "QuickDeal",
         description: "For testing purpose",
         handler: function (response) {
-          alert(response.razorpay_payment_id);
+          localStorage.setItem("payment_id", response.razorpay_payment_id);
+
+
+          setIsOrderPlaced(true);
+
+          setTimeout(() => {
+            navigate("/orderSummary")
+          }, 3000)
+
         },
         prefill: {
           name: "Yash Purkar",
@@ -43,6 +57,7 @@ export const Checkout = () => {
       }
       var pay = new window.Razorpay(options);
       pay.open();
+
     }
 
     else {
@@ -51,102 +66,113 @@ export const Checkout = () => {
         navigate("/profile")
       }, 2000)
     }
+
+    orderDispatch({ type: "ORDERED_ITEMS", payload: cart })
+    orderDispatch({ type: "SET_SELECTED_ADDR", payload: selectedAddress })
+    cartItemsId.forEach(id => {
+      removeFromCart(id, dispatch, token)
+    });
+
   }
   return (
-    <div className='checkout-main-container flex justify-around  wrap'>
-      {/* addr */}
-      <div className='checkout-addresses '>
-        <>
-          {
-            addresses.length > 0 ?
-              <>{addresses?.map((addr) => {
-                const { id, name, street, cityName, state, country, postalCode, mobileNumber } = addr
-                return (
-                  <div key={id} className='single-checkout-address cursor-pointer' onClick={() => setSelectedAddress(addr)}>
-                    <label htmlFor="" className='checkout-addr-name'>
-                      <input type="radio" name='address' checked={selectedAddress.id === id} />
-                      <span className='left-padding-sm'>{name}</span>
-                    </label>
-                    <div className='left-padding-sm'>
-                      <p>{street}, {cityName}, {state}, {postalCode}</p>
-                      <p>{country}</p>
-                      <p>Mobile Number: {mobileNumber}</p>
-                    </div>
-                  </div>
-                )
-              })}</>
-              : <h1 className='select-address-heading letter-spacing'>Add The Address First</h1>}
+    <>
+      {
+        isOrderPlaced ? <h1 className='text-center top-margin-5'>Your Ordered Placed</h1> : <div className='checkout-main-container flex justify-around  wrap'>
+          {/* addr */}
+          <div className='checkout-addresses '>
+            <>
+              {
+                addresses.length > 0 ?
+                  <>{addresses?.map((addr) => {
+                    const { id, name, street, cityName, state, country, postalCode, mobileNumber } = addr
+                    return (
+                      <div key={id} className='single-checkout-address cursor-pointer' onClick={() => setSelectedAddress(addr)}>
+                        <label htmlFor="" className='checkout-addr-name'>
+                          <input type="radio" name='address' checked={selectedAddress.id === id} />
+                          <span className='left-padding-sm'>{name}</span>
+                        </label>
+                        <div className='left-padding-sm'>
+                          <p>{street}, {cityName}, {state}, {postalCode}</p>
+                          <p>{country}</p>
+                          <p>Mobile Number: {mobileNumber}</p>
+                        </div>
+                      </div>
+                    )
+                  })}</>
+                  : <h1 className='select-address-heading letter-spacing'>Add The Address First</h1>}
 
-        </>
-      </div>
-      {/*  */}
+            </>
+          </div>
+          {/*  */}
 
-      <div className='checkout-container flex direction-column justify-between'>
-        <h3 className='text-uppercase border-top-1  padding-1 font-1 padding-left-0 text-center bottom-border-1 color-primary letter-spacing'>order details</h3>
-        <div className='flex justify-between'>
-          <p className='font-bold top-padding-08  bottom-margin-md'>Item</p>
-          <p className='font-bold top-padding-08  bottom-margin-md '>Qty</p>
+          <div className='checkout-container flex direction-column justify-between'>
+            <h3 className='text-uppercase border-top-1  padding-1 font-1 padding-left-0 text-center bottom-border-1 color-primary letter-spacing'>order details</h3>
+            <div className='flex justify-between'>
+              <p className='font-bold top-padding-08  bottom-margin-md'>Item</p>
+              <p className='font-bold top-padding-08  bottom-margin-md '>Qty</p>
+            </div>
+
+            {/*  */}
+            <div className='padding-bottom-1'>
+
+              {
+                cart.map(prod => <div key={prod._id} className="flex justify-between">
+                  <p>{prod.itemName}</p>
+                  <p>{prod.qty}</p>
+                </div>)
+              }
+
+            </div>
+            {/*  */}
+            <h3 className='text-uppercase border-top-1  margin-bottom-1 padding-1 font-1 padding-left-0 text-center bottom-border-1 color-primary letter-spacing'>price details</h3>
+
+            {/* */}
+            <div className='padding-bottom-1 '>
+
+              <div className='flex justify-between'>
+                <p>Price({cart.length}) </p>
+                <p>₹ {price}</p>
+              </div>
+
+              <div className='flex justify-between'>
+                <p>Discount</p>
+                <p>-₹ {discount}</p>
+              </div>
+
+              <div className='flex justify-between'>
+                <p>Delievery Charges</p>
+                <p className='text-uppercase'>free</p>
+              </div>
+
+              <div className='flex justify-between'>
+                <p>Coupon Discount</p>
+                <p>-₹ {couponDiscount}</p>
+              </div>
+
+              <div className='flex justify-between top-margin font-bold checkout-total letter-spacing'>
+                <p>Total Amount</p>
+                <p>₹ {totalAmount}</p>
+              </div>
+            </div>
+
+            {/*  */}
+
+            <h3 className='text-uppercase border-top-1  margin-bottom-1 padding-1 font-1 padding-left-0 text-center bottom-border-1 color-primary letter-spacing'>deliver to</h3>
+
+            {addresses?.length > 0 && <div className='delivery-address margin-bottom-1 font-sm'>
+              <p className='font-1 address-name font-bold'>{name}</p>
+              <p>{street}, {cityName}, {state}, - {postalCode}</p>
+              <p>{country}</p>
+              <p>Mobile Number :{mobileNumber}</p>
+            </div>}
+
+
+
+            <button className='place-order-btn cursor-pointer' onClick={handlePlaceOrder}>Place Order</button>
+
+          </div>
         </div>
-
-        {/*  */}
-        <div className='padding-bottom-1'>
-
-          {
-            cart.map(prod => <div key={prod._id} className="flex justify-between">
-              <p>{prod.itemName}</p>
-              <p>{prod.qty}</p>
-            </div>)
-          }
-
-        </div>
-        {/*  */}
-        <h3 className='text-uppercase border-top-1  margin-bottom-1 padding-1 font-1 padding-left-0 text-center bottom-border-1 color-primary letter-spacing'>price details</h3>
-
-        {/* */}
-        <div className='padding-bottom-1 '>
-
-          <div className='flex justify-between'>
-            <p>Price({cart.length}) </p>
-            <p>₹ {price}</p>
-          </div>
-
-          <div className='flex justify-between'>
-            <p>Discount</p>
-            <p>-₹ {discount}</p>
-          </div>
-
-          <div className='flex justify-between'>
-            <p>Delievery Charges</p>
-            <p className='text-uppercase'>free</p>
-          </div>
-
-          <div className='flex justify-between'>
-            <p>Coupon Discount</p>
-            <p>-₹ {couponDiscount}</p>
-          </div>
-
-          <div className='flex justify-between top-margin font-bold checkout-total letter-spacing'>
-            <p>Total Amount</p>
-            <p>₹ {totalAmount}</p>
-          </div>
-        </div>
-
-        {/*  */}
-
-        <h3 className='text-uppercase border-top-1  margin-bottom-1 padding-1 font-1 padding-left-0 text-center bottom-border-1 color-primary letter-spacing'>deliver to</h3>
-
-        {addresses?.length > 0 && <div className='delivery-address margin-bottom-1 font-sm'>
-          <p className='font-1 address-name font-bold'>{name}</p>
-          <p>{street}, {cityName}, {state}, - {postalCode}</p>
-          <p>{country}</p>
-          <p>Mobile Number :{mobileNumber}</p>
-        </div>}
-
-
-
-        <button className='place-order-btn cursor-pointer' onClick={handlePlaceOrder}>Place Order</button>
-
-      </div>
-    </div>
+      }
+    </>
   )
 }
