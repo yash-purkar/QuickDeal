@@ -84,8 +84,13 @@ export const Checkout = () => {
     <>
       {
         isOrderPlaced ? <div>
-          <h1 className='top-margin-5 text-center letter-spacing margin-bottom-1 order-succesfully'>Order Placed Successfully</h1>
-          <p className='text-center font-bold'>Thank you for chossing Us</p>
+
+          <div className='truck-gif-box  '>
+            <img src="https://cdn.dribbble.com/users/2140642/screenshots/4281297/rf_sucess_v3.gif" alt="gif" className='truck-gif top-margin-5 margin-bottom-1' />
+          </div>
+          <h1 className='text-center letter-spacing margin-bottom-1 order-succesfully'>Order Placed Successfully</h1>
+          <p className='letter-spacing text-center order-will-deliever'>Your order will be delievered in 3 working days</p>
+
         </div>
           :
           <div className='checkout-main-container flex justify-around  wrap'>

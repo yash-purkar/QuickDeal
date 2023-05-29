@@ -56,6 +56,21 @@
 .order-succesfully {
   color: var(--green);
 }
+.truck-gif-box {
+  width: 200px;
+  margin: auto;
+}
+
+.truck-gif {
+  width: 200px;
+  border-radius: 1rem;
+}
+
+.order-will-deliever {
+  font-size: 1.5rem;
+  color: var(--green);
+}
+
 @media (min-width: 600px) {
   .checkout-main-container {
     margin: 1rem 5rem;
