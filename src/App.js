@@ -18,6 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { DataState } from "./Contexts/Data/DataContext";
 import { Loader } from "./Components/Loader/Loader";
 import { ErrorPage } from "./Pages/ErrorPage/ErrorPage";
+import { OrderSummary } from "./Pages/OrderSummary/OrderSummary";
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/checkout" element={<RequiresAuth><Checkout /></RequiresAuth>} />
+        <Route path="/orderSummary" element={<OrderSummary />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
 

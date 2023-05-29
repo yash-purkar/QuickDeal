@@ -68,7 +68,6 @@ export const dataReducer = (state, action) => {
     case "WISHLIST_OPERATIONS": return {
       ...state, wishlist: action.payload
     }
-
     default: return state;
   }
 }
