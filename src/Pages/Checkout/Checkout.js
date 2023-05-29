@@ -39,7 +39,7 @@ export const Checkout = () => {
 
           setTimeout(() => {
             navigate("/orderSummary")
-          }, 3000)
+          }, 2000)
 
         },
         prefill: {
