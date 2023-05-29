@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { AuthState } from '../../Contexts/Auth/AuthContext'
 import './Profile.css';
 import { Address } from './Components/Address';
+import { NavLink } from 'react-router-dom';
 
 export const Profile = () => {
   const [active, setActive] = useState("profile");
@@ -40,6 +41,7 @@ export const Profile = () => {
                 <p className='email-label'>Email</p>
                 <p className='user-email'>{email}</p>
               </div>
+              <NavLink to="/orderSummary" className="letter-spacing font-bold order-details-link underline">Order History</NavLink>
               <button className='logout-btn cursor-pointer' onClick={handleLogOut}>Logout</button>
             </>
 

@@ -43,6 +43,20 @@
   background-color: var(--primary);
 }
 
+.shop-now {
+  display: inline-block;
+  background-color: var(--primary);
+  border: 1px solid var(--white);
+  padding: 0.4rem 0.7rem;
+  color: var(--white);
+  letter-spacing: 1.5px;
+}
+.shop-now:hover {
+  color: var(--primary);
+  background-color: var(--white);
+  border: 1px solid var(--primary);
+}
+
 @media (min-width: 600px) {
   .order-summary-container {
     flex-direction: row;
