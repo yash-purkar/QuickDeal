@@ -20,10 +20,10 @@ export const Checkout = () => {
 
   const token = localStorage.getItem("encodedToken");
 
-  const cartItemsId = cart.reduce((acc, curr) => [...acc, curr._id], [])
+  const cartItemsId = cart?.reduce((acc, curr) => [...acc, curr._id], [])
 
   const handlePlaceOrder = () => {
-    if (addresses.length > 0) {
+    if (addresses?.length > 0) {
       var options = {
         key: "rzp_test_eIfzqLCuOyYMmK",
         key_secret: "key_secret",
@@ -33,7 +33,6 @@ export const Checkout = () => {
         description: "For testing purpose",
         handler: function (response) {
           localStorage.setItem("payment_id", response.razorpay_payment_id);
-
 
           setIsOrderPlaced(true);
 
