@@ -62,19 +62,19 @@ export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }
         <div className='address-form-container flex direction-column '>
           <h3 className='text-center margin-bottom-1'>Add New Address</h3>
 
-          <input type="text" placeholder='Name' className='address-input padding-1' name='name' onChange={handleInputChange} value={name} />
+          <input type="text" placeholder='Name' className='address-input padding-1' name='name' onChange={handleInputChange} value={name} autoComplete='off' />
 
-          <input type="text" placeholder='House No. Street' className='address-input padding-1' name="street" onChange={handleInputChange} value={street} />
+          <input type="text" placeholder='House No. Street' className='address-input padding-1' name="street" onChange={handleInputChange} value={street} autoComplete='off' />
 
-          <input type="text" placeholder='City' className='address-input padding-1' name='cityName' onChange={handleInputChange} value={cityName} />
+          <input type="text" placeholder='City' className='address-input padding-1' name='cityName' onChange={handleInputChange} value={cityName} autoComplete='off' />
 
-          <input type="text" placeholder='State' className='address-input padding-1' name='state' onChange={handleInputChange} value={state} />
+          <input type="text" placeholder='State' className='address-input padding-1' name='state' onChange={handleInputChange} value={state} autoComplete='off' />
 
-          <input type="text" placeholder='Country' className='address-input padding-1' name='country' onChange={handleInputChange} value={country} />
+          <input type="text" placeholder='Country' className='address-input padding-1' name='country' onChange={handleInputChange} value={country} autoComplete='off' />
 
-          <input type="number" placeholder='Postal Code' className='address-input padding-1' name='postalCode' onChange={handleInputChange} value={postalCode} />
+          <input type="number" placeholder='Postal Code' className='address-input padding-1' name='postalCode' onChange={handleInputChange} value={postalCode} autoComplete='off' />
 
-          <input type="number" placeholder='Mobile Number' className='address-input padding-1' name='mobileNumber' onChange={handleInputChange} value={mobileNumber} />
+          <input type="number" placeholder='Mobile Number' className='address-input padding-1' name='mobileNumber' onChange={handleInputChange} value={mobileNumber} autoComplete='off' />
 
           <div className='flex wrap justify-around top-padding-08'>
 

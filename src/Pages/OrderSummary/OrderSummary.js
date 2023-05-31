@@ -11,7 +11,7 @@ export const OrderSummary = () => {
     <>
 
       {
-        orderedItems.length === 0 ? <div className='flex align-center direction-column top-margin-5'>
+        orderedItems?.length === 0 ? <div className='flex align-center direction-column top-margin-5'>
           <h2 className='letter-spacing margin-bottom-1'>Look's like your order is empty</h2>
           <NavLink to="/productlisting"><button className='shop-now cursor-pointer'>Shop Now</button></NavLink>
         </div>
