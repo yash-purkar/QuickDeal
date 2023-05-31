@@ -19,7 +19,9 @@ export const loginUser = async (email, password, dispatch, setIsLoggedIn, naviga
 
       success("Login Succesful")
       setIsLoggedIn(true)
-      navigate(prevLocation)
+      if (prevLocation) navigate(prevLocation)
+      else navigate("/productlisting")
+      // console.log(prevLocation)
     }
 
     else {
@@ -53,7 +55,9 @@ export const loginAsGuest = async (creds, dispatch, setIsLoggedIn, navigate, pre
 
       setIsLoggedIn(true)
       success("Login Succesful")
-      navigate(prevLocation)
+      if (prevLocation) navigate(prevLocation)
+      else navigate("/productlisting")
+      //for signup
     }
     else {
       warning("Data Not Found")
