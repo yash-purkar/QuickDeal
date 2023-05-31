@@ -36,10 +36,12 @@ export const Checkout = () => {
 
           setIsOrderPlaced(true);
 
+          cartItemsId.forEach(id => {
+            removeFromCart(id, dispatch, token)
+          });
           setTimeout(() => {
             navigate("/orderSummary")
           }, 2000)
-
         },
         prefill: {
           name: "Yash Purkar",
@@ -68,14 +70,11 @@ export const Checkout = () => {
 
     orderDispatch({ type: "ORDERED_ITEMS", payload: cart })
     orderDispatch({ type: "SET_SELECTED_ADDR", payload: selectedAddress })
-    cartItemsId.forEach(id => {
-      removeFromCart(id, dispatch, token)
-    });
 
   }
 
   useEffect(() => {
-    if (cart.length === 0) {
+    if (cart?.length === 0) {
       navigate("/productlisting")
     }
   }, [])
@@ -131,7 +130,7 @@ export const Checkout = () => {
               <div className='padding-bottom-1'>
 
                 {
-                  cart.map(prod => <div key={prod._id} className="flex justify-between">
+                  cart?.map(prod => <div key={prod._id} className="flex justify-between">
                     <p>{prod.itemName}</p>
                     <p>{prod.qty}</p>
                   </div>)
