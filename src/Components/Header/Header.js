@@ -8,7 +8,8 @@ export const Header = () => {
         <div className='header-left'>
           <p className='sale-on'>summer sale is on</p>
           <h3 className='header-title'>make your fashion more perfect</h3>
-          <p className='header-desc'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro quas sunt nam quaerat.</p>
+          <p className='header-desc letter-spacing'>
+            Shop the latest trends, elevate your style with our intuitive clothing web app.</p>
           <NavLink to='/productlisting' className='exploreMore-link'>Explore More</NavLink>
           <div className='toggle-div'>
 
