@@ -47,3 +47,9 @@ $ npm start
 - Vanilla CSS
 - MockBee for backend
 - Razorpay payment gateway
+
+## **Demo-**
+
+https://github.com/yash-purkar/QuickDeal/assets/109805926/024124bc-7b33-400e-9a66-074ee8fe13c5
+
+
