@@ -8,7 +8,7 @@ import emptyWishlist from '../../assets/emptyWishlist.svg'
 
 export const Wishlist = () => {
   const { state: { wishlist } } = DataState();
-  console.log(wishlist)
+
   useEffect(() => {
     window.scrollTo(0, 0)
   })

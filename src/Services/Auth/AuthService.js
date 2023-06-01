@@ -7,7 +7,7 @@ export const loginUser = async (email, password, dispatch, setIsLoggedIn, naviga
       method: "POST",
       body: JSON.stringify({ email, password })
     })
-    console.log(response)
+
     const data = await response.json();
     const { encodedToken, foundUser } = data;
 
@@ -21,7 +21,7 @@ export const loginUser = async (email, password, dispatch, setIsLoggedIn, naviga
       setIsLoggedIn(true)
       if (prevLocation) navigate(prevLocation)
       else navigate("/productlisting")
-      // console.log(prevLocation)
+
     }
 
     else {
@@ -80,7 +80,7 @@ export const signUpUser = async (user, dispatch, setIsLoggedIn, navigate) => {
     });
     const data = await response.json();
     const { createdUser, encodedToken } = data;
-    console.log(response)
+
     if (response.status === 200 || response.status === 201) {
 
       localStorage.clear();
@@ -96,7 +96,6 @@ export const signUpUser = async (user, dispatch, setIsLoggedIn, navigate) => {
     }
 
   } catch (e) {
-    console.log(e)
     failed("Something Went Wrong")
   }
 
