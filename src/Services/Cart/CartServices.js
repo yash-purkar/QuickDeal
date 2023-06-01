@@ -12,7 +12,7 @@ export const addToCart = async (product, dispatch, token, navigate, location) =>
       body: JSON.stringify({ product })
     })
     const data = await response.json();
-    // console.log(data.cart)
+
     dispatch({ type: "CART_OPERATIONS", payload: data.cart });
     navigate(location?.state?.from?.pathname);
     success("Added To Cart");
@@ -52,7 +52,7 @@ export const updateCartItemQty = async (_id, type, dispatch, token) => {
 
     const data = await response.json();
     dispatch({ type: "CART_OPERATIONS", payload: data.cart })
-    console.log(data)
+
   } catch (e) {
     console.log(e)
   }

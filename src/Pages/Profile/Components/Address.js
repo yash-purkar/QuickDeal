@@ -11,7 +11,7 @@ export const Address = () => {
   const handleEdit = (id) => {
     setIsHideForm(false);
     const selectedAddress = addresses.find((addr) => addr.id === id);
-    console.log(selectedAddress)
+
     setSelectedAddrId(selectedAddress.id)
 
     addressDispatch({ type: "SELECT_ADDRESS_TO_EDIT", payload: selectedAddress })
