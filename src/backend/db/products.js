@@ -236,7 +236,7 @@ export const products = [
   {
     _id: "14",
     itemName: "Biba",
-    image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/16931554/2022/5/19/3df0b82b-b769-4199-8859-3db5d63b1f941652959606262TshirtsKookNKeechMenTshirtsKookNKeechMenTshirtsKookNKeechMen1.jpg",
+    image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/11227214/2020/1/8/4d6a32ab-1c19-4fd8-a688-cdc37ee0700e1578462959742-anayna-Women-Black--Beige-Printed-Flared-Maxi-Skirt-26815784-1.jpg",
     description: "A fashionable and versatile skirt for women.",
     rating: 4.2,
     reviews: 13,
