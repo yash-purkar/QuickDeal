@@ -111,7 +111,7 @@ export const ProductDetail = () => {
               cart?.some(product => product._id === _id) && token ? <NavLink to="/cart">
                 <button className="go-to-cart" disabled={disabledBtn}>Go To Cart</button></NavLink> :
 
-                <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock || disabledBtn} onClick={() => handleAddToCart(product, dispatch)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
+                <button className={`${inStock ? "add-to-cart" : "out-of-stock-btn"}`} disabled={!inStock || disabledBtn} onClick={() => handleAddToCart(product, dispatch, token, navigate, location)}>{inStock ? "Add To Cart" : <span className='out-of-stock'>OUT OF STOCK</span>}</button>
             }
 
           </div>
