@@ -31,6 +31,7 @@ export const Checkout = () => {
         currency: "INR",
         name: "QuickDeal",
         description: "For testing purpose",
+
         handler: function (response) {
           localStorage.setItem("payment_id", response.razorpay_payment_id);
 
@@ -48,6 +49,7 @@ export const Checkout = () => {
           orderDispatch({ type: "SET_SELECTED_ADDR", payload: selectedAddress })
 
         },
+
         prefill: {
           name: "Yash Purkar",
           email: "yashpurkar7079@gmail.com",
