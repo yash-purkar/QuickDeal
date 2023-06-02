@@ -39,9 +39,14 @@ export const Checkout = () => {
           cartItemsId.forEach(id => {
             removeFromCart(id, dispatch, token)
           });
+
           setTimeout(() => {
             navigate("/orderSummary")
-          }, 2000)
+          }, 2000);
+
+          orderDispatch({ type: "ORDERED_ITEMS", payload: cart })
+          orderDispatch({ type: "SET_SELECTED_ADDR", payload: selectedAddress })
+
         },
         prefill: {
           name: "Yash Purkar",
@@ -68,8 +73,7 @@ export const Checkout = () => {
       }, 2000)
     }
 
-    orderDispatch({ type: "ORDERED_ITEMS", payload: cart })
-    orderDispatch({ type: "SET_SELECTED_ADDR", payload: selectedAddress })
+
 
   }
 
