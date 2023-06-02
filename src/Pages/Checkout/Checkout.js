@@ -31,6 +31,7 @@ export const Checkout = () => {
         currency: "INR",
         name: "QuickDeal",
         description: "For testing purpose",
+
         handler: function (response) {
           localStorage.setItem("payment_id", response.razorpay_payment_id);
 
@@ -39,10 +40,16 @@ export const Checkout = () => {
           cartItemsId.forEach(id => {
             removeFromCart(id, dispatch, token)
           });
+
           setTimeout(() => {
             navigate("/orderSummary")
-          }, 2000)
+          }, 2000);
+
+          orderDispatch({ type: "ORDERED_ITEMS", payload: cart })
+          orderDispatch({ type: "SET_SELECTED_ADDR", payload: selectedAddress })
+
         },
+
         prefill: {
           name: "Yash Purkar",
           email: "yashpurkar7079@gmail.com",
@@ -68,8 +75,7 @@ export const Checkout = () => {
       }, 2000)
     }
 
-    orderDispatch({ type: "ORDERED_ITEMS", payload: cart })
-    orderDispatch({ type: "SET_SELECTED_ADDR", payload: selectedAddress })
+
 
   }
 
