@@ -17,7 +17,6 @@ export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }
   }
 
 
-
   const handleAdd = () => {
     if (name && street && cityName && state && country && postalCode && mobileNumber) {
       if (selectedAddrId) {

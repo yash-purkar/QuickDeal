@@ -13,15 +13,10 @@ export const ProductListing = () => {
 
   const transformData = () => {
     let filteredData = [...products];
-    if (searchValue) {
-      filteredData = filteredData.filter(product => product.itemName.toLowerCase().includes(searchValue.toLowerCase()))
-    }
     if (priceRange) {
       filteredData = filteredData.filter(product => product.newPrice <= priceRange)
     }
-    if (sort) {
-      filteredData = sort === "RESET" ? filteredData : filteredData.sort((a, b) => sort === "LOW_TO_HIGH" ? a.newPrice - b.newPrice : b.newPrice - a.newPrice)
-    }
+
     if (selectedCategories.length > 0) {
       filteredData = filteredData.filter(prod => selectedCategories.some(category => category === prod.category))
     }
@@ -29,9 +24,19 @@ export const ProductListing = () => {
     if (selectedSizes.length > 0) {
       filteredData = filteredData.filter(prod => selectedSizes.some(size => size === prod.size))
     }
+
     if (rating) {
       filteredData = filteredData.filter(prod => prod.rating >= rating)
     }
+
+    if (sort) {
+      filteredData = sort === "RESET" ? filteredData : filteredData.sort((a, b) => sort === "LOW_TO_HIGH" ? a.newPrice - b.newPrice : b.newPrice - a.newPrice)
+    }
+
+    if (searchValue) {
+      filteredData = filteredData.filter(product => product.itemName.toLowerCase().includes(searchValue.toLowerCase()))
+    }
+
     return filteredData;
   }
 

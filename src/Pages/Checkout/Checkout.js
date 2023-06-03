@@ -74,9 +74,6 @@ export const Checkout = () => {
         navigate("/profile")
       }, 2000)
     }
-
-
-
   }
 
   useEffect(() => {
@@ -185,8 +182,6 @@ export const Checkout = () => {
                 <p>{country}</p>
                 <p>Mobile Number :{mobileNumber}</p>
               </div>}
-
-
 
               <button className='place-order-btn cursor-pointer' onClick={handlePlaceOrder}>Place Order</button>
 

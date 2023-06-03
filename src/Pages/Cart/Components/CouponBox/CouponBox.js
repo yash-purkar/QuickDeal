@@ -13,7 +13,6 @@ export const CouponBox = ({ setIsHideCouponBox, }) => {
     value: couponInfo.value //for checked of radio inputs
   });
 
-
   const handleCancel = () => {
     setIsHideCouponBox(true)
   }

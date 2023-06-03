@@ -33,7 +33,6 @@ export const removeFromCart = async (_id, dispatch, token) => {
     const data = await response.json()
     dispatch({ type: "CART_OPERATIONS", payload: data.cart })
 
-
   } catch (e) {
     console.log(e)
   }

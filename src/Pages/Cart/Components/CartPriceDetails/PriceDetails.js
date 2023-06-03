@@ -17,7 +17,6 @@ export const PriceDetails = ({ cartData, }) => {
 
   const { couponInfo, setCouponInfo } = OrderState();
 
-
   const newPrice = cartData?.reduce((acc, curr) => curr.newPrice * curr.qty + acc, 0);
   const oldPrice = cartData?.reduce((acc, curr) => curr.oldPrice * curr.qty + acc, 0);
 

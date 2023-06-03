@@ -59,13 +59,7 @@ export const OrderSummary = () => {
                       )
                     })
                   }
-
-
-
-
-
                 </div>
-
 
               </div>
 
