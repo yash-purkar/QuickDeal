@@ -92,14 +92,6 @@ export const Filters = () => {
           <span className='display-inline-block bottom-margin-md '>  Reset</span>
         </label>
 
-
-
-
-
-
-
-
-
       </div>
     </div >
   )

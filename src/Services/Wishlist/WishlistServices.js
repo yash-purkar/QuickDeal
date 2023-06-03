@@ -37,7 +37,7 @@ export const removeFromWishlist = async (_id, dispatch, token) => {
     const data = await response.json();
     dispatch({ type: "WISHLIST_OPERATIONS", payload: data.wishlist })
     remove("Removed From Wishlist")
-  } catch (error) {
-
+  } catch (e) {
+    console.log(e)
   }
 }

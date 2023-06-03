@@ -32,7 +32,6 @@ export const DataContextProvider = ({ children }) => {
     } finally {
       setLoading(false)
     }
-
   }
 
 
