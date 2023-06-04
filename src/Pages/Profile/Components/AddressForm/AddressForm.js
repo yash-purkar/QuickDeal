@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AddressForm.css'
 import { AddressState } from '../../../../Contexts/Address/AddressContext';
-import { success } from '../../../../Services/Toasts/ToastServices';
+import { success, warning } from '../../../../Services/Toasts/ToastServices';
 
 export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }) => {
 
@@ -30,7 +30,7 @@ export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }
       setIsHideForm(true);
     }
     else {
-      alert("Fill the details")
+      warning("Please Fill the details")
     }
     addressDispatch({ type: "CLEAR_ADDRESS_DETAILS" })
     setSelectedAddrId(null)
