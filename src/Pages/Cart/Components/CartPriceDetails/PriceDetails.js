@@ -22,12 +22,10 @@ export const PriceDetails = ({ cartData, }) => {
 
   const couponDiscount = ((newPrice * couponInfo.value) / 100);
 
-
   const clearCoupon = () => {
     setCouponInfo({ name: "", value: "" });
     warning("Coupon Removed")
   }
-
 
   const handleCheckOut = () => {
     navigate("/checkout");
@@ -89,11 +87,7 @@ export const PriceDetails = ({ cartData, }) => {
 
       <p className='font-1 sm-margin-bottom saved-price-info'>You will save ₹ {(couponDiscount + oldPrice - newPrice).toFixed()} on this order</p>
 
-
       <button className='checkout-btn  cursor-pointer' onClick={handleCheckOut}>Checkout</button>
-
-
-
 
       {!isHideCouponBox && <CouponBox setIsHideCouponBox={setIsHideCouponBox} />}
     </div>

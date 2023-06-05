@@ -25,8 +25,6 @@ export const Filters = () => {
 
       <div className='filters-box' style={{ display: isFilters ? "flex" : "none" }}>
 
-
-
         <div className='filters-top'>
           <h2>Filters</h2>
           <button onClick={() => dispatch({ type: "CLEAR_ALL_FILTERS" })} className='clear-filters font-1-3'>Clear</button>
@@ -38,7 +36,6 @@ export const Filters = () => {
         <div className='flex justify-between margin-bottom-1 bottom-border-1 padding-bottom-1'>
           {[500, 1000, 1500, 2000].map(price => <p key={price} className={`${priceRange === price && "font-bold"} bottom-margin-md`}>{price}</p>)}
         </div>
-
 
         {/* Categories */}
         <h4 className=' font-1-2  top-margin margin-bottom-1'>Categories</h4>
@@ -71,8 +68,6 @@ export const Filters = () => {
             <span>{item}<AiFillStar className='filter-rating-star' /> & Above</span>
           </label>)}
         </div>
-
-
 
         {/*sort By price */}
         <h4 className='font-1-2  top-margin margin-bottom-1'>Sort By Price</h4>

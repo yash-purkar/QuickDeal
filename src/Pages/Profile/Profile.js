@@ -18,15 +18,12 @@ export const Profile = () => {
   const { firstName, lastName, email } = user;
   return (
     <>
-
       <div className='profile-container flex direction-column'>
-
 
         <div className='profile-nav'>
           <button className={`profile-tab-btn letter-spacing font-1-3 cursor-pointer ${active === "profile" && "active-tab"}`} onClick={() => setActive("profile")}>Profile</button>
           <button className={`profile-tab-btn letter-spacing font-1-3 cursor-pointer ${active === "address" && "active-tab"}`} onClick={() => setActive("address")}>Address</button>
         </div>
-
 
         <div className='profile-card flex direction-column '>
 
@@ -44,9 +41,7 @@ export const Profile = () => {
               <NavLink to="/orderSummary" className="letter-spacing font-bold order-details-link underline">Order History</NavLink>
               <button className='logout-btn cursor-pointer' onClick={handleLogOut}>Logout</button>
             </>
-
               :
-
               <Address />
           }
         </div>

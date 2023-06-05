@@ -54,7 +54,6 @@ export const ProductDetail = () => {
     }
   }
 
-
   return (
     <>
       {product && <div className='product-detail-container flex justify-center align-center wrap'>
@@ -72,7 +71,6 @@ export const ProductDetail = () => {
               </button>
           }
         </div>
-
 
         <div className='product-details flex direction-column justify-between'>
 

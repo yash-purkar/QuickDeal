@@ -50,7 +50,6 @@ export const SingleCartProduct = ({ product }) => {
     }, 1000)
   }
 
-
   return (
     <div className="cart-product-card ">
       <div className="cart-product-details">

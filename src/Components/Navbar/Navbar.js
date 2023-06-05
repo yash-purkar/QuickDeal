@@ -13,7 +13,6 @@ export const Navbar = () => {
 
   const navigate = useNavigate();
 
-
   const token = localStorage.getItem("encodedToken");
 
   const handleMenuClick = (data) => {
@@ -26,15 +25,12 @@ export const Navbar = () => {
     dispatch({ type: "SEARCH_PRODUCT", payload: e.target.value })
   }
 
-
-
   return (
     <>
       <nav className='navigation flex justify-between align-center'>
         <div className='navigation-header flex '>
           <NavLink className="header-link flex align-center" to="/" > <span><img src="https://i.ibb.co/f4VvsJx/logo.png" alt="icon" className='brand-icon' /></span> <span>QuickDeal</span></NavLink>
         </div>
-
 
         <div className='search-box'>
           <input type="search" list="search-products" className='search-bar' placeholder='Search Product' onChange={handleSearchProduct} />
@@ -46,8 +42,6 @@ export const Navbar = () => {
         }
 
         <ul className={menuClass}>
-
-
           <li className='menu-item'>
             <NavLink className="nav-link" to="/productlisting"><MdOutlineLocalMall /></NavLink>
           </li>
@@ -57,12 +51,10 @@ export const Navbar = () => {
         </ul>
 
         <ul className='menus-md' >
-
           <li className='menu-item'><NavLink className="nav-link" to="/productlisting" ><MdOutlineLocalMall /></NavLink></li>
           <li className='menu-item wishlist-icon-li'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart />{wishlist?.length > 0 && token && <span className='wishlist-counter'>{wishlist?.length}</span>}</NavLink></li>
           <li className='menu-item cart-icon-li'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart />{cart?.length > 0 && token && <span className='cart-counter'>{cart?.length}</span>}</NavLink></li>
           <li className='menu-item'><NavLink to="/profile" className="nav-link"><AiOutlineUser /></NavLink></li>
-
         </ul>
 
       </nav>

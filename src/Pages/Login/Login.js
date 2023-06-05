@@ -33,12 +33,7 @@ export const Login = () => {
     }
   }
 
-
-
   // *****
-
-
-
 
   const handleGuestLogin = async () => {
 
@@ -52,7 +47,6 @@ export const Login = () => {
     loginAsGuest(creds, dispatch, setIsLoggedIn, navigate, prevLocation);
 
   }
-
 
   return (
     <div className='login-form-container'>

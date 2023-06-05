@@ -65,7 +65,6 @@ export const Checkout = () => {
       }
       var pay = new window.Razorpay(options);
       pay.open();
-
     }
 
     else {
@@ -81,6 +80,7 @@ export const Checkout = () => {
       navigate("/productlisting")
     }
   }, [])
+
   return (
     <>
       {

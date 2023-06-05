@@ -1,6 +1,5 @@
 import { success } from "../Toasts/ToastServices";
 
-// const token = localStorage.getItem("encodedToken");
 export const addToCart = async (product, dispatch, token, navigate, location) => {
 
   try {

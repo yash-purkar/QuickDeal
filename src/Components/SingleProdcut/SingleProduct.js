@@ -23,8 +23,6 @@ export const SingleProduct = ({ product }) => {
     navigate(`/product/${_id}`)
   }
 
-
-
   const handleAddToCart = () => {
     if (token) {
       setDisabledBtn(true);
