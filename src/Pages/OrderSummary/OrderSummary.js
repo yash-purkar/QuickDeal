@@ -9,7 +9,6 @@ export const OrderSummary = () => {
   const payment_id = localStorage.getItem("payment_id")
   return (
     <>
-
       {
         orderedItems?.length === 0 ? <div className='flex align-center direction-column top-margin-5'>
           <h2 className='letter-spacing margin-bottom-1'>Look's like your order is empty</h2>

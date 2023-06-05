@@ -1,9 +1,6 @@
-// const token = localStorage.getItem("encodedToken");
-
 import { remove, success } from "../Toasts/ToastServices"
 
 export const addToWishlist = async (product, dispatch, token, navigate, location) => {
-
   try {
     const response = await fetch('/api/user/wishlist', {
       method: "POST",

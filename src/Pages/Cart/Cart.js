@@ -8,11 +8,9 @@ import emptyCart from '../../assets/emptyCart.svg'
 export const Cart = () => {
   const { state: { cart } } = DataState();
 
-
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
 
   return (
     <>

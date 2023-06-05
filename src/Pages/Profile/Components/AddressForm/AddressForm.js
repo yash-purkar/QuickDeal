@@ -16,7 +16,6 @@ export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }
     setInputs(prev => ({ ...prev, [name]: value }))
   }
 
-
   const handleAdd = () => {
     if (name && street && cityName && state && country && postalCode && mobileNumber) {
       if (selectedAddrId) {
@@ -35,7 +34,6 @@ export const AddressForm = ({ setIsHideForm, selectedAddrId, setSelectedAddrId }
     addressDispatch({ type: "CLEAR_ADDRESS_DETAILS" })
     setSelectedAddrId(null)
   }
-
 
   const handleDummyAddress = () => {
     setInputs({

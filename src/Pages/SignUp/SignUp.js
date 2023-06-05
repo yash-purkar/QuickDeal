@@ -29,7 +29,6 @@ export const SignUp = () => {
     }
   }
 
-
   return (
     <div className='login-form-container  signup-form-container'>
       <h2 className='text-center top-margin margin-bottom-1 color-primary'>Sign Up</h2>
