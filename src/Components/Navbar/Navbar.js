@@ -9,15 +9,26 @@ import { DataState } from '../../Contexts/Data/DataContext'
 
 export const Navbar = () => {
   const [menuClass, setMenuClass] = useState("hide-menu");
+  const [showMenus, setShowMenus] = useState(false);
   const { state: { cart, wishlist }, dispatch } = DataState()
 
   const navigate = useNavigate();
 
   const token = localStorage.getItem("encodedToken");
 
-  const handleMenuClick = (data) => {
-    const updatedDisplay = data === "hide" ? "hide-menu" : "menus";
-    setMenuClass(updatedDisplay)
+
+  const handleShowClick = () => {
+    setShowMenus(true)
+    setMenuClass("menus")
+  }
+
+  const handleCloseClick = () => {
+    setMenuClass("hide-menu")
+  }
+
+  const handleHideMenus = () => {
+    setShowMenus(false)
+    setMenuClass("hide-menu")
   }
 
   const handleSearchProduct = (e) => {
@@ -38,17 +49,19 @@ export const Navbar = () => {
         </div>
 
         {
-          menuClass === "hide-menu" ? <div className='navigation-menu' onClick={() => handleMenuClick()}><AiOutlineMenu /></div> : <div className='navigation-menu' onClick={() => handleMenuClick("hide")}><RxCross1 /></div>
+          menuClass === "hide-menu" ? <div className='navigation-menu' onClick={handleShowClick}><AiOutlineMenu /></div> : <div className='navigation-menu' onClick={handleCloseClick}><RxCross1 /></div>
         }
 
-        <ul className={menuClass}>
-          <li className='menu-item'>
-            <NavLink className="nav-link" to="/productlisting"><MdOutlineLocalMall /></NavLink>
-          </li>
-          <li className='menu-item wishlist-icon-li'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart />{wishlist?.length > 0 && token && <span className='wishlist-counter'>{wishlist?.length}</span>}</NavLink></li>
-          <li className='menu-item cart-icon-li'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart />{cart?.length > 0 && token && <span className='cart-counter'>{cart?.length}</span>}</NavLink></li>
-          <li className='menu-item'><NavLink to="/profile" className="nav-link"><AiOutlineUser /></NavLink></li>
-        </ul>
+        {
+          showMenus && <ul className={menuClass} onClick={handleHideMenus}  >
+            <li className='menu-item'>
+              <NavLink className="nav-link" to="/productlisting"><MdOutlineLocalMall /></NavLink>
+            </li>
+            <li className='menu-item wishlist-icon-li'><NavLink to="/wishlist" className="nav-link"><AiOutlineHeart />{wishlist?.length > 0 && token && <span className='wishlist-counter'>{wishlist?.length}</span>}</NavLink></li>
+            <li className='menu-item cart-icon-li'><NavLink to="/cart" className="nav-link"><AiOutlineShoppingCart />{cart?.length > 0 && token && <span className='cart-counter'>{cart?.length}</span>}</NavLink></li>
+            <li className='menu-item'><NavLink to="/profile" className="nav-link"><AiOutlineUser /></NavLink></li>
+          </ul>
+        }
 
         <ul className='menus-md' >
           <li className='menu-item'><NavLink className="nav-link" to="/productlisting" ><MdOutlineLocalMall /></NavLink></li>
