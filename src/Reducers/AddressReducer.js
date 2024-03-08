@@ -1,3 +1,5 @@
+// It handles all states about address
+
 export const addressInitialState = {
   addressDetails: {
     name: "",

@@ -1,5 +1,6 @@
 import { remove, success } from "../Toasts/ToastServices"
 
+// It handles add product to wishlist
 export const addToWishlist = async (product, dispatch, token, navigate, location) => {
   try {
     const response = await fetch('/api/user/wishlist', {
@@ -21,7 +22,7 @@ export const addToWishlist = async (product, dispatch, token, navigate, location
   }
 }
 
-
+// It handles remove product from wishlist
 export const removeFromWishlist = async (_id, dispatch, token) => {
   try {
     const response = await fetch(`/api/user/wishlist/${_id}`, {

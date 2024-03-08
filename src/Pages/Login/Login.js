@@ -22,7 +22,7 @@ export const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // *****
+  // It handles login and pass details and setter functions to set loggin state
   const handleLogin = async () => {
     const prevLocation = location?.state?.from?.pathname;
     if (email && password) {
@@ -33,8 +33,7 @@ export const Login = () => {
     }
   }
 
-  // *****
-
+  // It handles guest login
   const handleGuestLogin = async () => {
 
     const prevLocation = location?.state?.from?.pathname;
