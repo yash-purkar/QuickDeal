@@ -5,6 +5,8 @@ import { AiFillStar } from 'react-icons/ai'
 import './Filters.css'
 import { DataState } from '../../../Contexts/Data/DataContext'
 
+// Filters for the products
+
 export const Filters = () => {
   const [isFilters, setIsFilters] = useState(false);
   const [priceRange, setPriceRange] = useState(2000)

@@ -1,3 +1,5 @@
+// It handles states about order summary
+
 export const orderInitialState = {
   price: 0,
   discount: 0,

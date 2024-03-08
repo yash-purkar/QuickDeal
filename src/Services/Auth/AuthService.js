@@ -1,7 +1,6 @@
 import { failed, success, warning } from "../Toasts/ToastServices";
 
 // User Login Handler
-
 export const loginUser = async (email, password, dispatch, setIsLoggedIn, navigate, prevLocation) => {
   try {
     const response = await fetch('/api/auth/login', {
@@ -37,7 +36,6 @@ export const loginUser = async (email, password, dispatch, setIsLoggedIn, naviga
 }
 
 // Login As A Guest Handler
-
 export const loginAsGuest = async (creds, dispatch, setIsLoggedIn, navigate, prevLocation) => {
   try {
     const response = await fetch('/api/auth/login', {
@@ -71,8 +69,7 @@ export const loginAsGuest = async (creds, dispatch, setIsLoggedIn, navigate, pre
   }
 }
 
-// SignUpUser 
-
+// SignUpUser handler
 export const signUpUser = async (user, dispatch, setIsLoggedIn, navigate) => {
   try {
     const response = await fetch('/api/auth/signup', {

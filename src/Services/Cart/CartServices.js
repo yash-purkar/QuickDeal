@@ -1,7 +1,7 @@
 import { success } from "../Toasts/ToastServices";
 
+// It handles add product to cart
 export const addToCart = async (product, dispatch, token, navigate, location) => {
-
   try {
     const response = await fetch("/api/user/cart", {
       method: "POST",
@@ -21,6 +21,7 @@ export const addToCart = async (product, dispatch, token, navigate, location) =>
   }
 }
 
+// It handles remove product from cart
 export const removeFromCart = async (_id, dispatch, token) => {
   try {
     const response = await fetch(`/api/user/cart/${_id}`, {
@@ -37,6 +38,7 @@ export const removeFromCart = async (_id, dispatch, token) => {
   }
 }
 
+// It updates cart product quantity
 export const updateCartItemQty = async (_id, type, dispatch, token) => {
   try {
     const response = await fetch(`/api/user/cart/${_id}`, {

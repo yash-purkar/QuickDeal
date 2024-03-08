@@ -1,3 +1,5 @@
+// It handles all states about data, e.g products, categories, cart and wishlist and filters.
+
 export const initialState = {
   filters: {
     priceRange: null,
