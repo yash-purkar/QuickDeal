@@ -43,8 +43,8 @@ $ npm start
 
 - React Js
 - React Context API + useReducer
-- React Router v6
-- Vanilla CSS
+- React Router v6 for routing
+- Vanilla CSS for styling
 - MockBee for backend
 - Razorpay payment gateway
 
