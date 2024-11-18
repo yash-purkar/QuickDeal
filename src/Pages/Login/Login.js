@@ -64,6 +64,12 @@ export const Login = () => {
               password.length > 0 && <p className='hide-icon cursor-pointer' onClick={() => setShowPassword(prev => !prev)}>{showPassword ? <BiShow /> : <BiHide />}</p>
             }
           </div>
+
+          <small style={{ display: "inline-block", marginBottom: "1rem", color:"red" }}>
+            We are not using actual database, you details might not be saved.
+            Thanks for understanding.
+          </small>
+
           <div className='login-btn-box'>
             <button className='login-btn width-100 bottom-margin-md' onClick={handleLogin}>Login</button>
 

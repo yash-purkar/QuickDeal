@@ -19,13 +19,22 @@ import { DataState } from "./Contexts/Data/DataContext";
 import { Loader } from "./Components/Loader/Loader";
 import { ErrorPage } from "./Pages/ErrorPage/ErrorPage";
 import { OrderSummary } from "./Pages/OrderSummary/OrderSummary";
+import { useEffect } from "react";
+import { AuthState } from "./Contexts/Auth/AuthContext";
 
 function App() {
   const { loading } = DataState();
+  const { setIsLoggedIn } = AuthState();
+
+  // Logout the user initially
+  useEffect(() => {
+    setIsLoggedIn(false);
+    localStorage.clear();
+  }, [setIsLoggedIn]);
 
   return (
     <div className="App">
-    {/* If loading is there show loader. */}
+      {/* If loading is there show loader. */}
       {loading && <Loader />}
       <Navbar />
       <Routes>

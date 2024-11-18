@@ -123,6 +123,10 @@ export const SignUp = () => {
           </div>
           {/* <div className='login-btn-box'> */}
 
+          <small style={{ display: "inline-block", marginBottom: "1rem", color:"red" }}>
+            We are not using actual database, you details might not be saved.
+            Thanks for understanding.
+          </small>
           <button
             className="login-btn new-acc-btn width-100 bottom-margin-md"
             onClick={signUpHandler}
