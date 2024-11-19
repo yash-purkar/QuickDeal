@@ -124,7 +124,7 @@ export const SignUp = () => {
           {/* <div className='login-btn-box'> */}
 
           <small style={{ display: "inline-block", marginBottom: "1rem", color:"red" }}>
-            We are not using actual database, you details might not be saved.
+            We are not using actual database, your details might not be saved.
             Thanks for understanding.
           </small>
           <button
